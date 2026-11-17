@@ -1012,6 +1012,17 @@
       font-family: 'Fredoka', sans-serif;
       font-size: 0.88rem;
     }
+
+    /* ADDED: Animated waves from the main page, now on the welcome intro too */
+    .pokedex-intro { isolation: isolate; overflow: hidden; }
+    .intro-wave-scene { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+    .intro-wave { position: absolute; left: -15%; width: 130%; height: 48%; bottom: -12%; opacity: .55; animation: introWaveDrift 11s ease-in-out infinite alternate; }
+    .intro-wave.wave-back { bottom: 2%; opacity: .28; animation-duration: 15s; animation-direction: alternate-reverse; }
+    .intro-wave.wave-front { bottom: -22%; opacity: .68; animation-duration: 9s; }
+    .intro-wave svg { width: 100%; height: 100%; display: block; }
+    .intro-wave-shimmer { position: absolute; inset: 0; background: radial-gradient(circle at 15% 24%, rgba(255,255,255,.22), transparent 36%), radial-gradient(circle at 85% 70%, rgba(255,225,241,.28), transparent 40%); }
+    @keyframes introWaveDrift { from { transform: translateX(-3%) translateY(0); } to { transform: translateX(3%) translateY(-4%); } }
+    @media (prefers-reduced-motion: reduce) { .intro-wave { animation: none; } }
   </style>
 </head>
 <body>
@@ -1020,6 +1031,12 @@
 
   <!-- Pokédex Welcome Screen with Pokémon Theme Music Trigger -->
   <div class="pokedex-intro" id="pokedexIntro">
+    <!-- ADDED: Layered animated pastel wave decoration (keeps existing intro content) -->
+    <div class="intro-wave-scene" aria-hidden="true">
+      <div class="intro-wave-shimmer"></div>
+      <div class="intro-wave wave-back"><svg viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#fff0f6" d="M0,144 C230,25 410,255 720,125 C1000,5 1220,195 1440,75 L1440,320 L0,320 Z"/></svg></div>
+      <div class="intro-wave wave-front"><svg viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#ffc2dc" d="M0,90 C240,220 460,0 730,120 C1000,250 1200,45 1440,155 L1440,320 L0,320 Z"/></svg></div>
+    </div>
     <div class="pokeball-loader"></div>
     <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
     <div class="intro-title">Judy's Editing Commission</div>
@@ -1306,7 +1323,7 @@
         osc.type = "square";
         osc.frequency.setValueAtTime(note.f, audioCtx.currentTime);
 
-        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.018, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + note.d);
 
         osc.connect(gain);
@@ -1337,12 +1354,12 @@
         osc.type = "sine";
         osc.frequency.setValueAtTime(440, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.05);
-        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.16, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.09);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.05);
+        osc.stop(audioCtx.currentTime + 0.09);
       } catch(e) {}
     }
 
@@ -1355,7 +1372,7 @@
         osc.type = "triangle";
         osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
         osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.06);
-        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.22, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
