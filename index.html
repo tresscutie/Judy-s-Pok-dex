@@ -765,35 +765,17 @@
       z-index: 4;
     }
 
-    .falling-item img.pokeball-img {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-      border: 2px solid #fff;
-    }
-
-    /* Explosion Animation Style */
-    .explosion-effect {
-      position: absolute;
-      font-size: 2.5rem;
-      transform: translate(-50%, -50%);
-      animation: explodeAnim 0.4s ease-out forwards;
-      pointer-events: none;
-      z-index: 8;
-    }
-
-    @keyframes explodeAnim {
-      0% { transform: scale(0.5); opacity: 1; }
-      100% { transform: scale(1.8); opacity: 0; }
+    .falling-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
     }
 
     .game-start-screen {
       position: absolute;
       inset: 0;
-      background: rgba(74, 21, 48, 0.95);
+      background: rgba(74, 21, 48, 0.92);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -806,17 +788,15 @@
 
     .game-start-screen h3 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #ff85b8;
       margin-bottom: 0.5rem;
     }
 
     .game-start-screen p {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       margin-bottom: 1.2rem;
       opacity: 0.9;
-      max-width: 420px;
-      line-height: 1.4;
     }
 
     /* =========================================
@@ -1019,13 +999,13 @@
   <div class="bg-pokeball pb-1"></div>
   <div class="bg-pokeball pb-2"></div>
 
-  <!-- Pokédex Welcome Screen with Pokémon Theme Music Trigger -->
+  <!-- Pokédex Welcome Screen -->
   <div class="pokedex-intro" id="pokedexIntro">
     <div class="pokeball-loader"></div>
     <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
     <div class="intro-title">Serene's Editing Commission</div>
     <p style="opacity:0.92; margin-top:4px;">Loading Card Deck Portfolio & Price List...</p>
-    <button class="intro-btn" onclick="startPokemonThemeAndClose()">🎵 Open Pokédex & Play Music ▶</button>
+    <button class="intro-btn" onclick="playClickSound(); closeIntro()">Open Pokédex ▶</button>
   </div>
 
   <!-- Floating Sylveon Companion Widget -->
@@ -1055,7 +1035,7 @@
 
           <h1><span>Serene's</span> Editing Commission</h1>
           <p class="trainer-bio">
-            Hi everyone! I am planning to re-open my editing commission. If you have any projects that need help with editing, I think I can do it for you.
+            Hi everyone! I am planning to re-open my editing commission. If you have any projects that needs help with editing, I think I can do it for you.
           </p>
 
           <div class="action-row">
@@ -1113,7 +1093,7 @@
     <!-- Serene's Catcher Mini-Game -->
     <section class="minigame-wrapper">
       <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Help Serene Catch Pokéballs!</h2>
-      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Catch the <strong>Pokéballs</strong> for points. <strong>Avoid the Bombs (💣)</strong>—speed increases as your score goes up!</p>
+      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Saluhin ang mga <strong>Pokéballs</strong> para sa puntos. <strong>Iwasang masalo ang mga Bomba (💣)</strong>—mababawasan ang buhay mo kapag nasalo mo ang bomba!</p>
       
       <div class="game-stats">
         <span>⭐ Score: <span id="gameScore">0</span></span>
@@ -1128,7 +1108,7 @@
 
         <div class="game-start-screen" id="startScreen">
           <h3>Ready to Play?</h3>
-          <p>Move mouse to guide Serene. Catch Pokéballs, avoid bombs! The game gets faster as score increases!</p>
+          <p>I-move ang mouse para igalaw si Serene. Saluhin ang Pokéballs, iwasan ang bomba!</p>
           <button class="intro-btn" onclick="startGame()">Start Game ▶</button>
         </div>
       </div>
@@ -1139,10 +1119,10 @@
       <div class="pricelist-intro">
         <h2>𝐒𝐄𝐑𝐄𝐍𝐄'𝐒 𝐄𝐃𝐈𝐓𝐈𝐍𝐆 𝐂𝐎𝐌𝐌𝐈𝐒𝐒𝐈𝐎𝐍</h2>
         <p>
-          Hi everyone! I am planning to re-open my editing commission. If you have any projects that need help with editing, I think I can do it for you.
+          Hi everyone! I am planning to re-open my editing commission. If you have any projects that needs help with editing, I think I can do it for you.
         </p>
         <div style="margin-top: 0.9rem;">
-          <span class="status-chip" style="font-size: 0.9rem; padding: 5px 16px;">Price List:</span>
+          <span class="status-chip" style="font-size: 0.9rem; padding: 5px 16px;">Price list:</span>
         </div>
       </div>
 
@@ -1154,14 +1134,14 @@
           </div>
           <ul class="rate-list">
             <li><span>First photo</span><span class="rate-price">₱10</span></li>
-            <li><span>Each (depends on style)</span><span class="rate-price">₱4-7</span></li>
+            <li><span>Each (depends on the style)</span><span class="rate-price">₱4-7</span></li>
           </ul>
         </div>
 
         <!-- SONG COVER TEMPLATE -->
         <div class="rate-card">
           <div class="rate-card-header">
-            <h3>SONG COVER TEMPLATE (depends on style)</h3>
+            <h3>SONG COVER TEMPLATE (depends on the style)</h3>
           </div>
           <ul class="rate-list">
             <li><span>Solo Template</span><span class="rate-price">₱5-10</span></li>
@@ -1189,8 +1169,8 @@
             <h3>STAMP</h3>
           </div>
           <ul class="rate-list">
-            <li><span>Minimalist</span><span class="rate-price">₱10</span></li>
-            <li><span>With icons</span><span class="rate-price">₱15</span></li>
+            <li><span>minimalist</span><span class="rate-price">₱10</span></li>
+            <li><span>with icons</span><span class="rate-price">₱15</span></li>
           </ul>
         </div>
 
@@ -1200,10 +1180,10 @@
             <h3>POSTERS</h3>
           </div>
           <ul class="rate-list">
-            <li><span>Birthday Poster</span><span class="rate-price">₱10</span></li>
-            <li><span>Girl/Boy Group Poster</span><span class="rate-price">₱15</span></li>
-            <li><span>SDP (Depends on quantity)</span><span class="rate-price">₱20-50</span></li>
-            <li><span>Other Posters (movie, celebration, etc.)</span><span class="rate-price">₱10-15</span></li>
+            <li><span>BIRTHDAY POSTER</span><span class="rate-price">₱10</span></li>
+            <li><span>GIRL/BOY GROUP POSTER</span><span class="rate-price">₱15</span></li>
+            <li><span>SDP (Depende sa dami)</span><span class="rate-price">₱20-50</span></li>
+            <li><span>OTHER POSTERS (movie, celebration posters, etc) depends on style</span><span class="rate-price">₱10-15</span></li>
           </ul>
         </div>
 
@@ -1213,10 +1193,10 @@
             <h3>VIDEOS</h3>
           </div>
           <ul class="rate-list">
-            <li><span>Song Cover</span><span class="rate-price">₱10 per minute</span></li>
-            <li><span>Teaser</span><span class="rate-price">₱50</span></li>
-            <li><span>Commercial Video (depends on style)</span><span class="rate-price">₱80-100</span></li>
-            <li><span>Projects</span><span class="rate-price">Negotiable based on budget</span></li>
+            <li><span>SONG COVER</span><span class="rate-price">₱10 per minutes</span></li>
+            <li><span>TEASER</span><span class="rate-price">₱50</span></li>
+            <li><span>COMMERCIAL VIDEO (depends on the style)</span><span class="rate-price">₱80-100</span></li>
+            <li><span>PROJECTS</span><span class="rate-price">can negotiate base on your budget</span></li>
           </ul>
         </div>
 
@@ -1226,14 +1206,14 @@
             <h3>OTHERS</h3>
           </div>
           <ul class="rate-list">
-            <li><span>Book Cover (depends on characters)</span><span class="rate-price">₱150-300</span></li>
-            <li><span>Color Coded UDP</span><span class="rate-price">₱20</span></li>
+            <li><span>BOOK COVER (depends on the characters)</span><span class="rate-price">₱150-300</span></li>
+            <li><span>COLOR CODED UDP</span><span class="rate-price">₱20</span></li>
           </ul>
         </div>
       </div>
 
       <div class="open-dm-banner">
-        <p>AND MOREEE!! Just PM me! We can talk about it. My messages are open every day and anytime!</p>
+        <p>AND MOREEE!! Just pm me! We will talk about it. My messages are open everyday and anytime!</p>
         <a href="https://www.facebook.com/vanne.dieuxeme" target="_blank" rel="noopener noreferrer" class="poke-btn poke-btn-primary" onmouseenter="playHoverSound()" onclick="playClickSound()">
           💌 Message via Facebook
         </a>
@@ -1273,61 +1253,14 @@
 
   <script>
     // =========================================================================
-    // POKÉMON AUDIO & ARCADE SOUND SYNTHESIZER
+    // POKÉMON AUDIO SYNTHESIZER
     // =========================================================================
     let audioCtx = null;
-    let musicInterval = null;
 
     function initAudio() {
       if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
-    }
-
-    // Classic upbeat Pokémon-style opening melody sequence
-    const pokeNotes = [
-      { f: 523.25, d: 0.2 },
-      { f: 659.25, d: 0.2 },
-      { f: 783.99, d: 0.2 },
-      { f: 1046.50, d: 0.4 },
-      { f: 783.99, d: 0.2 },
-      { f: 880.00, d: 0.4 },
-      { f: 698.46, d: 0.4 }
-    ];
-    let noteCursor = 0;
-
-    function playPokemonMelody() {
-      try {
-        initAudio();
-        if (!audioCtx) return;
-        const note = pokeNotes[noteCursor];
-        noteCursor = (noteCursor + 1) % pokeNotes.length;
-
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = "square";
-        osc.frequency.setValueAtTime(note.f, audioCtx.currentTime);
-
-        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + note.d);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + note.d);
-      } catch(e) {}
-    }
-
-    function startPokemonThemeAndClose() {
-      initAudio();
-      if (audioCtx && audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-      if (!musicInterval) {
-        musicInterval = setInterval(playPokemonMelody, 250);
-      }
-      playClickSound();
-      closeIntro();
     }
 
     function playHoverSound() {
@@ -1366,82 +1299,6 @@
       } catch(e) {}
     }
 
-    // Sound when catching a Pokéball (maganda at masayang chime)
-    function playCatchSound() {
-      try {
-        initAudio();
-        if (!audioCtx) return;
-        const now = audioCtx.currentTime;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(523.25, now);
-        osc.frequency.exponentialRampToValueAtTime(1046.50, now + 0.12);
-        gain.gain.setValueAtTime(0.1, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 0.18);
-      } catch(e) {}
-    }
-
-    // Sound when hitting a Bomb (tunog sabog gamit ang noise buffer)
-    function playExplosionSound() {
-      try {
-        initAudio();
-        if (!audioCtx) return;
-        const now = audioCtx.currentTime;
-        const bufferSize = audioCtx.sampleRate * 0.4;
-        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) {
-          data[i] = Math.random() * 2 - 1;
-        }
-
-        const noise = audioCtx.createBufferSource();
-        noise.buffer = buffer;
-
-        const filter = audioCtx.createBiquadFilter();
-        filter.type = "lowpass";
-        filter.frequency.setValueAtTime(300, now);
-        filter.frequency.linearRampToValueAtTime(50, now + 0.4);
-
-        const gain = audioCtx.createGain();
-        gain.gain.setValueAtTime(0.3, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
-
-        noise.connect(filter);
-        filter.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        noise.start(now);
-        noise.stop(now + 0.4);
-      } catch(e) {}
-    }
-
-    // Arcade Game Over Sound
-    function playGameOverSound() {
-      try {
-        initAudio();
-        if (!audioCtx) return;
-        const now = audioCtx.currentTime;
-        const notes = [440, 415.30, 392, 349.23];
-        notes.forEach((freq, idx) => {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.type = "sawtooth";
-          osc.frequency.setValueAtTime(freq, now + (idx * 0.12));
-          gain.gain.setValueAtTime(0.08, now + (idx * 0.12));
-          gain.gain.exponentialRampToValueAtTime(0.001, now + (idx * 0.12) + 0.15);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now + (idx * 0.12));
-          osc.stop(now + (idx * 0.12) + 0.15);
-        });
-      } catch(e) {}
-    }
-
     // =========================================================================
     // CLIENT PORTFOLIO DATA (6 CATEGORIES + ALL UPLOADED SAMPLES)
     // =========================================================================
@@ -1474,17 +1331,10 @@
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
       if (intro) intro.classList.add("hide");
-      setTimeout(() => {
-        if (musicInterval) {
-          clearInterval(musicInterval);
-          musicInterval = null;
-        }
-      }, 1500);
     }
 
     window.addEventListener("load", () => {
-      initAudio();
-      musicInterval = setInterval(playPokemonMelody, 250);
+      setTimeout(closeIntro, 1900);
     });
 
     function openLightbox(imgSrc) {
@@ -1493,9 +1343,9 @@
     }
 
     const SYLVEON_QUOTES = [
-      "Move mouse to help Serene catch Pokéballs! 🎀",
-      "Avoid the bombs! Speed increases with score! 💣",
-      "Check out the Price List below! 🏷️",
+      "Move mouse to help Serene catch pokeball.jpg! 🎀",
+      "Avoid the bombs! 💣",
+      "Check the Price List below! 🏷️",
       "GCash MOP ready! 💙"
     ];
     let quoteIdx = 0;
@@ -1507,7 +1357,7 @@
     }
 
     // =========================================================================
-    // SERENE CATCHER GAME LOGIC (Progressive Speed & Explosion & Arcade Over)
+    // SERENE CATCHER GAME LOGIC (pokeball.jpg & BOMBS)
     // =========================================================================
     let score = 0;
     let lives = 3;
@@ -1538,7 +1388,7 @@
       fallingItems = [];
       updateStats();
 
-      document.querySelectorAll(".falling-item, .explosion-effect").forEach(el => el.remove());
+      document.querySelectorAll(".falling-item").forEach(el => el.remove());
 
       spawnerInterval = setInterval(spawnItem, 900);
       gameLoopInterval = setInterval(updateGame, 25);
@@ -1562,7 +1412,8 @@
         el.textContent = "💣";
         el.style.fontSize = "1.9rem";
       } else {
-        el.innerHTML = `<img src="pokeball.jpg" alt="Pokéball" class="pokeball-img" />`;
+        // Ginagamit na ang pokeball.jpg file
+        el.innerHTML = `<img src="pokeball.jpg" alt="Pokéball" />`;
       }
 
       const maxX = arena.clientWidth - 45;
@@ -1572,15 +1423,11 @@
 
       arena.appendChild(el);
 
-      // Habang tumataas ang score, bumibilis ang hulog (progressive speed multiplier)
-      const speedMultiplier = 1 + (score / 60);
-      const baseSpeed = 2.0 + Math.random() * 2.0;
-
       fallingItems.push({
         element: el,
         x: posX,
         y: -40,
-        speed: baseSpeed * speedMultiplier,
+        speed: 2.2 + Math.random() * 2.2,
         type: isBomb ? "bomb" : "ball"
       });
     }
@@ -1598,17 +1445,17 @@
         item.y += item.speed;
         item.element.style.top = item.y + "px";
 
+        // Check collision with Serene catcher
         if (item.y >= catcherTop - 15 && item.y <= catcherTop + 35) {
           if (Math.abs(item.x - catcherX) < 35) {
+            playClickSound();
             if (item.type === "bomb") {
-              // Trigger explosion effect & sound
-              playExplosionSound();
-              showExplosion(item.x, item.y);
+              // Nasalo ang bomba -> Bawas buhay!
               lives--;
               updateStats();
               if (lives <= 0) gameOver();
             } else {
-              playCatchSound();
+              // Nasalo ang pokeball.jpg -> Dagdag puntos!
               score += 10;
               updateStats();
             }
@@ -1618,22 +1465,12 @@
           }
         }
 
+        // Remove if goes past bottom
         if (item.y > arena.clientHeight) {
           item.element.remove();
           fallingItems.splice(i, 1);
         }
       }
-    }
-
-    function showExplosion(x, y) {
-      const arena = document.getElementById("gameArena");
-      const exp = document.createElement("div");
-      exp.className = "explosion-effect";
-      exp.textContent = "💥";
-      exp.style.left = x + "px";
-      exp.style.top = y + "px";
-      arena.appendChild(exp);
-      setTimeout(() => exp.remove(), 400);
     }
 
     function gameOver() {
@@ -1643,12 +1480,10 @@
       fallingItems.forEach(item => item.element.remove());
       fallingItems = [];
 
-      playGameOverSound();
-
       const startScreen = document.getElementById("startScreen");
       startScreen.style.display = "flex";
-      startScreen.querySelector("h3").textContent = "GAME OVER 💔";
-      startScreen.querySelector("p").textContent = `Final Score: ${score} points! You hit a bomb. Click below to try again!`;
+      startScreen.querySelector("h3").textContent = "Game Over! 💔";
+      startScreen.querySelector("p").textContent = `Naka-score ka ng ${score} puntos! Nasalo mo ang bomba. Click para maglaro ulit!`;
       startScreen.querySelector("button").textContent = "Play Again 🔄";
     }
 
