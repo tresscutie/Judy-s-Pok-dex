@@ -221,7 +221,6 @@
       overflow: hidden;
       backdrop-filter: blur(12px);
       margin-bottom: 2.4rem;
-      animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
     .pokedex-lights {
@@ -343,21 +342,6 @@
       overflow: hidden;
     }
 
-    .trainer-portrait-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
-      transform: translateX(-100%);
-      animation: holoShine 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes holoShine {
-      0%, 45% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
     .trainer-portrait-card img {
       width: 100%;
       aspect-ratio: 3 / 4;
@@ -412,10 +396,6 @@
     }
 
     .poke-btn:hover { transform: translateY(-3px); }
-    .poke-btn:active {
-      transform: translateY(3px) !important;
-      box-shadow: 0 1px 0 var(--berry-dark) !important;
-    }
 
     /* =========================================
         FLOATING SYLVEON COMPANION
@@ -465,13 +445,8 @@
       display: block;
     }
 
-    @media (max-width: 600px) {
-      .sylveon-avatar { width: 64px; height: 64px; }
-      .sylveon-bubble { font-size: 0.68rem; padding: 4px 9px; }
-    }
-
     /* =========================================
-        SECTION HEADERS & 6 CATEGORY CARTRIDGES
+        SECTION HEADERS & CATEGORY CARDS
         ========================================= */
     .section-header {
       text-align: center;
@@ -607,10 +582,6 @@
       transform: scale(1.08);
     }
 
-    .deck-nav-btn:active {
-      transform: translateY(3px);
-    }
-
     .deck-cards-viewport {
       position: relative;
       width: 100%;
@@ -696,29 +667,6 @@
       pointer-events: none;
     }
 
-    @media (max-width: 540px) {
-      .deck-cards-viewport {
-        height: 340px;
-      }
-      .arcade-card-item {
-        width: 215px;
-      }
-      .arcade-card-item img {
-        height: 265px;
-      }
-      .arcade-card-item.pos-prev {
-        transform: translateX(-115px) scale(0.82) rotate(-6deg);
-      }
-      .arcade-card-item.pos-next {
-        transform: translateX(115px) scale(0.82) rotate(6deg);
-      }
-      .deck-nav-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
-      }
-    }
-
     .deck-hint {
       font-family: 'Fredoka', sans-serif;
       font-size: 0.82rem;
@@ -763,7 +711,7 @@
     }
 
     /* =========================================
-        PANG-POKÉMON MINI-GAME STYLES
+        SERENE'S CATCH MINI-GAME STYLES
         ========================================= */
     .minigame-wrapper {
       background: var(--card-white);
@@ -775,47 +723,76 @@
       text-align: center;
     }
 
-    .minigame-arena {
-      background: linear-gradient(135deg, #1e1b4b, #31103f);
-      border: 3px solid var(--berry-dark);
+    .game-stats {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #ffe4f0;
+      border: 2.5px solid var(--berry-dark);
+      border-radius: 16px;
+      padding: 10px;
+      margin: 1rem 0;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      color: var(--berry-dark);
+    }
+
+    .game-arena {
+      background: linear-gradient(135deg, #2b0b1f, #4a1530);
+      border: 3.5px solid var(--berry-dark);
       border-radius: 20px;
-      height: 220px;
+      height: 320px;
       position: relative;
       overflow: hidden;
-      margin-top: 1rem;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+      cursor: crosshair;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.6);
     }
 
-    .wild-pokemon {
+    .falling-item {
       position: absolute;
-      font-size: 2.8rem;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.2s;
-      animation: floatWild 1.5s ease-in-out infinite alternate;
-    }
-
-    .wild-pokemon:hover {
-      transform: scale(1.2) rotate(10deg);
-    }
-
-    @keyframes floatWild {
-      from { transform: translateY(0px); }
-      to { transform: translateY(-12px); }
-    }
-
-    .pokeball-thrower {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 2rem;
+      user-select: none;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .falling-item:active {
+      transform: scale(0.8);
+    }
+
+    .game-start-screen {
       position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      transition: all 0.4s ease-out;
-      pointer-events: none;
+      inset: 0;
+      background: rgba(74, 21, 48, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      z-index: 10;
+      padding: 1rem;
+    }
+
+    .game-start-screen h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.8rem;
+      color: #ff85b8;
+      margin-bottom: 0.5rem;
+    }
+
+    .game-start-screen p {
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+      opacity: 0.9;
     }
 
     /* =========================================
-        SERENE'S EDITING COMMISSION PRICE LIST
+        SERENE'S PRICE LIST STYLES
         ========================================= */
     .pricelist-wrapper {
       background: var(--card-white);
@@ -870,9 +847,7 @@
       transition: transform 0.2s ease;
     }
 
-    .rate-card:hover {
-      transform: translateY(-4px);
-    }
+    .rate-card:hover { transform: translateY(-4px); }
 
     .rate-card-header {
       display: flex;
@@ -889,9 +864,7 @@
       color: var(--berry-dark);
     }
 
-    .rate-list {
-      list-style: none;
-    }
+    .rate-list { list-style: none; }
 
     .rate-list li {
       display: flex;
@@ -904,9 +877,7 @@
       border-bottom: 1px solid rgba(255, 179, 212, 0.35);
     }
 
-    .rate-list li:last-child {
-      border-bottom: none;
-    }
+    .rate-list li:last-child { border-bottom: none; }
 
     .rate-price {
       font-family: 'Fredoka', sans-serif;
@@ -1005,12 +976,6 @@
       border-radius: 22px;
       border: 4px solid #fff;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      animation: bounceIn 0.3s ease both;
-    }
-
-    @keyframes bounceIn {
-      from { opacity: 0; transform: scale(0.92) translateY(14px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     footer {
@@ -1037,7 +1002,7 @@
 
   <!-- Floating Sylveon Companion Widget -->
   <div class="sylveon-companion" onclick="playClickSound(); petSylveon(event)">
-    <div class="sylveon-bubble" id="sylveonMsg">Swipe cards to view edits! 🎀</div>
+    <div class="sylveon-bubble" id="sylveonMsg">Catch falling Pokéballs! 🎀</div>
     <div class="sylveon-avatar">
       <img src="sylveon.jpg" alt="Sylveon Partner" />
     </div>
@@ -1117,14 +1082,22 @@
       </div>
     </section>
 
-    <!-- Pokémon Mini Game Section -->
+    <!-- Serene's Mini-Game: Catch Pokeballs & Avoid Bombs -->
     <section class="minigame-wrapper">
-      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Wild Pokémon Encounter!</h2>
-      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Click the wild Pokémon to catch them with a Pokéball! Score: <span id="pokeScore" style="font-weight: 700; color: var(--pink-hot);">0</span></p>
+      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Catch the Pokéballs!</h2>
+      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Click the falling Pokéballs to score points. <strong>Avoid the Bombs (💣)!</strong> You have 3 Lives.</p>
       
-      <div class="minigame-arena" id="gameArena" onclick="throwPokeball(event)">
-        <div id="wildMon" class="wild-pokemon" style="top: 40px; left: 50%;" onclick="catchPokemon(event)">🌸</div>
-        <div id="thrownBall" class="pokeball-thrower" style="display: none; bottom: 10px; left: 50%;"></div>
+      <div class="game-stats">
+        <span>⭐ Score: <span id="gameScore">0</span></span>
+        <span>❤️ Lives: <span id="gameLives">❤️❤️❤️</span></span>
+      </div>
+
+      <div class="game-arena" id="gameArena">
+        <div class="game-start-screen" id="startScreen">
+          <h3>Ready to Catch?</h3>
+          <p>Catch Pokéballs, dodge bombs, and set your highest score!</p>
+          <button class="intro-btn" onclick="startGame()">Start Game ▶</button>
+        </div>
       </div>
     </section>
 
@@ -1267,7 +1240,7 @@
 
   <script>
     // =========================================================================
-    // POKÉMON AUDIO SYNTHESIZER (Web Audio API for Menu Beeps & Clicks)
+    // POKÉMON AUDIO SYNTHESIZER
     // =========================================================================
     let audioCtx = null;
 
@@ -1302,8 +1275,8 @@
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = "triangle";
-        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.06); // A5
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.06);
         gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
         osc.connect(gain);
@@ -1325,122 +1298,22 @@
         { id: "Stamp", label: "Stamp", code: "No. 005" },
         { id: "Seller Set", label: "Seller Set", code: "No. 006" }
       ],
-
       gallery: [
-        // UDP
         { title: "UDP #1", category: "UDP", image: "udp (1).jpg" },
         { title: "UDP #2", category: "UDP", image: "udp (1).png" },
         { title: "UDP #3", category: "UDP", image: "udp (2).jpg" },
         { title: "UDP #4", category: "UDP", image: "udp (2).png" },
-        { title: "UDP #5", category: "UDP", image: "udp (3).jpg" },
-        { title: "UDP #6", category: "UDP", image: "udp (3).png" },
-        { title: "UDP #7", category: "UDP", image: "udp (4).jpg" },
-        { title: "UDP #8", category: "UDP", image: "udp (4).png" },
-        { title: "UDP #9", category: "UDP", image: "udp (5).jpg" },
-        { title: "UDP #10", category: "UDP", image: "udp (5).png" },
-        { title: "UDP #11", category: "UDP", image: "udp (6).jpg" },
-        { title: "UDP #12", category: "UDP", image: "udp (6).png" },
-        { title: "UDP #13", category: "UDP", image: "udp (7).jpg" },
-        { title: "UDP #14", category: "UDP", image: "udp (7).png" },
-        { title: "UDP #15", category: "UDP", image: "udp (8).jpg" },
-        { title: "UDP #16", category: "UDP", image: "udp (8).png" },
-        { title: "UDP #17", category: "UDP", image: "udp (9).jpg" },
-        { title: "UDP #18", category: "UDP", image: "udp (9).png" },
-        { title: "UDP #19", category: "UDP", image: "udp (10).jpg" },
-        { title: "UDP #20", category: "UDP", image: "udp (10).png" },
-        { title: "UDP #21", category: "UDP", image: "udp (11).jpg" },
-        { title: "UDP #22", category: "UDP", image: "udp (12).jpg" },
-        { title: "UDP #23", category: "UDP", image: "udp (13).jpg" },
-        { title: "UDP #24", category: "UDP", image: "udp (14).jpg" },
-        { title: "UDP #25", category: "UDP", image: "udp (15).jpg" },
-        { title: "UDP #26", category: "UDP", image: "udp (16).jpg" },
-        { title: "UDP #27", category: "UDP", image: "udp (17).jpg" },
-        { title: "UDP #28", category: "UDP", image: "udp (18).jpg" },
-        { title: "UDP #29", category: "UDP", image: "udp (19).jpg" },
-
-        // TEMPLATE
         { title: "Template #1", category: "Template", image: "template (1).jpg" },
         { title: "Template #2", category: "Template", image: "template (1).png" },
-        { title: "Template #3", category: "Template", image: "template (2).jpg" },
-        { title: "Template #4", category: "Template", image: "template (2).png" },
-        { title: "Template #5", category: "Template", image: "template (3).jpg" },
-        { title: "Template #6", category: "Template", image: "template (3).png" },
-        { title: "Template #7", category: "Template", image: "template (4).jpg" },
-        { title: "Template #8", category: "Template", image: "template (4).png" },
-        { title: "Template #9", category: "Template", image: "template (5).jpg" },
-        { title: "Template #10", category: "Template", image: "template (5).png" },
-        { title: "Template #11", category: "Template", image: "template (6).jpg" },
-        { title: "Template #12", category: "Template", image: "template (6).png" },
-        { title: "Template #13", category: "Template", image: "template (7).jpg" },
-        { title: "Template #14", category: "Template", image: "template (7).png" },
-        { title: "Template #15", category: "Template", image: "template (8).jpg" },
-        { title: "Template #16", category: "Template", image: "template (8).png" },
-        { title: "Template #17", category: "Template", image: "template (9).jpg" },
-        { title: "Template #18", category: "Template", image: "template (9).png" },
-        { title: "Template #19", category: "Template", image: "template (10).jpg" },
-        { title: "Template #20", category: "Template", image: "template (10).png" },
-        { title: "Template #21", category: "Template", image: "template (11).jpg" },
-        { title: "Template #22", category: "Template", image: "template (11).png" },
-        { title: "Template #23", category: "Template", image: "template (12).jpg" },
-        { title: "Template #24", category: "Template", image: "template (12).png" },
-        { title: "Template #25", category: "Template", image: "template (13).jpg" },
-        { title: "Template #26", category: "Template", image: "template (13).png" },
-        { title: "Template #27", category: "Template", image: "template (14).jpg" },
-        { title: "Template #28", category: "Template", image: "template (14).png" },
-        { title: "Template #29", category: "Template", image: "template (15).jpg" },
-        { title: "Template #30", category: "Template", image: "template (15).png" },
-        { title: "Template #31", category: "Template", image: "template (16).jpg" },
-        { title: "Template #32", category: "Template", image: "template (16).png" },
-        { title: "Template #33", category: "Template", image: "template (18).jpg" },
-        { title: "Template #34", category: "Template", image: "template (19).jpg" },
-        { title: "Template #35", category: "Template", image: "template (20).jpg" },
-        { title: "Template #36", category: "Template", image: "template (21).jpg" },
-        { title: "Template #37", category: "Template", image: "template (32).png" },
-        { title: "Template #38", category: "Template", image: "template (33).png" },
-        { title: "Template #39", category: "Template", image: "template (34).png" },
-        { title: "Template #40", category: "Template", image: "template (38).png" },
-        { title: "Template #41", category: "Template", image: "template (39).png" },
-
-        // POSTERS
         { title: "Poster #1", category: "Posters", image: "posters (1).jpg" },
-        { title: "Poster #2", category: "Posters", image: "posters (1).png" },
-        { title: "Poster #3", category: "Posters", image: "posters (2).jpg" },
-        { title: "Poster #4", category: "Posters", image: "posters (2).png" },
-        { title: "Poster #5", category: "Posters", image: "posters (3).jpg" },
-        { title: "Poster #6", category: "Posters", image: "posters (3).png" },
-        { title: "Poster #7", category: "Posters", image: "posters (4).jpg" },
-        { title: "Poster #8", category: "Posters", image: "posters (4).png" },
-        { title: "Poster #9", category: "Posters", image: "posters (5).jpg" },
-        { title: "Poster #10", category: "Posters", image: "posters (6).jpg" },
-        { title: "Poster #11", category: "Posters", image: "posters (7).jpg" },
-
-        // HOODSET
         { title: "Hoodset #1", category: "Hoodset", image: "hoodset (1).jpg" },
-        { title: "Hoodset #2", category: "Hoodset", image: "hoodset (2).jpg" },
-
-        // STAMP
         { title: "Stamp #1", category: "Stamp", image: "stamp (1).jpg" },
-        { title: "Stamp #2", category: "Stamp", image: "stamp (2).jpg" },
-        { title: "Stamp #3", category: "Stamp", image: "stamp (3).jpg" },
-
-        // SELLER SET
-        { title: "Seller Set #1", category: "Seller Set", image: "seller set (1).jpg" },
-        { title: "Seller Set #2", category: "Seller Set", image: "seller set (1).png" },
-        { title: "Seller Set #3", category: "Seller Set", image: "seller set (2).jpg" },
-        { title: "Seller Set #4", category: "Seller Set", image: "seller set (3).jpg" },
-        { title: "Seller Set #5", category: "Seller Set", image: "seller set (4).jpg" },
-        { title: "Seller Set #6", category: "Seller Set", image: "seller set (5).jpg" },
-        { title: "Seller Set #7", category: "Seller Set", image: "seller set (6).jpg" },
-        { title: "Seller Set 2 #1", category: "Seller Set", image: "seller set 2 (1).jpg" },
-        { title: "Seller Set 2 #2", category: "Seller Set", image: "seller set 2 (1).png" },
-        { title: "Seller Set 2 #3", category: "Seller Set", image: "seller set 2 (2).jpg" },
-        { title: "Seller Set 2 #4", category: "Seller Set", image: "seller set 2 (3).jpg" },
-        { title: "Seller Set 2 #5", category: "Seller Set", image: "seller set 2 (4).jpg" }
+        { title: "Seller Set #1", category: "Seller Set", image: "seller set (1).jpg" }
       ]
     };
 
     // =========================================================================
-    // INTRO, LIGHTBOX & SPARKLES
+    // INTRO & LIGHTBOX
     // =========================================================================
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
@@ -1456,30 +1329,11 @@
       document.getElementById("imgModal").classList.add("open");
     }
 
-    function burstParticles(x, y, customIcons) {
-      const icons = customIcons || ["💗", "✦", "🌸", "✨"];
-      for (let i = 0; i < 6; i++) {
-        const pop = document.createElement("span");
-        pop.className = "click-pop";
-        pop.textContent = icons[i % icons.length];
-        const angle = (Math.PI * 2 * i) / 6 + Math.random() * 0.4;
-        const dist = 30 + Math.random() * 28;
-        pop.style.left = `${x}px`;
-        pop.style.top = `${y}px`;
-        pop.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
-        pop.style.setProperty("--dy", `${Math.sin(angle) * dist}px`);
-        document.body.appendChild(pop);
-        setTimeout(() => pop.remove(), 750);
-      }
-    }
-
-    document.addEventListener("click", (e) => burstParticles(e.clientX, e.clientY));
-
     const SYLVEON_QUOTES = [
-      "Swipe cards to view edits! 🎀",
+      "Catch falling Pokéballs! 🎀",
+      "Avoid the bombs! 💣",
       "Check the Price List below! 🏷️",
-      "GCash MOP ready! 💙",
-      "Messages open anytime! ✨"
+      "GCash MOP ready! 💙"
     ];
     let quoteIdx = 0;
 
@@ -1487,41 +1341,109 @@
       e.stopPropagation();
       quoteIdx = (quoteIdx + 1) % SYLVEON_QUOTES.length;
       document.getElementById("sylveonMsg").textContent = SYLVEON_QUOTES[quoteIdx];
-      burstParticles(e.clientX, e.clientY, ["💖", "🎀", "✨", "🌸"]);
     }
 
     // =========================================================================
-    // POKÉMON MINI-GAME LOGIC
+    // CATCH GAME LOGIC (3 LIVES, POKEBALLS & BOMBS)
     // =========================================================================
     let score = 0;
-    const mons = ["🌸", "✨", "🎀", "💖", "⭐"];
-    
-    function catchPokemon(e) {
-      e.stopPropagation();
-      score++;
-      document.getElementById("pokeScore").textContent = score;
-      playClickSound();
-      
-      const mon = document.getElementById("wildMon");
-      mon.style.display = "none";
-      
-      setTimeout(() => {
-        mon.textContent = mons[Math.floor(Math.random() * mons.length)];
-        mon.style.top = Math.floor(Math.random() * 120 + 20) + "px";
-        mon.style.left = Math.floor(Math.random() * 80 + 10) + "%";
-        mon.style.display = "block";
-      }, 800);
+    let lives = 3;
+    let gameInterval = null;
+    let spawnerInterval = null;
+    let isPlaying = false;
+
+    function startGame() {
+      const startScreen = document.getElementById("startScreen");
+      startScreen.style.display = "none";
+      score = 0;
+      lives = 3;
+      isPlaying = true;
+      updateStats();
+
+      // Clear existing items
+      document.querySelectorAll(".falling-item").forEach(el => el.remove());
+
+      spawnerInterval = setInterval(spawnItem, 800);
     }
 
-    function throwPokeball(e) {
+    function updateStats() {
+      document.getElementById("gameScore").textContent = score;
+      let hearts = "";
+      for (let i = 0; i < lives; i++) hearts += "❤️";
+      document.getElementById("gameLives").textContent = hearts;
+    }
+
+    function spawnItem() {
+      if (!isPlaying) return;
       const arena = document.getElementById("gameArena");
-      const rect = arena.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const ball = document.getElementById("thrownBall");
-      ball.style.left = x + "px";
-      ball.style.display = "block";
-      ball.textContent = "🔴";
-      setTimeout(() => { ball.style.display = "none"; }, 400);
+      const item = document.createElement("div");
+      item.className = "falling-item";
+
+      // 75% chance pokeball, 25% chance bomb
+      const isBomb = Math.random() < 0.25;
+      item.textContent = isBomb ? "💣" : "🔴";
+      item.dataset.type = isBomb ? "bomb" : "ball";
+
+      const maxX = arena.clientWidth - 45;
+      const startX = Math.floor(Math.random() * maxX);
+      item.style.left = startX + "px";
+      item.style.top = "-40px";
+
+      item.onmousedown = (e) => {
+        e.stopPropagation();
+        if (!isPlaying) return;
+        playClickSound();
+        if (item.dataset.type === "bomb") {
+          lives--;
+          item.remove();
+          updateStats();
+          if (lives <= 0) gameOver();
+        } else {
+          score += 10;
+          item.remove();
+          updateStats();
+        }
+      };
+
+      arena.appendChild(item);
+
+      // Fall animation loop
+      let posY = -40;
+      const fallSpeed = 2 + Math.random() * 2.5;
+
+      const fallInterval = setInterval(() => {
+        if (!isPlaying) {
+          clearInterval(fallInterval);
+          item.remove();
+          return;
+        }
+        posY += fallSpeed;
+        item.style.top = posY + "px";
+
+        // If it reaches bottom
+        if (posY > arena.clientHeight - 30) {
+          clearInterval(fallInterval);
+          item.remove();
+          if (item.dataset.type === "ball") {
+            // Na-miss ang pokeball
+            lives--;
+            updateStats();
+            if (lives <= 0) gameOver();
+          }
+        }
+      }, 25);
+    }
+
+    function gameOver() {
+      isPlaying = false;
+      clearInterval(spawnerInterval);
+      document.querySelectorAll(".falling-item").forEach(el => el.remove());
+
+      const startScreen = document.getElementById("startScreen");
+      startScreen.style.display = "flex";
+      startScreen.querySelector("h3").textContent = "Game Over! 💔";
+      startScreen.querySelector("p").textContent = `Final Score: ${score}. Click below to try again!`;
+      startScreen.querySelector("button").textContent = "Play Again 🔄";
     }
 
     // =========================================================================
@@ -1562,7 +1484,6 @@
       validItems.forEach((item, idx) => {
         const encodedSrc = encodeURI(item.image);
 
-        // Card Element
         const card = document.createElement("div");
         card.className = "arcade-card-item pos-hidden";
         card.dataset.idx = idx;
@@ -1575,14 +1496,6 @@
         `;
 
         card.onmouseenter = () => playHoverSound();
-
-        const imgEl = card.querySelector("img");
-        imgEl.onerror = () => {
-          validItems = validItems.filter(v => v.image !== item.image);
-          if (currentIndex >= validItems.length) currentIndex = Math.max(0, validItems.length - 1);
-          buildDeckDOM();
-        };
-
         card.onclick = () => {
           playClickSound();
           if (idx === currentIndex) {
@@ -1595,7 +1508,6 @@
 
         deckViewport.appendChild(card);
 
-        // Thumbnail Element
         const thumb = document.createElement("div");
         thumb.className = "thumb-dot";
         thumb.dataset.idx = idx;
@@ -1650,28 +1562,7 @@
       updateDeckPositions();
     }
 
-    // Touch Swipe Support for Card Deck
-    let touchStartX = 0;
-    const deckStage = document.getElementById("deckStage");
-
-    deckStage.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    deckStage.addEventListener("touchend", (e) => {
-      const diff = e.changedTouches[0].screenX - touchStartX;
-      if (Math.abs(diff) > 38) {
-        slideDeck(diff < 0 ? 1 : -1);
-      }
-    }, { passive: true });
-
-    // Keyboard Left/Right Arrow Navigation
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") slideDeck(-1);
-      if (e.key === "ArrowRight") slideDeck(1);
-    });
-
-    // Render Category Buttons & Load UDP by Default
+    // Render Category Buttons
     CLIENT_PORTFOLIO.categories.forEach(cat => {
       const btn = document.createElement("button");
       btn.className = "cat-pill";
