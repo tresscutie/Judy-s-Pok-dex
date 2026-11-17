@@ -513,7 +513,7 @@
     }
 
     /* =========================================
-       SECTION HEADERS & 8 CATEGORY CARTRIDGES
+       SECTION HEADERS & 6 CATEGORY CARTRIDGES
        ========================================= */
     .section-header {
       text-align: center;
@@ -533,7 +533,7 @@
 
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 10px;
       margin-bottom: 1.6rem;
     }
@@ -644,8 +644,8 @@
 
     .works-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.15rem;
     }
 
     .work-card {
@@ -673,7 +673,7 @@
     }
 
     .work-meta {
-      padding: 0.85rem 1rem;
+      padding: 0.8rem 0.95rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -682,16 +682,16 @@
 
     .work-meta strong {
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--berry-dark);
     }
 
     .work-meta span {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       background: #ffe0ee;
       color: var(--pink-hot);
-      padding: 3px 10px;
+      padding: 3px 9px;
       border-radius: 999px;
     }
 
@@ -966,7 +966,7 @@
 
           <h1><span>Serene</span></h1>
           <p class="trainer-bio">
-            Custom Edits, Templates, Posters, Color Coded, Book Covers, Hoodsets, Stamps & Seller Sets ✨
+            Custom Edits, UDP, Templates, Posters, Hoodsets, Stamps & Seller Sets ✨
           </p>
 
           <div class="action-row">
@@ -992,7 +992,7 @@
       </div>
     </header>
 
-    <!-- Category Selector Section -->
+    <!-- Category Selector Section (6 Categories) -->
     <section id="portfolio">
       <div class="section-header">
         <h2>Select a Category</h2>
@@ -1005,8 +1005,8 @@
         <div class="empty-pokedex">
           <div class="bounce-sprite">🎀</div>
           <h3>Choose a Category Above!</h3>
-          <p>Tap <strong>UDP</strong>, <strong>Template</strong>, <strong>Posters</strong>, <strong>Color Coded</strong>, <strong>Book Cover</strong>, <strong>Hoodset</strong>, <strong>Stamp</strong>, or <strong>Seller Set</strong> to inspect samples.</p>
-          <span class="status-chip">✦ 8 Categories Ready</span>
+          <p>Tap <strong>UDP</strong>, <strong>Template</strong>, <strong>Posters</strong>, <strong>Hoodset</strong>, <strong>Stamp</strong>, or <strong>Seller Set</strong> to inspect Serene's sample works.</p>
+          <span class="status-chip">✦ 6 Categories Loaded</span>
         </div>
       </div>
     </section>
@@ -1072,7 +1072,7 @@
 
   <script>
     // =========================================================================
-    // MADALING I-EDIT DITO KAPAG MAGLALAGAY KA NA NG PICTURES!
+    // CLIENT PORTFOLIO DATA (6 CATEGORIES + ALL UPLOADED SAMPLES)
     // =========================================================================
     const CLIENT_PORTFOLIO = {
       facebookUrl: "https://www.facebook.com/vanne.dieuxeme",
@@ -1081,16 +1081,122 @@
         { id: "UDP", label: "UDP", code: "No. 001" },
         { id: "Template", label: "Template", code: "No. 002" },
         { id: "Posters", label: "Posters", code: "No. 003" },
-        { id: "Color Coded", label: "Color Coded", code: "No. 004" },
-        { id: "Book Cover", label: "Book Cover", code: "No. 005" },
-        { id: "Hoodset", label: "Hoodset", code: "No. 006" },
-        { id: "Stamp", label: "Stamp", code: "No. 007" },
-        { id: "Seller Set", label: "Seller Set", code: "No. 008" }
+        { id: "Hoodset", label: "Hoodset", code: "No. 004" },
+        { id: "Stamp", label: "Stamp", code: "No. 005" },
+        { id: "Seller Set", label: "Seller Set", code: "No. 006" }
       ],
 
-      // Kapag ready ka na maglagay ng sample pictures, idagdag lang dito gaya nito:
-      // { title: "Sample #1", category: "UDP", image: "udp1.jpg" },
-      gallery: []
+      gallery: [
+        // HOODSET
+        { title: "Hoodset #1", category: "Hoodset", image: "hoodset (1).jpg" },
+        { title: "Hoodset #2", category: "Hoodset", image: "hoodset (2).jpg" },
+
+        // POSTERS
+        { title: "Poster #1", category: "Posters", image: "posters (1).jpg" },
+        { title: "Poster #2", category: "Posters", image: "posters (1).png" },
+        { title: "Poster #3", category: "Posters", image: "posters (2).jpg" },
+        { title: "Poster #4", category: "Posters", image: "posters (2).png" },
+        { title: "Poster #5", category: "Posters", image: "posters (3).jpg" },
+        { title: "Poster #6", category: "Posters", image: "posters (3).png" },
+        { title: "Poster #7", category: "Posters", image: "posters (4).jpg" },
+        { title: "Poster #8", category: "Posters", image: "posters (4).png" },
+        { title: "Poster #9", category: "Posters", image: "posters (5).jpg" },
+        { title: "Poster #10", category: "Posters", image: "posters (6).jpg" },
+        { title: "Poster #11", category: "Posters", image: "posters (7).jpg" },
+
+        // SELLER SET
+        { title: "Seller Set #1", category: "Seller Set", image: "seller set (1).jpg" },
+        { title: "Seller Set #2", category: "Seller Set", image: "seller set (1).png" },
+        { title: "Seller Set #3", category: "Seller Set", image: "seller set (2).jpg" },
+        { title: "Seller Set #4", category: "Seller Set", image: "seller set (3).jpg" },
+        { title: "Seller Set #5", category: "Seller Set", image: "seller set (4).jpg" },
+        { title: "Seller Set #6", category: "Seller Set", image: "seller set (5).jpg" },
+        { title: "Seller Set #7", category: "Seller Set", image: "seller set (6).jpg" },
+        { title: "Seller Set 2 #1", category: "Seller Set", image: "seller set 2 (1).jpg" },
+        { title: "Seller Set 2 #2", category: "Seller Set", image: "seller set 2 (1).png" },
+        { title: "Seller Set 2 #3", category: "Seller Set", image: "seller set 2 (2).jpg" },
+        { title: "Seller Set 2 #4", category: "Seller Set", image: "seller set 2 (3).jpg" },
+        { title: "Seller Set 2 #5", category: "Seller Set", image: "seller set 2 (4).jpg" },
+
+        // STAMP
+        { title: "Stamp #1", category: "Stamp", image: "stamp (1).jpg" },
+        { title: "Stamp #2", category: "Stamp", image: "stamp (2).jpg" },
+        { title: "Stamp #3", category: "Stamp", image: "stamp (3).jpg" },
+
+        // TEMPLATE
+        { title: "Template #1", category: "Template", image: "template (1).jpg" },
+        { title: "Template #2", category: "Template", image: "template (1).png" },
+        { title: "Template #3", category: "Template", image: "template (2).jpg" },
+        { title: "Template #4", category: "Template", image: "template (2).png" },
+        { title: "Template #5", category: "Template", image: "template (3).jpg" },
+        { title: "Template #6", category: "Template", image: "template (3).png" },
+        { title: "Template #7", category: "Template", image: "template (4).jpg" },
+        { title: "Template #8", category: "Template", image: "template (4).png" },
+        { title: "Template #9", category: "Template", image: "template (5).jpg" },
+        { title: "Template #10", category: "Template", image: "template (5).png" },
+        { title: "Template #11", category: "Template", image: "template (6).jpg" },
+        { title: "Template #12", category: "Template", image: "template (6).png" },
+        { title: "Template #13", category: "Template", image: "template (7).jpg" },
+        { title: "Template #14", category: "Template", image: "template (7).png" },
+        { title: "Template #15", category: "Template", image: "template (8).jpg" },
+        { title: "Template #16", category: "Template", image: "template (8).png" },
+        { title: "Template #17", category: "Template", image: "template (9).jpg" },
+        { title: "Template #18", category: "Template", image: "template (9).png" },
+        { title: "Template #19", category: "Template", image: "template (10).jpg" },
+        { title: "Template #20", category: "Template", image: "template (10).png" },
+        { title: "Template #21", category: "Template", image: "template (11).jpg" },
+        { title: "Template #22", category: "Template", image: "template (11).png" },
+        { title: "Template #23", category: "Template", image: "template (12).jpg" },
+        { title: "Template #24", category: "Template", image: "template (12).png" },
+        { title: "Template #25", category: "Template", image: "template (13).jpg" },
+        { title: "Template #26", category: "Template", image: "template (13).png" },
+        { title: "Template #27", category: "Template", image: "template (14).jpg" },
+        { title: "Template #28", category: "Template", image: "template (14).png" },
+        { title: "Template #29", category: "Template", image: "template (15).jpg" },
+        { title: "Template #30", category: "Template", image: "template (15).png" },
+        { title: "Template #31", category: "Template", image: "template (16).jpg" },
+        { title: "Template #32", category: "Template", image: "template (16).png" },
+        { title: "Template #33", category: "Template", image: "template (18).jpg" },
+        { title: "Template #34", category: "Template", image: "template (19).jpg" },
+        { title: "Template #35", category: "Template", image: "template (20).jpg" },
+        { title: "Template #36", category: "Template", image: "template (21).jpg" },
+        { title: "Template #37", category: "Template", image: "template (32).png" },
+        { title: "Template #38", category: "Template", image: "template (33).png" },
+        { title: "Template #39", category: "Template", image: "template (34).png" },
+        { title: "Template #40", category: "Template", image: "template (38).png" },
+        { title: "Template #41", category: "Template", image: "template (39).png" },
+
+        // UDP
+        { title: "UDP #1", category: "UDP", image: "udp (1).jpg" },
+        { title: "UDP #2", category: "UDP", image: "udp (1).png" },
+        { title: "UDP #3", category: "UDP", image: "udp (2).jpg" },
+        { title: "UDP #4", category: "UDP", image: "udp (2).png" },
+        { title: "UDP #5", category: "UDP", image: "udp (3).jpg" },
+        { title: "UDP #6", category: "UDP", image: "udp (3).png" },
+        { title: "UDP #7", category: "UDP", image: "udp (4).jpg" },
+        { title: "UDP #8", category: "UDP", image: "udp (4).png" },
+        { title: "UDP #9", category: "UDP", image: "udp (5).jpg" },
+        { title: "UDP #10", category: "UDP", image: "udp (5).png" },
+        { title: "UDP #11", category: "UDP", image: "udp (6).jpg" },
+        { title: "UDP #12", category: "UDP", image: "udp (6).png" },
+        { title: "UDP #13", category: "UDP", image: "udp (7).jpg" },
+        { title: "UDP #14", category: "UDP", image: "udp (7).png" },
+        { title: "UDP #15", category: "UDP", image: "udp (8).jpg" },
+        { title: "UDP #16", category: "UDP", image: "udp (8).png" },
+        { title: "UDP #17", category: "UDP", image: "udp (9).jpg" },
+        { title: "UDP #18", category: "UDP", image: "udp (9).png" },
+        { title: "UDP #19", category: "UDP", image: "udp (10).jpg" },
+        { title: "UDP #20", category: "UDP", image: "udp (10).png" },
+        { title: "UDP #21", category: "UDP", image: "udp (11).jpg" },
+        { title: "UDP #22", category: "UDP", image: "udp (12).jpg" },
+        { title: "UDP #23", category: "UDP", image: "udp (13).jpg" },
+        { title: "UDP #24", category: "UDP", image: "udp (14).jpg" },
+        { title: "UDP #25", category: "UDP", image: "udp (15).jpg" },
+        { title: "UDP #26", category: "UDP", image: "udp (16).jpg" },
+        { title: "UDP #27", category: "UDP", image: "udp (17).jpg" },
+        { title: "UDP #28", category: "UDP", image: "udp (18).jpg" },
+        { title: "UDP #29", category: "UDP", image: "udp (19).jpg" }
+      ]
     };
 
     // =========================================================================
@@ -1192,15 +1298,15 @@
       items.forEach((item, idx) => {
         const card = document.createElement("div");
         card.className = "work-card";
-        card.style.animationDelay = `${idx * 0.07}s`;
+        card.style.animationDelay = `${Math.min(idx * 0.04, 0.5)}s`;
         card.innerHTML = `
-          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <img src="${encodeURI(item.image)}" alt="${item.title}" loading="lazy" onerror="this.closest('.work-card').style.display='none'" />
           <div class="work-meta">
             <strong>${item.title}</strong>
             <span>${item.category}</span>
           </div>
         `;
-        card.onclick = () => openLightbox(item.image);
+        card.onclick = () => openLightbox(encodeURI(item.image));
         grid.appendChild(card);
       });
 
@@ -1249,7 +1355,6 @@
       speed: 7
     };
 
-    // Auto-match internal canvas pixels to actual screen width so circles never stretch
     function resizeArcadeCanvas() {
       const boxWidth = canvasWrapper.clientWidth || 340;
       const isMobile = boxWidth < 500;
@@ -1297,7 +1402,6 @@
       overlay.classList.remove("hidden");
     }
 
-    // Pointer / Touch Drag Controls
     function movePlayerToClientX(clientX) {
       if (!gameRunning) return;
       const rect = arcadeCanvas.getBoundingClientRect();
@@ -1450,7 +1554,6 @@
           actx.fillText(item.type === "heart" ? "💖" : "💣", item.x, item.y);
         }
 
-        // Collision check with Serene
         const dist = Math.hypot(item.x - player.x, item.y - player.y);
         if (dist < item.radius + player.radius - 4) {
           if (item.type === "bomb") {
