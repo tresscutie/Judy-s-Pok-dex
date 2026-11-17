@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanne Dieuxeme — Pink Pokédex Commission Portfolio</title>
+  <title>Serene — Pink Pokédex Commission Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     :root {
       --bg-pink-1: #fff0f6;
       --bg-pink-2: #ffe0ee;
-      --card-white: rgba(255, 255, 255, 0.86);
+      --card-white: rgba(255, 255, 255, 0.88);
       --pink-hot: #ff4d94;
       --pink-mid: #ff85b8;
       --pink-soft: #ffc2dc;
@@ -41,7 +41,6 @@
       position: relative;
     }
 
-    /* Subtle Polka Dot & Floating Pokeball Pattern */
     body::before {
       content: "";
       position: fixed;
@@ -242,7 +241,6 @@
       animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
-    /* Pokédex Top Indicator Lights */
     .pokedex-lights {
       display: flex;
       align-items: center;
@@ -494,7 +492,6 @@
       border-radius: 999px;
     }
 
-    /* Gallery Cards When Images Are Added */
     .works-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -549,6 +546,161 @@
     }
 
     /* =========================================
+       POKEMON CATCHER MINI-GAME ARENA
+       ========================================= */
+    .minigame-card {
+      background: var(--card-white);
+      border: 3px solid var(--berry-dark);
+      border-radius: 30px;
+      padding: 1.9rem 1.6rem;
+      margin-top: 2.6rem;
+      box-shadow: 0 10px 0 var(--pink-mid);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .game-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.35rem;
+      color: var(--berry-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .caught-counter {
+      background: #ffe4f0;
+      border: 2px solid var(--pink-hot);
+      color: var(--pink-hot);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 5px 14px;
+      border-radius: 999px;
+    }
+
+    .battle-arena {
+      background: linear-gradient(180deg, #e0f2fe 0% 55%, #dcfce7 55% 100%);
+      border: 3px solid var(--berry-dark);
+      border-radius: 22px;
+      padding: 2rem 1rem 1.6rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wild-badge {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid var(--berry-dark);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--berry-dark);
+      margin-bottom: 0.8rem;
+      box-shadow: 0 3px 0 rgba(74, 21, 48, 0.15);
+    }
+
+    .wild-sprite-stage {
+      height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .wild-pokemon {
+      font-size: 4rem;
+      display: inline-block;
+      animation: spriteHop 1.5s ease-in-out infinite;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      filter: drop-shadow(0 8px 6px rgba(74, 21, 48, 0.2));
+    }
+
+    .wild-pokemon.absorbed {
+      transform: scale(0) rotate(360deg);
+      opacity: 0;
+    }
+
+    /* Animated Throwing Pokeball */
+    .throw-ball {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ff3d8b 0% 46%, #4a1530 46% 54%, #ffffff 54% 100%);
+      border: 4px solid #4a1530;
+      position: absolute;
+      display: none;
+      box-shadow: 0 8px 16px rgba(74, 21, 48, 0.28);
+    }
+
+    .throw-ball::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid #4a1530;
+      transform: translate(-50%, -50%);
+    }
+
+    .throw-ball.active {
+      display: block;
+      animation: wobbleBall 0.65s ease-in-out infinite;
+    }
+
+    .game-dialog {
+      margin-top: 1rem;
+      background: #fff;
+      border: 2.5px solid var(--berry-dark);
+      border-radius: 16px;
+      padding: 0.75rem 1.1rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.95rem;
+      color: var(--berry-dark);
+      max-width: 460px;
+      width: 100%;
+    }
+
+    .voucher-tag {
+      display: inline-block;
+      margin-top: 6px;
+      background: #ffe0ee;
+      border: 2px dashed var(--pink-hot);
+      color: var(--pink-hot);
+      padding: 4px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .game-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    /* =========================================
        COMMISSION INFO & GCASH MOP CARD
        ========================================= */
     .info-grid {
@@ -600,7 +752,6 @@
       margin-bottom: 0.45rem;
     }
 
-    /* Lightbox Modal */
     .modal {
       display: none;
       position: fixed;
@@ -650,7 +801,7 @@
     <div class="pokeball-loader"></div>
     <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
     <div class="intro-title">Vanne Dieuxeme</div>
-    <p style="opacity:0.92; margin-top:4px;">Loading Commission Portfolio & Designs...</p>
+    <p style="opacity:0.92; margin-top:4px;">Loading Commission Portfolio & Mini-Game...</p>
     <button class="intro-btn" onclick="closeIntro()">Open Trainer Card ▶</button>
   </div>
 
@@ -681,6 +832,9 @@
         <a href="#portfolio" class="poke-btn poke-btn-secondary">
           🎀 Browse Categories
         </a>
+        <a href="#minigame" class="poke-btn poke-btn-secondary">
+          🎮 Play Mini-Game
+        </a>
       </div>
     </header>
 
@@ -700,6 +854,34 @@
           <p>Tap <strong>UDP</strong>, <strong>Template</strong>, <strong>Posters</strong>, <strong>Color Coded</strong>, <strong>Book Cover</strong>, <strong>Hoodset</strong>, <strong>Stamp</strong>, or <strong>Seller Set</strong> to inspect samples.</p>
           <span class="status-chip">✦ 8 Categories Ready</span>
         </div>
+      </div>
+    </section>
+
+    <!-- Pokémon Catcher Mini-Game Section -->
+    <section class="minigame-card" id="minigame">
+      <div class="game-topbar">
+        <div class="game-title">🎮 Pink Poké-Catcher Mini-Game</div>
+        <div class="caught-counter" id="caughtCounter">Caught: 0 🎀</div>
+      </div>
+
+      <div class="battle-arena">
+        <div class="wild-badge" id="wildName">Wild Jigglypuff appeared! (Lv. 12)</div>
+        <div class="wild-sprite-stage">
+          <div class="wild-pokemon" id="wildSprite">🎤</div>
+          <div class="throw-ball" id="throwBall"></div>
+        </div>
+        <div class="game-dialog" id="gameDialog">
+          Throw a Pink Pokéball to catch a partner Pokémon and unlock a lucky Trainer code!
+        </div>
+      </div>
+
+      <div class="game-controls">
+        <button class="poke-btn poke-btn-primary" id="throwBtn" onclick="throwPokeball()">
+          🔴 Throw Pokéball!
+        </button>
+        <button class="poke-btn poke-btn-secondary" onclick="spawnNewPokemon()">
+          🔄 Find Another
+        </button>
       </div>
     </section>
 
@@ -758,7 +940,7 @@
     };
 
     // =========================================================================
-    // INTRO, CLICK POP ANIMATION & CATEGORY SWITCHER
+    // INTRO & CLICK SPARKLE PHYSICS
     // =========================================================================
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
@@ -769,25 +951,27 @@
       setTimeout(closeIntro, 2100);
     });
 
-    // Cute Pink Hearts & Sparkles Burst on Every Click
-    document.addEventListener("click", (e) => {
-      const icons = ["💗", "✦", "🌸", "✨"];
-      for (let i = 0; i < 5; i++) {
+    function burstParticles(x, y, customIcons) {
+      const icons = customIcons || ["💗", "✦", "🌸", "✨"];
+      for (let i = 0; i < 6; i++) {
         const pop = document.createElement("span");
         pop.className = "click-pop";
         pop.textContent = icons[i % icons.length];
-        const angle = (Math.PI * 2 * i) / 5 + Math.random() * 0.4;
-        const dist = 28 + Math.random() * 24;
-        pop.style.left = `${e.clientX}px`;
-        pop.style.top = `${e.clientY}px`;
+        const angle = (Math.PI * 2 * i) / 6 + Math.random() * 0.4;
+        const dist = 30 + Math.random() * 28;
+        pop.style.left = `${x}px`;
+        pop.style.top = `${y}px`;
         pop.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
         pop.style.setProperty("--dy", `${Math.sin(angle) * dist}px`);
         document.body.appendChild(pop);
         setTimeout(() => pop.remove(), 750);
       }
+    }
+
+    document.addEventListener("click", (e) => {
+      burstParticles(e.clientX, e.clientY);
     });
 
-    // Button Ripple Effect
     document.querySelectorAll(".poke-btn").forEach(btn => {
       btn.addEventListener("click", function (e) {
         const rect = this.getBoundingClientRect();
@@ -802,6 +986,9 @@
       });
     });
 
+    // =========================================================================
+    // CATEGORY CARTRIDGES
+    // =========================================================================
     const categoryGrid = document.getElementById("categoryGrid");
     const screenFrame = document.getElementById("screenFrame");
 
@@ -860,6 +1047,78 @@
       btn.onclick = () => selectCategory(cat);
       categoryGrid.appendChild(btn);
     });
+
+    // =========================================================================
+    // POKEMON CATCHER MINI-GAME LOGIC
+    // =========================================================================
+    const PINK_POKEMON_ROSTER = [
+      { name: "Jigglypuff", level: 12, icon: "🎤", code: "JIGGLY-PINK" },
+      { name: "Sylveon", level: 25, icon: "🎀", code: "SYLVEON-LOVE" },
+      { name: "Clefairy", level: 15, icon: "🌙", code: "MOON-FAIRY" },
+      { name: "Mew", level: 50, icon: "🐱", code: "MEW-SPARKLE" },
+      { name: "Togepi", level: 8, icon: "🥚", code: "TOGE-LUCKY" },
+      { name: "Skitty", level: 14, icon: "🌸", code: "SKITTY-CUTE" }
+    ];
+
+    let currentPokemon = PINK_POKEMON_ROSTER[0];
+    let caughtCount = 0;
+    let isThrowing = false;
+
+    function spawnNewPokemon() {
+      if (isThrowing) return;
+      const randomIndex = Math.floor(Math.random() * PINK_POKEMON_ROSTER.length);
+      currentPokemon = PINK_POKEMON_ROSTER[randomIndex];
+
+      const sprite = document.getElementById("wildSprite");
+      const ball = document.getElementById("throwBall");
+      sprite.classList.remove("absorbed");
+      ball.classList.remove("active");
+
+      sprite.textContent = currentPokemon.icon;
+      document.getElementById("wildName").textContent = `Wild ${currentPokemon.name} appeared! (Lv. ${currentPokemon.level})`;
+      document.getElementById("gameDialog").innerHTML = `What will you do? Throw a Pokéball to catch <strong>${currentPokemon.name}</strong>!`;
+    }
+
+    function throwPokeball() {
+      if (isThrowing) return;
+      isThrowing = true;
+
+      const throwBtn = document.getElementById("throwBtn");
+      const sprite = document.getElementById("wildSprite");
+      const ball = document.getElementById("throwBall");
+      const dialog = document.getElementById("gameDialog");
+
+      throwBtn.disabled = true;
+      sprite.classList.add("absorbed");
+      ball.classList.add("active");
+      dialog.innerHTML = `Wobble... wobble... trying to catch <strong>${currentPokemon.name}</strong>!`;
+
+      setTimeout(() => {
+        ball.classList.remove("active");
+        const caught = Math.random() < 0.78; // 78% catch rate
+
+        if (caught) {
+          caughtCount++;
+          document.getElementById("caughtCounter").textContent = `Caught: ${caughtCount} 🎀`;
+          sprite.textContent = "💖";
+          sprite.classList.remove("absorbed");
+
+          const rect = sprite.getBoundingClientRect();
+          burstParticles(rect.left + rect.width / 2, rect.top + rect.height / 2, ["🎉", "💖", "✨", "🌟"]);
+
+          dialog.innerHTML = `
+            Gotcha! <strong>${currentPokemon.name}</strong> was caught!<br>
+            <span class="voucher-tag">Trainer Code: ${currentPokemon.code}</span>
+          `;
+        } else {
+          sprite.classList.remove("absorbed");
+          dialog.innerHTML = `Oh no! <strong>${currentPokemon.name}</strong> broke free! Try throwing again!`;
+        }
+
+        isThrowing = false;
+        throwBtn.disabled = false;
+      }, 1350);
+    }
   </script>
 </body>
 </html>
