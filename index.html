@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanne Dieuxeme — Pink Pokédex Commission Portfolio</title>
+  <title>Serene — Pink Pokédex Commission Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -164,7 +164,7 @@
 
     .intro-title {
       font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
       font-weight: 700;
       text-shadow: 0 4px 0 rgba(74, 21, 48, 0.2);
     }
@@ -219,7 +219,7 @@
     }
 
     /* =========================================
-       MAIN CONTAINER & TRAINER CARD HERO (WITH SERENA)
+       MAIN CONTAINER & TRAINER CARD HERO
        ========================================= */
     .container {
       max-width: 1040px;
@@ -316,7 +316,7 @@
 
     h1 {
       font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
       font-weight: 700;
       color: var(--berry-dark);
       line-height: 1.12;
@@ -695,168 +695,140 @@
     }
 
     /* =========================================
-       POKEMON CATCHER MINI-GAME ARENA
+       PLAYABLE POKEMON ARCADE CATCHER CANVAS
        ========================================= */
-    .minigame-card {
+    .arcade-card {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
       border-radius: 30px;
-      padding: 1.9rem 1.6rem;
+      padding: 1.8rem 1.5rem;
       margin-top: 2.6rem;
       box-shadow: 0 10px 0 var(--pink-mid);
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
 
-    .game-topbar {
+    .arcade-hud {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
-    .game-title {
+    .arcade-title {
       font-family: 'Fredoka', sans-serif;
       font-size: 1.35rem;
       color: var(--berry-dark);
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .caught-counter {
+    .hud-pills {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hud-pill {
       background: #ffe4f0;
       border: 2px solid var(--pink-hot);
       color: var(--pink-hot);
       font-family: 'Fredoka', sans-serif;
       font-weight: 700;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       padding: 5px 14px;
       border-radius: 999px;
     }
 
-    .battle-arena {
-      background: linear-gradient(180deg, #e0f2fe 0% 55%, #dcfce7 55% 100%);
-      border: 3px solid var(--berry-dark);
-      border-radius: 22px;
-      padding: 2rem 1rem 1.6rem;
+    .canvas-wrapper {
       position: relative;
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+      border-radius: 22px;
+      border: 3px solid var(--berry-dark);
       overflow: hidden;
-      min-height: 245px;
+      background: linear-gradient(180deg, #e0f2fe 0%, #fff0f6 78%, #dcfce7 100%);
+      box-shadow: inset 0 0 24px rgba(255, 77, 148, 0.14);
+      touch-action: none;
+    }
+
+    #arcadeCanvas {
+      width: 100%;
+      height: 360px;
+      display: block;
+      cursor: grab;
+    }
+
+    #arcadeCanvas:active {
+      cursor: grabbing;
+    }
+
+    .arcade-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 240, 246, 0.88);
+      backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      transition: opacity 0.3s ease;
     }
 
-    .wild-badge {
-      background: rgba(255, 255, 255, 0.92);
-      border: 2px solid var(--berry-dark);
-      border-radius: 999px;
-      padding: 4px 14px;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--berry-dark);
-      margin-bottom: 0.8rem;
-      box-shadow: 0 3px 0 rgba(74, 21, 48, 0.15);
-    }
-
-    .wild-sprite-stage {
-      height: 105px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .wild-pokemon {
-      font-size: 4rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      animation: spriteHop 1.5s ease-in-out infinite;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      filter: drop-shadow(0 8px 6px rgba(74, 21, 48, 0.22));
-    }
-
-    .wild-pokemon img {
-      width: 96px;
-      height: 96px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid var(--berry-dark);
-      background: #fff0f6;
-    }
-
-    .wild-pokemon.absorbed {
-      transform: scale(0) rotate(360deg);
+    .arcade-overlay.hidden {
       opacity: 0;
+      pointer-events: none;
     }
 
-    .throw-ball {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, #ff3d8b 0% 46%, #4a1530 46% 54%, #ffffff 54% 100%);
-      border: 4px solid #4a1530;
-      position: absolute;
-      display: none;
-      box-shadow: 0 8px 16px rgba(74, 21, 48, 0.28);
-    }
-
-    .throw-ball::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #fff;
-      border: 3px solid #4a1530;
-      transform: translate(-50%, -50%);
-    }
-
-    .throw-ball.active {
-      display: block;
-      animation: wobbleBall 0.65s ease-in-out infinite;
-    }
-
-    .game-dialog {
-      margin-top: 1rem;
-      background: #fff;
-      border: 2.5px solid var(--berry-dark);
-      border-radius: 16px;
-      padding: 0.75rem 1.1rem;
+    .arcade-overlay h3 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1.55rem;
       color: var(--berry-dark);
-      max-width: 460px;
-      width: 100%;
+      margin-bottom: 0.4rem;
     }
 
-    .voucher-tag {
-      display: inline-block;
-      margin-top: 6px;
-      background: #ffe0ee;
-      border: 2px dashed var(--pink-hot);
-      color: var(--pink-hot);
-      padding: 4px 12px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.88rem;
+    .arcade-overlay p {
+      color: var(--berry-muted);
+      font-size: 0.92rem;
+      max-width: 390px;
+      margin-bottom: 1.1rem;
     }
 
-    .game-controls {
+    .legend-row {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 1.2rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      color: var(--berry-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .legend-item {
+      background: #fff;
+      border: 1.5px solid var(--pink-border);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .voucher-banner {
+      display: none;
+      margin-top: 1rem;
+      background: #ffe0ee;
+      border: 2.5px dashed var(--pink-hot);
+      color: var(--pink-hot);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 14px;
+      animation: bounceIn 0.4s ease both;
+    }
+
+    .voucher-banner.show {
+      display: inline-block;
     }
 
     /* =========================================
@@ -959,8 +931,8 @@
   <div class="pokedex-intro" id="pokedexIntro">
     <div class="pokeball-loader"></div>
     <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
-    <div class="intro-title">Vanne Dieuxeme</div>
-    <p style="opacity:0.92; margin-top:4px;">Loading Trainer Card, Sylveon Partner & Mini-Game...</p>
+    <div class="intro-title">Serene</div>
+    <p style="opacity:0.92; margin-top:4px;">Loading Trainer Card, Sylveon Partner & Arcade Mini-Game...</p>
     <button class="intro-btn" onclick="closeIntro()">Open Trainer Card ▶</button>
   </div>
 
@@ -989,7 +961,7 @@
             <span>COMMISSIONS OPEN • TRAINER CARD</span>
           </div>
 
-          <h1>Vanne <span>Dieuxeme</span></h1>
+          <h1><span>Serene</span></h1>
           <p class="trainer-bio">
             Custom Edits, Templates, Posters, Color Coded, Book Covers, Hoodsets, Stamps & Seller Sets ✨
           </p>
@@ -1002,7 +974,7 @@
               🎀 Browse Categories
             </a>
             <a href="#minigame" class="poke-btn poke-btn-secondary">
-              🎮 Catch Sylveon
+              🎮 Play Arcade Game
             </a>
           </div>
         </div>
@@ -1010,9 +982,9 @@
         <!-- Animated Trainer Card Portrait -->
         <div class="trainer-portrait-wrap" onclick="openLightbox('serena.jpg')">
           <div class="trainer-portrait-card">
-            <img src="serena.jpg" alt="Trainer Serena Mascot" />
+            <img src="serena.jpg" alt="Trainer Serene Mascot" />
           </div>
-          <span class="portrait-tag">✦ Trainer ID #001</span>
+          <span class="portrait-tag">✦ Trainer Serene #001</span>
         </div>
       </div>
     </header>
@@ -1036,33 +1008,34 @@
       </div>
     </section>
 
-    <!-- Pokémon Catcher Mini-Game Section -->
-    <section class="minigame-card" id="minigame">
-      <div class="game-topbar">
-        <div class="game-title">🎮 Pink Poké-Catcher Mini-Game</div>
-        <div class="caught-counter" id="caughtCounter">Caught: 0 🎀</div>
+    <!-- Interactive Pokémon Arcade Catcher Game -->
+    <section class="arcade-card" id="minigame">
+      <div class="arcade-hud">
+        <div class="arcade-title">🎮 Serene's Poké-Catcher Arcade</div>
+        <div class="hud-pills">
+          <div class="hud-pill" id="scorePill">Score: 0</div>
+          <div class="hud-pill" id="livesPill">❤️❤️❤️</div>
+        </div>
       </div>
 
-      <div class="battle-arena">
-        <div class="wild-badge" id="wildName">Wild Mega Sylveon appeared! (Lv. 50)</div>
-        <div class="wild-sprite-stage">
-          <div class="wild-pokemon" id="wildSprite">
-            <img src="sylveon.jpg" alt="Sylveon" />
+      <div class="canvas-wrapper">
+        <canvas id="arcadeCanvas" width="620" height="360"></canvas>
+
+        <div class="arcade-overlay" id="arcadeOverlay">
+          <h3 id="overlayTitle">Catch Pink Pokéballs & Sylveon!</h3>
+          <p id="overlayDesc">Slide left & right (or use Arrow keys) to move Trainer Serene. Reach <strong>150 pts</strong> to unlock a Lucky Trainer Code!</p>
+          <div class="legend-row">
+            <span class="legend-item">🔴 Pokéball +10</span>
+            <span class="legend-item">💖 Heart +20</span>
+            <span class="legend-item">🎀 Sylveon +50</span>
+            <span class="legend-item">💣 Bomb -1 Life</span>
           </div>
-          <div class="throw-ball" id="throwBall"></div>
-        </div>
-        <div class="game-dialog" id="gameDialog">
-          Throw a Pink Pokéball to catch <strong>Sylveon</strong> and unlock a lucky Trainer code!
+          <button class="poke-btn poke-btn-primary" onclick="startArcadeGame()">▶ Start Game</button>
         </div>
       </div>
 
-      <div class="game-controls">
-        <button class="poke-btn poke-btn-primary" id="throwBtn" onclick="throwPokeball()">
-          🔴 Throw Pokéball!
-        </button>
-        <button class="poke-btn poke-btn-secondary" onclick="spawnNewPokemon()">
-          🔄 Find Another
-        </button>
+      <div class="voucher-banner" id="voucherBanner">
+        🎉 150+ PTS UNLOCKED! Screenshot Trainer Code: <strong>SERENE-VIP150</strong>
       </div>
     </section>
 
@@ -1088,7 +1061,7 @@
     </section>
 
     <footer>
-      <p>© 2026 Vanne Dieuxeme • Pink Pokédex Commission Portfolio • MOP: GCash</p>
+      <p>© 2026 Serene • Pink Pokédex Commission Portfolio • MOP: GCash</p>
     </footer>
   </div>
 
@@ -1158,13 +1131,12 @@
       burstParticles(e.clientX, e.clientY);
     });
 
-    // Interactive Floating Sylveon Companion Quotes
     const SYLVEON_QUOTES = [
-      "Commissions are open! 🎀",
+      "Serene's commissions are open! 🎀",
       "GCash MOP ready! 💙",
       "Tap a category above! ✨",
       "Sylveon loves pink! 💗",
-      "Try the mini-game below! 🎮"
+      "Beat 150 pts in the arcade! 🎮"
     ];
     let quoteIdx = 0;
 
@@ -1175,7 +1147,6 @@
       burstParticles(e.clientX, e.clientY, ["💖", "🎀", "✨", "🌸"]);
     }
 
-    // Button Ripple Effect
     document.querySelectorAll(".poke-btn").forEach(btn => {
       btn.addEventListener("click", function (e) {
         const rect = this.getBoundingClientRect();
@@ -1208,7 +1179,7 @@
           <div class="empty-pokedex">
             <div class="bounce-sprite">🌸</div>
             <h3>${catObj.label} (${catObj.code})</h3>
-            <p>Sample artworks for <strong>${catObj.label}</strong> are being uploaded soon! Message on Facebook to request sample previews or inquire.</p>
+            <p>Sample artworks for <strong>${catObj.label}</strong> are being uploaded soon! Message Serene on Facebook to request sample previews or inquire.</p>
             <span class="status-chip">✦ Ready for Uploads</span>
           </div>
         `;
@@ -1250,85 +1221,255 @@
     });
 
     // =========================================================================
-    // POKEMON CATCHER MINI-GAME LOGIC (FEATURING SYLVEON ARTWORK)
+    // PLAYABLE POKEMON ARCADE CATCHER GAME (CANVAS)
     // =========================================================================
-    const PINK_POKEMON_ROSTER = [
-      { name: "Mega Sylveon", level: 50, img: "sylveon.jpg", code: "SYLVEON-VIP" },
-      { name: "Jigglypuff", level: 12, icon: "🎤", code: "JIGGLY-PINK" },
-      { name: "Clefairy", level: 15, icon: "🌙", code: "MOON-FAIRY" },
-      { name: "Mew", level: 50, icon: "🐱", code: "MEW-SPARKLE" },
-      { name: "Togepi", level: 8, icon: "🥚", code: "TOGE-LUCKY" },
-      { name: "Skitty", level: 14, icon: "🌸", code: "SKITTY-CUTE" }
-    ];
+    const arcadeCanvas = document.getElementById("arcadeCanvas");
+    const actx = arcadeCanvas.getContext("2d");
 
-    let currentPokemon = PINK_POKEMON_ROSTER[0];
-    let caughtCount = 0;
-    let isThrowing = false;
+    const serenaImg = new Image();
+    serenaImg.src = "serena.jpg";
 
-    function renderPokemonVisual(poke) {
-      const sprite = document.getElementById("wildSprite");
-      if (poke.img) {
-        sprite.innerHTML = `<img src="${poke.img}" alt="${poke.name}" />`;
-      } else {
-        sprite.textContent = poke.icon;
+    const sylveonImg = new Image();
+    sylveonImg.src = "sylveon.jpg";
+
+    let gameRunning = false;
+    let score = 0;
+    let lives = 3;
+    let fallingItems = [];
+    let floatingPopups = [];
+    let spawnTimer = 0;
+    let keys = { left: false, right: false };
+
+    const player = {
+      x: 310,
+      y: 308,
+      radius: 32,
+      speed: 7
+    };
+
+    function updateHUD() {
+      document.getElementById("scorePill").textContent = `Score: ${score}`;
+      document.getElementById("livesPill").textContent = "❤️".repeat(Math.max(0, lives)) || "💔";
+      if (score >= 150) {
+        document.getElementById("voucherBanner").classList.add("show");
       }
     }
 
-    function spawnNewPokemon() {
-      if (isThrowing) return;
-      const randomIndex = Math.floor(Math.random() * PINK_POKEMON_ROSTER.length);
-      currentPokemon = PINK_POKEMON_ROSTER[randomIndex];
-
-      const sprite = document.getElementById("wildSprite");
-      const ball = document.getElementById("throwBall");
-      sprite.classList.remove("absorbed");
-      ball.classList.remove("active");
-
-      renderPokemonVisual(currentPokemon);
-      document.getElementById("wildName").textContent = `Wild ${currentPokemon.name} appeared! (Lv. ${currentPokemon.level})`;
-      document.getElementById("gameDialog").innerHTML = `What will you do? Throw a Pokéball to catch <strong>${currentPokemon.name}</strong>!`;
+    function startArcadeGame() {
+      score = 0;
+      lives = 3;
+      fallingItems = [];
+      floatingPopups = [];
+      spawnTimer = 0;
+      player.x = arcadeCanvas.width / 2;
+      gameRunning = true;
+      document.getElementById("arcadeOverlay").classList.add("hidden");
+      updateHUD();
+      requestAnimationFrame(gameLoop);
     }
 
-    function throwPokeball() {
-      if (isThrowing) return;
-      isThrowing = true;
+    function endArcadeGame() {
+      gameRunning = false;
+      const overlay = document.getElementById("arcadeOverlay");
+      document.getElementById("overlayTitle").textContent = `Game Over! Final Score: ${score}`;
+      document.getElementById("overlayDesc").innerHTML = score >= 150
+        ? `Amazing! You unlocked Trainer Code <strong>SERENE-VIP150</strong>! Play again to beat your high score!`
+        : `So close! Reach <strong>150 points</strong> to unlock Serene's Lucky Trainer Code!`;
+      overlay.querySelector("button").textContent = "🔄 Play Again";
+      overlay.classList.remove("hidden");
+    }
 
-      const throwBtn = document.getElementById("throwBtn");
-      const sprite = document.getElementById("wildSprite");
-      const ball = document.getElementById("throwBall");
-      const dialog = document.getElementById("gameDialog");
+    // Pointer / Touch Drag Controls
+    function movePlayerToClientX(clientX) {
+      if (!gameRunning) return;
+      const rect = arcadeCanvas.getBoundingClientRect();
+      const scaleX = arcadeCanvas.width / rect.width;
+      const targetX = (clientX - rect.left) * scaleX;
+      player.x = Math.max(player.radius + 6, Math.min(arcadeCanvas.width - player.radius - 6, targetX));
+    }
 
-      throwBtn.disabled = true;
-      sprite.classList.add("absorbed");
-      ball.classList.add("active");
-      dialog.innerHTML = `Wobble... wobble... trying to catch <strong>${currentPokemon.name}</strong>!`;
+    arcadeCanvas.addEventListener("mousemove", (e) => movePlayerToClientX(e.clientX));
+    arcadeCanvas.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+      if (e.touches[0]) movePlayerToClientX(e.touches[0].clientX);
+    }, { passive: false });
+    arcadeCanvas.addEventListener("touchstart", (e) => {
+      if (e.touches[0]) movePlayerToClientX(e.touches[0].clientX);
+    }, { passive: true });
 
-      setTimeout(() => {
-        ball.classList.remove("active");
-        const caught = Math.random() < 0.8;
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft" || e.key === "a") keys.left = true;
+      if (e.key === "ArrowRight" || e.key === "d") keys.right = true;
+    });
+    window.addEventListener("keyup", (e) => {
+      if (e.key === "ArrowLeft" || e.key === "a") keys.left = false;
+      if (e.key === "ArrowRight" || e.key === "d") keys.right = false;
+    });
 
-        if (caught) {
-          caughtCount++;
-          document.getElementById("caughtCounter").textContent = `Caught: ${caughtCount} 🎀`;
-          sprite.innerHTML = "💖";
-          sprite.classList.remove("absorbed");
+    function spawnFallingItem() {
+      const roll = Math.random();
+      let type = "pokeball";
+      let points = 10;
+      let radius = 18;
 
-          const rect = sprite.getBoundingClientRect();
-          burstParticles(rect.left + rect.width / 2, rect.top + rect.height / 2, ["🎉", "💖", "✨", "🌟"]);
+      if (roll < 0.22) {
+        type = "bomb";
+        points = 0;
+        radius = 19;
+      } else if (roll < 0.36) {
+        type = "sylveon";
+        points = 50;
+        radius = 24;
+      } else if (roll < 0.62) {
+        type = "heart";
+        points = 20;
+        radius = 18;
+      }
 
-          dialog.innerHTML = `
-            Gotcha! <strong>${currentPokemon.name}</strong> was caught!<br>
-            <span class="voucher-tag">Trainer Code: ${currentPokemon.code}</span>
-          `;
+      const speedBoost = Math.min(3.2, score * 0.012);
+      fallingItems.push({
+        x: Math.random() * (arcadeCanvas.width - 60) + 30,
+        y: -25,
+        vy: 2.8 + Math.random() * 1.8 + speedBoost,
+        type,
+        points,
+        radius
+      });
+    }
+
+    function drawCircularImage(img, x, y, r, borderColor) {
+      actx.save();
+      actx.beginPath();
+      actx.arc(x, y, r, 0, Math.PI * 2);
+      actx.closePath();
+      actx.clip();
+      if (img.complete && img.naturalWidth > 0) {
+        actx.drawImage(img, x - r, y - r, r * 2, r * 2);
+      } else {
+        actx.fillStyle = "#ffc2dc";
+        actx.fillRect(x - r, y - r, r * 2, r * 2);
+      }
+      actx.restore();
+
+      actx.beginPath();
+      actx.arc(x, y, r, 0, Math.PI * 2);
+      actx.lineWidth = 3.5;
+      actx.strokeStyle = borderColor;
+      actx.stroke();
+    }
+
+    function drawPokeballSprite(x, y, r) {
+      actx.save();
+      actx.beginPath();
+      actx.arc(x, y, r, Math.PI, 0);
+      actx.fillStyle = "#ff3d8b";
+      actx.fill();
+
+      actx.beginPath();
+      actx.arc(x, y, r, 0, Math.PI);
+      actx.fillStyle = "#ffffff";
+      actx.fill();
+
+      actx.beginPath();
+      actx.moveTo(x - r, y);
+      actx.lineTo(x + r, y);
+      actx.lineWidth = 3;
+      actx.strokeStyle = "#4a1530";
+      actx.stroke();
+
+      actx.beginPath();
+      actx.arc(x, y, r, 0, Math.PI * 2);
+      actx.lineWidth = 3;
+      actx.strokeStyle = "#4a1530";
+      actx.stroke();
+
+      actx.beginPath();
+      actx.arc(x, y, 5, 0, Math.PI * 2);
+      actx.fillStyle = "#fff";
+      actx.fill();
+      actx.stroke();
+      actx.restore();
+    }
+
+    function gameLoop() {
+      if (!gameRunning) return;
+
+      actx.clearRect(0, 0, arcadeCanvas.width, arcadeCanvas.height);
+
+      // Keyboard movement
+      if (keys.left) player.x -= player.speed;
+      if (keys.right) player.x += player.speed;
+      player.x = Math.max(player.radius + 6, Math.min(arcadeCanvas.width - player.radius - 6, player.x));
+
+      // Ground grass strip
+      actx.fillStyle = "#bbf7d0";
+      actx.fillRect(0, arcadeCanvas.height - 26, arcadeCanvas.width, 26);
+
+      // Spawn logic
+      spawnTimer++;
+      const spawnRate = Math.max(24, 48 - Math.floor(score / 15));
+      if (spawnTimer >= spawnRate) {
+        spawnFallingItem();
+        spawnTimer = 0;
+      }
+
+      // Draw Player (Trainer Serene)
+      drawCircularImage(serenaImg, player.x, player.y, player.radius, "#4a1530");
+
+      // Update & Draw Falling Items
+      for (let i = fallingItems.length - 1; i >= 0; i--) {
+        const item = fallingItems[i];
+        item.y += item.vy;
+
+        if (item.type === "pokeball") {
+          drawPokeballSprite(item.x, item.y, item.radius);
+        } else if (item.type === "sylveon") {
+          drawCircularImage(sylveonImg, item.x, item.y, item.radius, "#ff4d94");
         } else {
-          renderPokemonVisual(currentPokemon);
-          sprite.classList.remove("absorbed");
-          dialog.innerHTML = `Oh no! <strong>${currentPokemon.name}</strong> broke free! Try throwing again!`;
+          actx.font = "28px Fredoka, sans-serif";
+          actx.textAlign = "center";
+          actx.textBaseline = "middle";
+          actx.fillText(item.type === "heart" ? "💖" : "💣", item.x, item.y);
         }
 
-        isThrowing = false;
-        throwBtn.disabled = false;
-      }, 1350);
+        // Collision check with Serene
+        const dist = Math.hypot(item.x - player.x, item.y - player.y);
+        if (dist < item.radius + player.radius - 4) {
+          if (item.type === "bomb") {
+            lives--;
+            floatingPopups.push({ text: "-1 ❤️", x: item.x, y: item.y, color: "#ef4444", life: 32 });
+          } else {
+            score += item.points;
+            floatingPopups.push({ text: `+${item.points}`, x: item.x, y: item.y, color: "#ff4d94", life: 32 });
+          }
+          updateHUD();
+          fallingItems.splice(i, 1);
+
+          if (lives <= 0) {
+            endArcadeGame();
+            return;
+          }
+          continue;
+        }
+
+        if (item.y > arcadeCanvas.height + 30) {
+          fallingItems.splice(i, 1);
+        }
+      }
+
+      // Floating Score Popups
+      for (let i = floatingPopups.length - 1; i >= 0; i--) {
+        const pop = floatingPopups[i];
+        pop.y -= 1.2;
+        pop.life--;
+        actx.font = "bold 18px Fredoka, sans-serif";
+        actx.fillStyle = pop.color;
+        actx.textAlign = "center";
+        actx.fillText(pop.text, pop.x, pop.y);
+        if (pop.life <= 0) floatingPopups.splice(i, 1);
+      }
+
+      requestAnimationFrame(gameLoop);
     }
   </script>
 </body>
