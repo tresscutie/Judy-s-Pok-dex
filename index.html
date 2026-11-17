@@ -840,7 +840,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: 10px;
+      gap: 12px;
       font-size: 0.89rem;
       color: var(--berry-dark);
       padding: 6px 0;
@@ -855,8 +855,10 @@
       font-family: 'Fredoka', sans-serif;
       font-weight: 700;
       color: var(--pink-hot);
-      white-space: nowrap;
+      text-align: right;
       font-size: 0.91rem;
+      max-width: 56%;
+      line-height: 1.3;
     }
 
     .open-dm-banner {
@@ -1077,8 +1079,8 @@
             <h3>UDP</h3>
           </div>
           <ul class="rate-list">
-            <li><span>₱10 for the first photo</span></li>
-            <li><span>₱4-7 each (depends on the style)</span></li>
+            <li><span>First photo</span><span class="rate-price">₱10</span></li>
+            <li><span>Each (depends on the style)</span><span class="rate-price">₱4-7</span></li>
           </ul>
         </div>
 
@@ -1103,7 +1105,7 @@
             <h3>PINNED POST</h3>
           </div>
           <ul class="rate-list">
-            <li><span>₱10-15 (depends on style)</span></li>
+            <li><span>Depends on style</span><span class="rate-price">₱10-15</span></li>
           </ul>
         </div>
 
@@ -1121,7 +1123,7 @@
         <!-- POSTERS -->
         <div class="rate-card">
           <div class="rate-card-header">
-            <h3>੭﹕POSTERS</h3>
+            <h3>POSTERS</h3>
           </div>
           <ul class="rate-list">
             <li><span>BIRTHDAY POSTER</span><span class="rate-price">₱10</span></li>
