@@ -1343,7 +1343,7 @@
     }
 
     const SYLVEON_QUOTES = [
-      "Move mouse to help Serene catch Pokéballs! 🎀",
+      "Move mouse to help Serene catch pokeball.jpg! 🎀",
       "Avoid the bombs! 💣",
       "Check the Price List below! 🏷️",
       "GCash MOP ready! 💙"
@@ -1357,7 +1357,7 @@
     }
 
     // =========================================================================
-    // SERENE CATCHER GAME LOGIC (POKEBALL IMAGE & BOMBS)
+    // SERENE CATCHER GAME LOGIC (pokeball.jpg & BOMBS)
     // =========================================================================
     let score = 0;
     let lives = 3;
@@ -1412,8 +1412,8 @@
         el.textContent = "💣";
         el.style.fontSize = "1.9rem";
       } else {
-        // Gamit ang mismong Pokéball image na ibinigay mo
-        el.innerHTML = `<img src="image_45ff49.png" alt="Pokéball" />`;
+        // Ginagamit na ang pokeball.jpg file
+        el.innerHTML = `<img src="pokeball.jpg" alt="Pokéball" />`;
       }
 
       const maxX = arena.clientWidth - 45;
@@ -1455,7 +1455,7 @@
               updateStats();
               if (lives <= 0) gameOver();
             } else {
-              // Nasalo ang Pokéball -> Dagdag puntos!
+              // Nasalo ang pokeball.jpg -> Dagdag puntos!
               score += 10;
               updateStats();
             }
