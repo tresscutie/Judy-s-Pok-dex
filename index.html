@@ -224,19 +224,19 @@
     .container {
       max-width: 1040px;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 5.5rem;
+      padding: 2rem 1rem 5.5rem;
     }
 
     .trainer-card {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
-      border-radius: 32px;
+      border-radius: 30px;
       box-shadow: 0 10px 0 var(--pink-mid), 0 18px 38px rgba(255, 77, 148, 0.22);
-      padding: 2.2rem 2rem;
+      padding: 1.8rem 1.4rem;
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(12px);
-      margin-bottom: 2.8rem;
+      margin-bottom: 2.5rem;
       animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
@@ -244,12 +244,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.3rem;
     }
 
     .lens-main {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #bae6fd, #0284c7);
       border: 3px solid var(--berry-dark);
@@ -257,8 +257,8 @@
     }
 
     .lens-dot {
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
       border: 2px solid var(--berry-dark);
     }
@@ -269,7 +269,7 @@
     .hero-split {
       display: grid;
       grid-template-columns: 1.35fr 0.85fr;
-      gap: 2rem;
+      gap: 1.8rem;
       align-items: center;
     }
 
@@ -295,8 +295,8 @@
       color: var(--pink-hot);
       font-family: 'Fredoka', sans-serif;
       font-weight: 600;
-      font-size: 0.82rem;
-      padding: 5px 16px;
+      font-size: 0.8rem;
+      padding: 5px 15px;
       border-radius: 999px;
       margin-bottom: 0.8rem;
     }
@@ -316,7 +316,7 @@
 
     h1 {
       font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+      font-size: clamp(2.3rem, 6vw, 3.6rem);
       font-weight: 700;
       color: var(--berry-dark);
       line-height: 1.12;
@@ -329,22 +329,22 @@
 
     .trainer-bio {
       color: var(--berry-muted);
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 500;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.5rem;
     }
 
     .action-row {
       display: flex;
       justify-content: flex-start;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     /* Animated Holographic Trainer Portrait Frame */
     .trainer-portrait-wrap {
       position: relative;
-      max-width: 255px;
+      max-width: 235px;
       margin: 0 auto;
       cursor: pointer;
       animation: floatGentle 3.6s ease-in-out infinite;
@@ -416,13 +416,14 @@
       text-decoration: none;
       font-family: 'Fredoka', sans-serif;
       font-weight: 600;
-      font-size: 0.95rem;
-      padding: 12px 24px;
+      font-size: 0.92rem;
+      padding: 11px 22px;
       border-radius: 999px;
       border: 3px solid var(--berry-dark);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
     }
@@ -453,8 +454,8 @@
        ========================================= */
     .sylveon-companion {
       position: fixed;
-      bottom: 18px;
-      right: 18px;
+      bottom: 16px;
+      right: 16px;
       z-index: 90;
       display: flex;
       flex-direction: column;
@@ -468,9 +469,9 @@
       border: 2.5px solid var(--berry-dark);
       color: var(--berry-dark);
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      padding: 5px 12px;
+      padding: 5px 11px;
       border-radius: 14px;
       box-shadow: 0 4px 0 var(--pink-mid);
       margin-bottom: 6px;
@@ -478,8 +479,8 @@
     }
 
     .sylveon-avatar {
-      width: 88px;
-      height: 88px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #fff0f6, #ffc2dc);
       border: 3px solid var(--berry-dark);
@@ -507,8 +508,8 @@
     }
 
     @media (max-width: 600px) {
-      .sylveon-avatar { width: 70px; height: 70px; }
-      .sylveon-bubble { font-size: 0.7rem; padding: 4px 10px; }
+      .sylveon-avatar { width: 66px; height: 66px; }
+      .sylveon-bubble { font-size: 0.68rem; padding: 4px 9px; }
     }
 
     /* =========================================
@@ -516,25 +517,25 @@
        ========================================= */
     .section-header {
       text-align: center;
-      margin: 2.8rem 0 1.4rem;
+      margin: 2.6rem 0 1.3rem;
     }
 
     .section-header h2 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.95rem;
+      font-size: 1.85rem;
       color: var(--berry-dark);
     }
 
     .section-header p {
       color: var(--berry-muted);
-      font-size: 0.95rem;
+      font-size: 0.93rem;
     }
 
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-bottom: 1.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 10px;
+      margin-bottom: 1.6rem;
     }
 
     .cat-pill {
@@ -543,9 +544,9 @@
       background: #fff;
       border: 2.5px solid var(--berry-dark);
       border-radius: 18px;
-      padding: 12px 14px;
+      padding: 11px 12px;
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--berry-dark);
       box-shadow: 0 4px 0 var(--pink-soft);
@@ -553,7 +554,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
@@ -575,7 +576,7 @@
     }
 
     .cat-num {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       opacity: 0.78;
       letter-spacing: 0.5px;
     }
@@ -587,14 +588,14 @@
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
       border-radius: 28px;
-      padding: 1.8rem;
+      padding: 1.5rem;
       box-shadow: 0 8px 0 var(--pink-soft);
       backdrop-filter: blur(10px);
     }
 
     .empty-pokedex {
       text-align: center;
-      padding: 3.2rem 1.5rem;
+      padding: 2.8rem 1.25rem;
       border-radius: 20px;
       background: linear-gradient(145deg, #fff5f9, #ffe6f1);
       border: 2.5px solid var(--pink-border);
@@ -602,9 +603,9 @@
     }
 
     .bounce-sprite {
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       display: inline-block;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.55rem;
       animation: spriteHop 1.6s ease-in-out infinite;
     }
 
@@ -616,14 +617,14 @@
 
     .empty-pokedex h3 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       color: var(--berry-dark);
       margin-bottom: 0.35rem;
     }
 
     .empty-pokedex p {
       color: var(--berry-muted);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       max-width: 440px;
       margin: 0 auto;
     }
@@ -635,7 +636,7 @@
       border: 2px solid var(--pink-hot);
       color: var(--pink-hot);
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       padding: 4px 14px;
       border-radius: 999px;
@@ -643,8 +644,8 @@
 
     .works-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
     }
 
     .work-card {
@@ -695,14 +696,14 @@
     }
 
     /* =========================================
-       PLAYABLE POKEMON ARCADE CATCHER CANVAS
+       MOBILE-RESPONSIVE POKEMON ARCADE CANVAS
        ========================================= */
     .arcade-card {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
-      border-radius: 30px;
-      padding: 1.8rem 1.5rem;
-      margin-top: 2.6rem;
+      border-radius: 28px;
+      padding: 1.4rem 1rem;
+      margin-top: 2.4rem;
       box-shadow: 0 10px 0 var(--pink-mid);
       text-align: center;
     }
@@ -712,20 +713,22 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 1rem;
+      gap: 8px;
+      margin-bottom: 0.9rem;
+      padding: 0 0.3rem;
     }
 
     .arcade-title {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.1rem, 4vw, 1.35rem);
       color: var(--berry-dark);
     }
 
     .hud-pills {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .hud-pill {
@@ -734,8 +737,8 @@
       color: var(--pink-hot);
       font-family: 'Fredoka', sans-serif;
       font-weight: 700;
-      font-size: 0.85rem;
-      padding: 5px 14px;
+      font-size: 0.82rem;
+      padding: 4px 12px;
       border-radius: 999px;
     }
 
@@ -744,7 +747,7 @@
       width: 100%;
       max-width: 620px;
       margin: 0 auto;
-      border-radius: 22px;
+      border-radius: 20px;
       border: 3px solid var(--berry-dark);
       overflow: hidden;
       background: linear-gradient(180deg, #e0f2fe 0%, #fff0f6 78%, #dcfce7 100%);
@@ -754,7 +757,6 @@
 
     #arcadeCanvas {
       width: 100%;
-      height: 360px;
       display: block;
       cursor: grab;
     }
@@ -766,13 +768,13 @@
     .arcade-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(255, 240, 246, 0.88);
+      background: rgba(255, 240, 246, 0.92);
       backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
       text-align: center;
       transition: opacity 0.3s ease;
     }
@@ -784,51 +786,52 @@
 
     .arcade-overlay h3 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.55rem;
+      font-size: clamp(1.2rem, 4.5vw, 1.55rem);
       color: var(--berry-dark);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .arcade-overlay p {
       color: var(--berry-muted);
-      font-size: 0.92rem;
-      max-width: 390px;
-      margin-bottom: 1.1rem;
+      font-size: clamp(0.84rem, 3.2vw, 0.95rem);
+      max-width: 380px;
+      margin-bottom: 0.95rem;
+      line-height: 1.45;
     }
 
     .legend-row {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 6px;
       flex-wrap: wrap;
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       color: var(--berry-dark);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
 
     .legend-item {
       background: #fff;
       border: 1.5px solid var(--pink-border);
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 999px;
     }
 
-    .voucher-banner {
-      display: none;
-      margin-top: 1rem;
-      background: #ffe0ee;
-      border: 2.5px dashed var(--pink-hot);
-      color: var(--pink-hot);
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: 14px;
-      animation: bounceIn 0.4s ease both;
-    }
-
-    .voucher-banner.show {
-      display: inline-block;
+    @media (max-width: 480px) {
+      .arcade-hud {
+        justify-content: center;
+      }
+      .arcade-overlay {
+        padding: 0.85rem;
+      }
+      .legend-row {
+        gap: 5px;
+        margin-bottom: 0.85rem;
+      }
+      .legend-item {
+        font-size: 0.72rem;
+        padding: 3px 8px;
+      }
     }
 
     /* =========================================
@@ -836,22 +839,22 @@
        ========================================= */
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.4rem;
-      margin-top: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.3rem;
+      margin-top: 2.4rem;
     }
 
     .info-card {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
       border-radius: 26px;
-      padding: 1.7rem;
+      padding: 1.6rem;
       box-shadow: 0 8px 0 var(--pink-soft);
     }
 
     .info-card h3 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       color: var(--berry-dark);
       margin-bottom: 0.8rem;
       display: flex;
@@ -876,7 +879,7 @@
     .info-card ul {
       padding-left: 1.2rem;
       color: var(--berry-muted);
-      font-size: 0.93rem;
+      font-size: 0.92rem;
     }
 
     .info-card li {
@@ -919,7 +922,7 @@
       margin-top: 3.5rem;
       color: var(--berry-muted);
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
   </style>
 </head>
@@ -1008,22 +1011,23 @@
       </div>
     </section>
 
-    <!-- Interactive Pokémon Arcade Catcher Game -->
+    <!-- Mobile-Responsive Pokémon Arcade Catcher Game -->
     <section class="arcade-card" id="minigame">
       <div class="arcade-hud">
-        <div class="arcade-title">🎮 Serene's Poké-Catcher Arcade</div>
+        <div class="arcade-title">🎮 Serene's Poké-Catcher</div>
         <div class="hud-pills">
           <div class="hud-pill" id="scorePill">Score: 0</div>
+          <div class="hud-pill" id="bestPill">Best: 0</div>
           <div class="hud-pill" id="livesPill">❤️❤️❤️</div>
         </div>
       </div>
 
-      <div class="canvas-wrapper">
-        <canvas id="arcadeCanvas" width="620" height="360"></canvas>
+      <div class="canvas-wrapper" id="canvasWrapper">
+        <canvas id="arcadeCanvas"></canvas>
 
         <div class="arcade-overlay" id="arcadeOverlay">
           <h3 id="overlayTitle">Catch Pink Pokéballs & Sylveon!</h3>
-          <p id="overlayDesc">Slide left & right (or use Arrow keys) to move Trainer Serene. Reach <strong>150 pts</strong> to unlock a Lucky Trainer Code!</p>
+          <p id="overlayDesc">Slide your finger left & right (or use Arrow keys) to move Serene and rack up your highest score!</p>
           <div class="legend-row">
             <span class="legend-item">🔴 Pokéball +10</span>
             <span class="legend-item">💖 Heart +20</span>
@@ -1032,10 +1036,6 @@
           </div>
           <button class="poke-btn poke-btn-primary" onclick="startArcadeGame()">▶ Start Game</button>
         </div>
-      </div>
-
-      <div class="voucher-banner" id="voucherBanner">
-        🎉 150+ PTS UNLOCKED! Screenshot Trainer Code: <strong>SERENE-VIP150</strong>
       </div>
     </section>
 
@@ -1136,7 +1136,7 @@
       "GCash MOP ready! 💙",
       "Tap a category above! ✨",
       "Sylveon loves pink! 💗",
-      "Beat 150 pts in the arcade! 🎮"
+      "Try catching Pokéballs below! 🎮"
     ];
     let quoteIdx = 0;
 
@@ -1221,8 +1221,9 @@
     });
 
     // =========================================================================
-    // PLAYABLE POKEMON ARCADE CATCHER GAME (CANVAS)
+    // RESPONSIVE POKEMON ARCADE CATCHER GAME (NO STRETCHING ON MOBILE)
     // =========================================================================
+    const canvasWrapper = document.getElementById("canvasWrapper");
     const arcadeCanvas = document.getElementById("arcadeCanvas");
     const actx = arcadeCanvas.getContext("2d");
 
@@ -1234,6 +1235,7 @@
 
     let gameRunning = false;
     let score = 0;
+    let bestScore = 0;
     let lives = 3;
     let fallingItems = [];
     let floatingPopups = [];
@@ -1241,21 +1243,39 @@
     let keys = { left: false, right: false };
 
     const player = {
-      x: 310,
-      y: 308,
-      radius: 32,
+      x: 160,
+      y: 310,
+      radius: 28,
       speed: 7
     };
 
+    // Auto-match internal canvas pixels to actual screen width so circles never stretch
+    function resizeArcadeCanvas() {
+      const boxWidth = canvasWrapper.clientWidth || 340;
+      const isMobile = boxWidth < 500;
+      const boxHeight = isMobile ? 370 : 360;
+
+      arcadeCanvas.width = boxWidth;
+      arcadeCanvas.height = boxHeight;
+      arcadeCanvas.style.height = `${boxHeight}px`;
+
+      player.radius = isMobile ? 25 : 31;
+      player.y = boxHeight - player.radius - 16;
+      player.x = Math.max(player.radius + 6, Math.min(boxWidth - player.radius - 6, player.x));
+    }
+
+    window.addEventListener("resize", resizeArcadeCanvas);
+    resizeArcadeCanvas();
+
     function updateHUD() {
+      if (score > bestScore) bestScore = score;
       document.getElementById("scorePill").textContent = `Score: ${score}`;
+      document.getElementById("bestPill").textContent = `Best: ${bestScore}`;
       document.getElementById("livesPill").textContent = "❤️".repeat(Math.max(0, lives)) || "💔";
-      if (score >= 150) {
-        document.getElementById("voucherBanner").classList.add("show");
-      }
     }
 
     function startArcadeGame() {
+      resizeArcadeCanvas();
       score = 0;
       lives = 3;
       fallingItems = [];
@@ -1271,10 +1291,8 @@
     function endArcadeGame() {
       gameRunning = false;
       const overlay = document.getElementById("arcadeOverlay");
-      document.getElementById("overlayTitle").textContent = `Game Over! Final Score: ${score}`;
-      document.getElementById("overlayDesc").innerHTML = score >= 150
-        ? `Amazing! You unlocked Trainer Code <strong>SERENE-VIP150</strong>! Play again to beat your high score!`
-        : `So close! Reach <strong>150 points</strong> to unlock Serene's Lucky Trainer Code!`;
+      document.getElementById("overlayTitle").textContent = `You got ${score} points!`;
+      document.getElementById("overlayDesc").innerHTML = `Personal Best: <strong>${bestScore} pts</strong> • Tap below to play another round!`;
       overlay.querySelector("button").textContent = "🔄 Play Again";
       overlay.classList.remove("hidden");
     }
@@ -1283,8 +1301,7 @@
     function movePlayerToClientX(clientX) {
       if (!gameRunning) return;
       const rect = arcadeCanvas.getBoundingClientRect();
-      const scaleX = arcadeCanvas.width / rect.width;
-      const targetX = (clientX - rect.left) * scaleX;
+      const targetX = clientX - rect.left;
       player.x = Math.max(player.radius + 6, Math.min(arcadeCanvas.width - player.radius - 6, targetX));
     }
 
@@ -1307,30 +1324,32 @@
     });
 
     function spawnFallingItem() {
+      const isMobile = arcadeCanvas.width < 500;
       const roll = Math.random();
       let type = "pokeball";
       let points = 10;
-      let radius = 18;
+      let radius = isMobile ? 15 : 18;
 
       if (roll < 0.22) {
         type = "bomb";
         points = 0;
-        radius = 19;
+        radius = isMobile ? 16 : 19;
       } else if (roll < 0.36) {
         type = "sylveon";
         points = 50;
-        radius = 24;
+        radius = isMobile ? 20 : 24;
       } else if (roll < 0.62) {
         type = "heart";
         points = 20;
-        radius = 18;
+        radius = isMobile ? 15 : 18;
       }
 
       const speedBoost = Math.min(3.2, score * 0.012);
+      const margin = radius + 12;
       fallingItems.push({
-        x: Math.random() * (arcadeCanvas.width - 60) + 30,
+        x: Math.random() * Math.max(40, arcadeCanvas.width - margin * 2) + margin,
         y: -25,
-        vy: 2.8 + Math.random() * 1.8 + speedBoost,
+        vy: 2.7 + Math.random() * 1.7 + speedBoost,
         type,
         points,
         radius
@@ -1353,7 +1372,7 @@
 
       actx.beginPath();
       actx.arc(x, y, r, 0, Math.PI * 2);
-      actx.lineWidth = 3.5;
+      actx.lineWidth = 3;
       actx.strokeStyle = borderColor;
       actx.stroke();
     }
@@ -1373,18 +1392,18 @@
       actx.beginPath();
       actx.moveTo(x - r, y);
       actx.lineTo(x + r, y);
-      actx.lineWidth = 3;
+      actx.lineWidth = 2.5;
       actx.strokeStyle = "#4a1530";
       actx.stroke();
 
       actx.beginPath();
       actx.arc(x, y, r, 0, Math.PI * 2);
-      actx.lineWidth = 3;
+      actx.lineWidth = 2.5;
       actx.strokeStyle = "#4a1530";
       actx.stroke();
 
       actx.beginPath();
-      actx.arc(x, y, 5, 0, Math.PI * 2);
+      actx.arc(x, y, 4.5, 0, Math.PI * 2);
       actx.fillStyle = "#fff";
       actx.fill();
       actx.stroke();
@@ -1396,18 +1415,17 @@
 
       actx.clearRect(0, 0, arcadeCanvas.width, arcadeCanvas.height);
 
-      // Keyboard movement
       if (keys.left) player.x -= player.speed;
       if (keys.right) player.x += player.speed;
       player.x = Math.max(player.radius + 6, Math.min(arcadeCanvas.width - player.radius - 6, player.x));
 
       // Ground grass strip
       actx.fillStyle = "#bbf7d0";
-      actx.fillRect(0, arcadeCanvas.height - 26, arcadeCanvas.width, 26);
+      actx.fillRect(0, arcadeCanvas.height - 24, arcadeCanvas.width, 24);
 
       // Spawn logic
       spawnTimer++;
-      const spawnRate = Math.max(24, 48 - Math.floor(score / 15));
+      const spawnRate = Math.max(24, 46 - Math.floor(score / 15));
       if (spawnTimer >= spawnRate) {
         spawnFallingItem();
         spawnTimer = 0;
@@ -1426,7 +1444,7 @@
         } else if (item.type === "sylveon") {
           drawCircularImage(sylveonImg, item.x, item.y, item.radius, "#ff4d94");
         } else {
-          actx.font = "28px Fredoka, sans-serif";
+          actx.font = `${item.radius * 1.6}px Fredoka, sans-serif`;
           actx.textAlign = "center";
           actx.textBaseline = "middle";
           actx.fillText(item.type === "heart" ? "💖" : "💣", item.x, item.y);
@@ -1462,7 +1480,7 @@
         const pop = floatingPopups[i];
         pop.y -= 1.2;
         pop.life--;
-        actx.font = "bold 18px Fredoka, sans-serif";
+        actx.font = "bold 17px Fredoka, sans-serif";
         actx.fillStyle = pop.color;
         actx.textAlign = "center";
         actx.fillText(pop.text, pop.x, pop.y);
