@@ -338,21 +338,6 @@
       overflow: hidden;
     }
 
-    .trainer-portrait-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
-      transform: translateX(-100%);
-      animation: holoShine 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes holoShine {
-      0%, 45% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
     .trainer-portrait-card img {
       width: 100%;
       aspect-ratio: 3 / 4;
@@ -460,11 +445,6 @@
       display: block;
     }
 
-    @media (max-width: 600px) {
-      .sylveon-avatar { width: 64px; height: 64px; }
-      .sylveon-bubble { font-size: 0.68rem; padding: 4px 9px; }
-    }
-
     /* =========================================
        SECTION HEADERS & 6 CATEGORY CARTRIDGES
        ========================================= */
@@ -522,10 +502,7 @@
       transform: translateY(-2px);
     }
 
-    .cat-num {
-      font-size: 0.7rem;
-      opacity: 0.8;
-    }
+    .cat-num { font-size: 0.7rem; opacity: 0.8; }
 
     /* =========================================
        ARCADE CARD DECK SLIDER (PORTFOLIO VIEWER)
@@ -538,6 +515,7 @@
       box-shadow: 0 10px 0 var(--pink-mid);
       backdrop-filter: blur(10px);
       text-align: center;
+      margin-bottom: 2.6rem;
     }
 
     .deck-topbar {
@@ -559,7 +537,7 @@
 
     .deck-counter {
       background: #ffe4f0;
-      border: 2px solid var(--pink-hot);
+      border: 2.5px solid var(--pink-hot);
       color: var(--pink-hot);
       font-family: 'Fredoka', sans-serif;
       font-weight: 700;
@@ -593,18 +571,10 @@
       color: var(--berry-dark);
       cursor: pointer;
       flex-shrink: 0;
-      transition: transform 0.15s ease;
       z-index: 5;
     }
 
-    .deck-nav-btn:hover {
-      background: #ffe4f0;
-      transform: scale(1.08);
-    }
-
-    .deck-nav-btn:active {
-      transform: translateY(3px);
-    }
+    .deck-nav-btn:hover { background: #ffe4f0; transform: scale(1.08); }
 
     .deck-cards-viewport {
       position: relative;
@@ -625,9 +595,7 @@
       border-radius: 22px;
       overflow: hidden;
       box-shadow: 0 10px 0 var(--pink-soft), 0 16px 30px rgba(74, 21, 48, 0.18);
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.35s ease,
-                  filter 0.35s ease;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
       cursor: pointer;
     }
 
@@ -648,78 +616,13 @@
       border-top: 2px solid #ffe4f0;
     }
 
-    .arcade-card-footer strong {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.92rem;
-      color: var(--berry-dark);
-    }
+    .arcade-card-footer strong { font-family: 'Fredoka', sans-serif; font-size: 0.92rem; color: var(--berry-dark); }
+    .arcade-card-footer span { font-size: 0.72rem; font-weight: 700; background: #ffe0ee; color: var(--pink-hot); padding: 3px 10px; border-radius: 999px; }
 
-    .arcade-card-footer span {
-      font-size: 0.72rem;
-      font-weight: 700;
-      background: #ffe0ee;
-      color: var(--pink-hot);
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    .arcade-card-item.pos-center {
-      transform: translateX(0) scale(1) rotate(0deg);
-      opacity: 1;
-      z-index: 4;
-      filter: none;
-    }
-
-    .arcade-card-item.pos-prev {
-      transform: translateX(-165px) scale(0.84) rotate(-7deg);
-      opacity: 0.65;
-      z-index: 2;
-      filter: brightness(0.95);
-    }
-
-    .arcade-card-item.pos-next {
-      transform: translateX(165px) scale(0.84) rotate(7deg);
-      opacity: 0.65;
-      z-index: 2;
-      filter: brightness(0.95);
-    }
-
-    .arcade-card-item.pos-hidden {
-      transform: translateX(0) scale(0.65);
-      opacity: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    @media (max-width: 540px) {
-      .deck-cards-viewport {
-        height: 340px;
-      }
-      .arcade-card-item {
-        width: 215px;
-      }
-      .arcade-card-item img {
-        height: 265px;
-      }
-      .arcade-card-item.pos-prev {
-        transform: translateX(-115px) scale(0.82) rotate(-6deg);
-      }
-      .arcade-card-item.pos-next {
-        transform: translateX(115px) scale(0.82) rotate(6deg);
-      }
-      .deck-nav-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
-      }
-    }
-
-    .deck-hint {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.82rem;
-      color: var(--berry-muted);
-      margin-top: 0.4rem;
-    }
+    .arcade-card-item.pos-center { transform: translateX(0) scale(1) rotate(0deg); opacity: 1; z-index: 4; }
+    .arcade-card-item.pos-prev { transform: translateX(-165px) scale(0.84) rotate(-7deg); opacity: 0.65; z-index: 2; }
+    .arcade-card-item.pos-next { transform: translateX(165px) scale(0.84) rotate(7deg); opacity: 0.65; z-index: 2; }
+    .arcade-card-item.pos-hidden { transform: translateX(0) scale(0.65); opacity: 0; z-index: 1; pointer-events: none; }
 
     .thumb-strip {
       display: flex;
@@ -740,25 +643,101 @@
       flex-shrink: 0;
       cursor: pointer;
       opacity: 0.6;
-      transition: all 0.2s ease;
+    }
+    .thumb-dot.active { border-color: var(--pink-hot); opacity: 1; transform: translateY(-3px) scale(1.06); }
+    .thumb-dot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* =========================================
+       RESPONSIVE POKÉMON BALL THROWER GAME
+       ========================================= */
+    .arcade-card {
+      background: var(--card-white);
+      border: 3px solid var(--berry-dark);
+      border-radius: 30px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 10px 0 var(--pink-mid);
+      text-align: center;
+      margin-top: 2.6rem;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .thumb-dot.active {
-      border-color: var(--pink-hot);
-      opacity: 1;
-      transform: translateY(-3px) scale(1.06);
-      box-shadow: 0 3px 0 var(--berry-dark);
+    .arcade-hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.9rem;
+      padding: 0 0.2rem;
     }
 
-    .thumb-dot img {
+    .arcade-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.15rem;
+      color: var(--berry-dark);
+    }
+
+    .hud-pills { display: flex; gap: 6px; align-items: center; }
+
+    .hud-pill {
+      background: #ffe4f0;
+      border: 2.5px solid var(--pink-hot);
+      color: var(--pink-hot);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+    }
+
+    .canvas-wrapper {
+      position: relative;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      height: 350px;
+      border-radius: 20px;
+      border: 3px solid var(--berry-dark);
+      overflow: hidden;
+      background: linear-gradient(180deg, #e0f2fe 0%, #fff0f6 78%, #dcfce7 100%);
+      box-shadow: inset 0 0 20px rgba(255, 77, 148, 0.12);
+      touch-action: none;
+    }
+
+    .arcade-canvas { width: 100%; height: 100%; display: block; cursor: crosshair; }
+
+    .arcade-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 240, 246, 0.95);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem;
+      text-align: center;
+      transition: opacity 0.25s ease;
+    }
+
+    .arcade-overlay.hidden { opacity: 0; pointer-events: none; }
+
+    .arcade-overlay h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+      color: var(--berry-dark);
+      margin-bottom: 0.35rem;
+    }
+
+    .arcade-overlay p {
+      color: var(--berry-muted);
+      font-size: clamp(0.84rem, 3.2vw, 0.92rem);
+      max-width: 340px;
+      margin-bottom: 1rem;
+      line-height: 1.45;
     }
 
     /* =========================================
-       SERENE'S EDITING COMMISSION PRICE LIST
+       PRICE LIST & FOOTER
        ========================================= */
     .pricelist-wrapper {
       background: var(--card-white);
@@ -769,221 +748,54 @@
       box-shadow: 0 10px 0 var(--pink-mid);
     }
 
-    .pricelist-intro {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto 1.8rem;
-    }
+    .pricelist-intro { text-align: center; max-width: 640px; margin: 0 auto 1.8rem; }
+    .pricelist-intro h2 { font-family: 'Fredoka', sans-serif; font-size: clamp(1.35rem, 4.5vw, 1.9rem); color: var(--pink-hot); margin-bottom: 0.55rem; }
+    .pricelist-intro p { color: var(--berry-muted); font-size: 0.95rem; line-height: 1.55; }
+    .status-chip { display: inline-block; background: #fff; border: 2.5px solid var(--pink-hot); color: var(--pink-hot); font-family: 'Fredoka', sans-serif; font-weight: 700; border-radius: 999px; }
 
-    .pricelist-intro h2 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(1.35rem, 4.5vw, 1.9rem);
-      color: var(--pink-hot);
-      margin-bottom: 0.55rem;
-    }
+    .rates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 1.15rem; }
+    .rate-card { background: linear-gradient(155deg, #ffffff 0%, #fff4f9 100%); border: 2.5px solid var(--berry-dark); border-radius: 22px; padding: 1.25rem 1.3rem; box-shadow: 0 6px 0 var(--pink-soft); }
+    .rate-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px dashed var(--pink-border); }
+    .rate-card-header h3 { font-family: 'Fredoka', sans-serif; font-size: 1.02rem; color: var(--berry-dark); }
+    .rate-list { list-style: none; }
+    .rate-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 0.89rem; color: var(--berry-dark); padding: 6px 0; border-bottom: 1px solid rgba(255, 179, 212, 0.35); }
+    .rate-list li:last-child { border-bottom: none; }
+    .rate-price { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--pink-hot); text-align: right; font-size: 0.91rem; max-width: 56%; line-height: 1.3; }
 
-    .pricelist-intro p {
-      color: var(--berry-muted);
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
+    .open-dm-banner { margin-top: 1.6rem; background: linear-gradient(135deg, #ffe4f0, #fff0f6); border: 2.5px dashed var(--pink-hot); border-radius: 20px; padding: 1.2rem; text-align: center; }
+    .open-dm-banner p { font-family: 'Fredoka', sans-serif; font-size: 1rem; color: var(--berry-dark); margin-bottom: 0.8rem; }
 
-    .status-chip {
-      display: inline-block;
-      background: #fff;
-      border: 2px solid var(--pink-hot);
-      color: var(--pink-hot);
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      border-radius: 999px;
-    }
-
-    .rates-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-      gap: 1.15rem;
-    }
-
-    .rate-card {
-      background: linear-gradient(155deg, #ffffff 0%, #fff4f9 100%);
-      border: 2.5px solid var(--berry-dark);
-      border-radius: 22px;
-      padding: 1.25rem 1.3rem;
-      box-shadow: 0 6px 0 var(--pink-soft);
-      transition: transform 0.2s ease;
-    }
-
-    .rate-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .rate-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px dashed var(--pink-border);
-    }
-
-    .rate-card-header h3 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.02rem;
-      color: var(--berry-dark);
-    }
-
-    .rate-list {
-      list-style: none;
-    }
-
-    .rate-list li {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      font-size: 0.89rem;
-      color: var(--berry-dark);
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255, 179, 212, 0.35);
-    }
-
-    .rate-list li:last-child {
-      border-bottom: none;
-    }
-
-    .rate-price {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      color: var(--pink-hot);
-      text-align: right;
-      font-size: 0.91rem;
-      max-width: 56%;
-      line-height: 1.3;
-    }
-
-    .open-dm-banner {
-      margin-top: 1.6rem;
-      background: linear-gradient(135deg, #ffe4f0, #fff0f6);
-      border: 2.5px dashed var(--pink-hot);
-      border-radius: 20px;
-      padding: 1.2rem;
-      text-align: center;
-    }
-
-    .open-dm-banner p {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1rem;
-      color: var(--berry-dark);
-      margin-bottom: 0.8rem;
-    }
-
-    /* =========================================
-       MODE OF PAYMENT & HOW TO ORDER
-       ========================================= */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 1.3rem;
-      margin-top: 2.2rem;
-    }
-
-    .info-card {
-      background: var(--card-white);
-      border: 3px solid var(--berry-dark);
-      border-radius: 26px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 0 var(--pink-soft);
-    }
-
-    .info-card h3 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 1.2rem;
-      color: var(--berry-dark);
-      margin-bottom: 0.75rem;
-    }
-
-    .gcash-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #e0f2fe;
-      border: 2px solid #0284c7;
-      color: #0369a1;
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      padding: 7px 15px;
-      border-radius: 14px;
-      margin-bottom: 0.75rem;
-    }
-
-    .info-card ul {
-      padding-left: 1.2rem;
-      color: var(--berry-muted);
-      font-size: 0.91rem;
-    }
-
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.3rem; margin-top: 2.2rem; }
+    .info-card { background: var(--card-white); border: 3px solid var(--berry-dark); border-radius: 26px; padding: 1.5rem; box-shadow: 0 8px 0 var(--pink-soft); }
+    .info-card h3 { font-family: 'Fredoka', sans-serif; font-size: 1.2rem; color: var(--berry-dark); margin-bottom: 0.75rem; }
+    .gcash-pill { display: inline-flex; align-items: center; gap: 8px; background: #e0f2fe; border: 2.5px solid #0284c7; color: #0369a1; font-family: 'Fredoka', sans-serif; font-weight: 700; padding: 7px 15px; border-radius: 14px; margin-bottom: 0.75rem; }
+    .info-card ul { padding-left: 1.2rem; color: var(--berry-muted); font-size: 0.91rem; }
     .info-card li { margin-bottom: 0.4rem; }
 
-    /* =========================================
-       FULLSCREEN LIGHTBOX MODAL
-       ========================================= */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(74, 21, 48, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      cursor: zoom-out;
-    }
-
+    .modal { display: none; position: fixed; inset: 0; background: rgba(74, 21, 48, 0.85); backdrop-filter: blur(8px); z-index: 100; align-items: center; justify-content: center; padding: 1.5rem; cursor: zoom-out; }
     .modal.open { display: flex; }
+    .modal img { max-width: 92vw; max-height: 85vh; border-radius: 22px; border: 4px solid #fff; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); }
 
-    .modal img {
-      max-width: 92vw;
-      max-height: 85vh;
-      border-radius: 22px;
-      border: 4px solid #fff;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      animation: bounceIn 0.3s ease both;
-    }
-
-    @keyframes bounceIn {
-      from { opacity: 0; transform: scale(0.92) translateY(14px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      color: var(--berry-muted);
-      font-family: 'Fredoka', sans-serif;
-      font-size: 0.88rem;
-    }
+    footer { text-align: center; margin-top: 3rem; color: var(--berry-muted); font-family: 'Fredoka', sans-serif; font-size: 0.88rem; }
   </style>
 </head>
 <body>
   <div class="bg-pokeball pb-1"></div>
   <div class="bg-pokeball pb-2"></div>
 
-  <!-- Pokédex Welcome Screen -->
+  <!-- Boot Screen -->
   <div class="pokedex-intro" id="pokedexIntro">
     <div class="pokeball-loader"></div>
     <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
     <div class="intro-title">Serene's Editing Commission</div>
-    <p style="opacity:0.92; margin-top:4px;">Loading Card Deck Portfolio & Price List...</p>
+    <p style="opacity:0.92; margin-top:4px;">Loading Card Deck & Pokémon Ball Thrower Game...</p>
     <button class="intro-btn" onclick="closeIntro()">Open Pokédex ▶</button>
   </div>
 
-  <!-- Floating Sylveon Companion Widget -->
+  <!-- Sylveon Companion -->
   <div class="sylveon-companion" onclick="petSylveon(event)">
-    <div class="sylveon-bubble" id="sylveonMsg">Swipe cards to view edits! 🎀</div>
-    <div class="sylveon-avatar">
-      <img src="sylveon.jpg" alt="Sylveon Partner" />
-    </div>
+    <div class="sylveon-bubble" id="sylveonMsg">Play the Pokémon Thrower game below! 🎯</div>
+    <div class="sylveon-avatar"><img src="sylveon.jpg" alt="Sylveon" /></div>
   </div>
 
   <div class="container">
@@ -1015,22 +827,20 @@
             <a href="#portfolio" class="poke-btn poke-btn-secondary">
               🃏 Browse Sample Cards
             </a>
-            <a href="#pricelist" class="poke-btn poke-btn-secondary">
-              🏷️ View Price List
+            <a href="#minigame" class="poke-btn poke-btn-secondary">
+              🎮 Play Poké-Thrower
             </a>
           </div>
         </div>
 
         <div class="trainer-portrait-wrap" onclick="openLightbox('serena.jpg')">
-          <div class="trainer-portrait-card">
-            <img src="serena.jpg" alt="Serene" />
-          </div>
+          <div class="trainer-portrait-card"><img src="serena.jpg" alt="Serene" /></div>
           <span class="portrait-tag">✦ Serene #001</span>
         </div>
       </div>
     </header>
 
-    <!-- Arcade Card Deck Sample Browser -->
+    <!-- Sample Works Card Deck Portfolio -->
     <section id="portfolio">
       <div class="section-header">
         <h2>Sample Works Card Deck</h2>
@@ -1046,17 +856,35 @@
         </div>
 
         <div class="deck-stage" id="deckStage">
-          <button class="deck-nav-btn" onclick="slideDeck(-1)" aria-label="Previous Card">◀</button>
-
+          <button class="deck-nav-btn" onclick="slideDeck(-1)" aria-label="Previous">◀</button>
           <div class="deck-cards-viewport" id="deckViewport"></div>
-
-          <button class="deck-nav-btn" onclick="slideDeck(1)" aria-label="Next Card">▶</button>
+          <button class="deck-nav-btn" onclick="slideDeck(1)" aria-label="Next">▶</button>
         </div>
 
-        <div class="deck-hint">Tap the center card to zoom fullscreen • Swipe left or right to flip cards</div>
-
-        <!-- Quick Thumbnail Strip -->
+        <div class="deck-hint">Tap center card to zoom • Swipe left or right to flip cards</div>
         <div class="thumb-strip" id="thumbStrip"></div>
+      </div>
+    </section>
+
+    <!-- POKÉMON BALL THROWER & CATCHER GAME -->
+    <section class="arcade-card" id="minigame">
+      <div class="arcade-hud">
+        <div class="arcade-title">🎯 Pokémon Ball Thrower</div>
+        <div class="hud-pills">
+          <div class="hud-pill" id="scorePill">Caught: 0</div>
+          <div class="hud-pill" id="bestPill">Best: 0</div>
+          <div class="hud-pill" id="ammoPill">Balls: 12</div>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper" id="canvasWrapper">
+        <canvas id="arcadeCanvas" class="arcade-canvas"></canvas>
+
+        <div class="arcade-overlay" id="arcadeOverlay">
+          <h3>Catch Pokémon with Pokéballs!</h3>
+          <p>Tap or Click anywhere on the screen to throw a Pokéball and capture Pikachu, Eevee, Snorlax, or Sylveon! Watch out for bombs! 💣</p>
+          <button class="poke-btn poke-btn-primary" onclick="startArcadeGame()">▶ Start Game</button>
+        </div>
       </div>
     </section>
 
@@ -1073,22 +901,16 @@
       </div>
 
       <div class="rates-grid">
-        <!-- UDP -->
         <div class="rate-card">
-          <div class="rate-card-header">
-            <h3>UDP</h3>
-          </div>
+          <div class="rate-card-header"><h3>UDP</h3></div>
           <ul class="rate-list">
             <li><span>First photo</span><span class="rate-price">₱10</span></li>
             <li><span>Each (depends on the style)</span><span class="rate-price">₱4-7</span></li>
           </ul>
         </div>
 
-        <!-- SONG COVER TEMPLATE -->
         <div class="rate-card">
-          <div class="rate-card-header">
-            <h3>SONG COVER TEMPLATE (depends on the style)</h3>
-          </div>
+          <div class="rate-card-header"><h3>SONG COVER TEMPLATE (depends on the style)</h3></div>
           <ul class="rate-list">
             <li><span>Solo Template</span><span class="rate-price">₱5-10</span></li>
             <li><span>Duo Template</span><span class="rate-price">₱10-15</span></li>
@@ -1099,32 +921,23 @@
           </ul>
         </div>
 
-        <!-- PINNED POST -->
         <div class="rate-card">
-          <div class="rate-card-header">
-            <h3>PINNED POST</h3>
-          </div>
+          <div class="rate-card-header"><h3>PINNED POST</h3></div>
           <ul class="rate-list">
             <li><span>Depends on style</span><span class="rate-price">₱10-15</span></li>
           </ul>
         </div>
 
-        <!-- STAMP -->
         <div class="rate-card">
-          <div class="rate-card-header">
-            <h3>STAMP</h3>
-          </div>
+          <div class="rate-card-header"><h3>STAMP</h3></div>
           <ul class="rate-list">
             <li><span>minimalist</span><span class="rate-price">₱10</span></li>
             <li><span>with icons</span><span class="rate-price">₱15</span></li>
           </ul>
         </div>
 
-        <!-- POSTERS -->
         <div class="rate-card">
-          <div class="rate-card-header">
-            <h3>POSTERS</h3>
-          </div>
+          <div class="rate-card-header"><h3>POSTERS</h3></div>
           <ul class="rate-list">
             <li><span>BIRTHDAY POSTER</span><span class="rate-price">₱10</span></li>
             <li><span>GIRL/BOY GROUP POSTER</span><span class="rate-price">₱15</span></li>
@@ -1133,11 +946,8 @@
           </ul>
         </div>
 
-        <!-- VIDEOS -->
         <div class="rate-card">
-          <div class="rate-card-header">
-            <h3>VIDEOS</h3>
-          </div>
+          <div class="rate-card-header"><h3>VIDEOS</h3></div>
           <ul class="rate-list">
             <li><span>SONG COVER</span><span class="rate-price">₱10 per minutes</span></li>
             <li><span>TEASER</span><span class="rate-price">₱50</span></li>
@@ -1146,11 +956,8 @@
           </ul>
         </div>
 
-        <!-- OTHERS -->
         <div class="rate-card">
-          <div class="rate-card-header">
-            <h3>OTHERS</h3>
-          </div>
+          <div class="rate-card-header"><h3>OTHERS</h3></div>
           <ul class="rate-list">
             <li><span>BOOK COVER (depends on the characters)</span><span class="rate-price">₱150-300</span></li>
             <li><span>COLOR CODED UDP</span><span class="rate-price">₱20</span></li>
@@ -1166,7 +973,7 @@
       </div>
     </section>
 
-    <!-- Mode of Payment & How to Order -->
+    <!-- Payment & How to Order -->
     <section class="info-grid">
       <div class="info-card">
         <h3>💳 Mode of Payment</h3>
@@ -1192,14 +999,14 @@
     </footer>
   </div>
 
-  <!-- Fullscreen Lightbox -->
+  <!-- Lightbox Modal -->
   <div class="modal" id="imgModal" onclick="this.classList.remove('open')">
-    <img id="modalImg" src="" alt="Sample Preview" />
+    <img id="modalImg" src="" alt="Preview" />
   </div>
 
   <script>
     // =========================================================================
-    // CLIENT PORTFOLIO DATA (6 CATEGORIES + ALL UPLOADED SAMPLES)
+    // FULL PORTFOLIO DATA
     // =========================================================================
     const CLIENT_PORTFOLIO = {
       categories: [
@@ -1210,9 +1017,7 @@
         { id: "Stamp", label: "Stamp", code: "No. 005" },
         { id: "Seller Set", label: "Seller Set", code: "No. 006" }
       ],
-
       gallery: [
-        // UDP
         { title: "UDP #1", category: "UDP", image: "udp (1).jpg" },
         { title: "UDP #2", category: "UDP", image: "udp (1).png" },
         { title: "UDP #3", category: "UDP", image: "udp (2).jpg" },
@@ -1243,7 +1048,6 @@
         { title: "UDP #28", category: "UDP", image: "udp (18).jpg" },
         { title: "UDP #29", category: "UDP", image: "udp (19).jpg" },
 
-        // TEMPLATE
         { title: "Template #1", category: "Template", image: "template (1).jpg" },
         { title: "Template #2", category: "Template", image: "template (1).png" },
         { title: "Template #3", category: "Template", image: "template (2).jpg" },
@@ -1286,7 +1090,6 @@
         { title: "Template #40", category: "Template", image: "template (38).png" },
         { title: "Template #41", category: "Template", image: "template (39).png" },
 
-        // POSTERS
         { title: "Poster #1", category: "Posters", image: "posters (1).jpg" },
         { title: "Poster #2", category: "Posters", image: "posters (1).png" },
         { title: "Poster #3", category: "Posters", image: "posters (2).jpg" },
@@ -1299,16 +1102,13 @@
         { title: "Poster #10", category: "Posters", image: "posters (6).jpg" },
         { title: "Poster #11", category: "Posters", image: "posters (7).jpg" },
 
-        // HOODSET
         { title: "Hoodset #1", category: "Hoodset", image: "hoodset (1).jpg" },
         { title: "Hoodset #2", category: "Hoodset", image: "hoodset (2).jpg" },
 
-        // STAMP
         { title: "Stamp #1", category: "Stamp", image: "stamp (1).jpg" },
         { title: "Stamp #2", category: "Stamp", image: "stamp (2).jpg" },
         { title: "Stamp #3", category: "Stamp", image: "stamp (3).jpg" },
 
-        // SELLER SET
         { title: "Seller Set #1", category: "Seller Set", image: "seller set (1).jpg" },
         { title: "Seller Set #2", category: "Seller Set", image: "seller set (1).png" },
         { title: "Seller Set #3", category: "Seller Set", image: "seller set (2).jpg" },
@@ -1324,25 +1124,19 @@
       ]
     };
 
-    // =========================================================================
-    // INTRO, LIGHTBOX & SPARKLES
-    // =========================================================================
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
       if (intro) intro.classList.add("hide");
     }
-
-    window.addEventListener("load", () => {
-      setTimeout(closeIntro, 1900);
-    });
+    window.addEventListener("load", () => setTimeout(closeIntro, 1900));
 
     function openLightbox(imgSrc) {
       document.getElementById("modalImg").src = imgSrc;
       document.getElementById("imgModal").classList.add("open");
     }
 
-    function burstParticles(x, y, customIcons) {
-      const icons = customIcons || ["💗", "✦", "🌸", "✨"];
+    function burstParticles(x, y) {
+      const icons = ["💗", "✦", "🌸", "✨", "⚡"];
       for (let i = 0; i < 6; i++) {
         const pop = document.createElement("span");
         pop.className = "click-pop";
@@ -1357,26 +1151,24 @@
         setTimeout(() => pop.remove(), 750);
       }
     }
-
     document.addEventListener("click", (e) => burstParticles(e.clientX, e.clientY));
 
     const SYLVEON_QUOTES = [
-      "Swipe cards to view edits! 🎀",
+      "Try throwing Pokéballs below! 🎯",
+      "Swipe sample cards above! 🎀",
       "Check the Price List below! 🏷️",
-      "GCash MOP ready! 💙",
-      "Messages open anytime! ✨"
+      "GCash MOP ready! 💙"
     ];
     let quoteIdx = 0;
-
     function petSylveon(e) {
       e.stopPropagation();
       quoteIdx = (quoteIdx + 1) % SYLVEON_QUOTES.length;
       document.getElementById("sylveonMsg").textContent = SYLVEON_QUOTES[quoteIdx];
-      burstParticles(e.clientX, e.clientY, ["💖", "🎀", "✨", "🌸"]);
+      burstParticles(e.clientX, e.clientY);
     }
 
     // =========================================================================
-    // ARCADE CARD DECK SLIDER LOGIC
+    // CARD DECK VIEWER LOGIC
     // =========================================================================
     const categoryGrid = document.getElementById("categoryGrid");
     const deckViewport = document.getElementById("deckViewport");
@@ -1393,7 +1185,6 @@
       document.querySelectorAll(".cat-pill").forEach(el => {
         el.classList.toggle("active", el.dataset.id === catObj.id);
       });
-
       deckCatTitle.textContent = `🃏 ${catObj.label} (${catObj.code})`;
       validItems = CLIENT_PORTFOLIO.gallery.filter(item => item.category === catObj.id);
       currentIndex = 0;
@@ -1403,20 +1194,15 @@
     function buildDeckDOM() {
       deckViewport.innerHTML = "";
       thumbStrip.innerHTML = "";
-
       if (validItems.length === 0) {
         deckCounter.textContent = "0 Cards";
-        deckViewport.innerHTML = `<p style="color:var(--berry-muted);">No sample cards yet for this category.</p>`;
+        deckViewport.innerHTML = `<p style="color:var(--berry-muted);">No sample cards.</p>`;
         return;
       }
-
       validItems.forEach((item, idx) => {
         const encodedSrc = encodeURI(item.image);
-
-        // Card Element
         const card = document.createElement("div");
         card.className = "arcade-card-item pos-hidden";
-        card.dataset.idx = idx;
         card.innerHTML = `
           <img src="${encodedSrc}" alt="${item.title}" loading="lazy" />
           <div class="arcade-card-footer">
@@ -1424,69 +1210,44 @@
             <span>${item.category}</span>
           </div>
         `;
-
-        // Auto-remove missing optional files so deck never shows broken cards
-        const imgEl = card.querySelector("img");
-        imgEl.onerror = () => {
+        card.querySelector("img").onerror = () => {
           validItems = validItems.filter(v => v.image !== item.image);
           if (currentIndex >= validItems.length) currentIndex = Math.max(0, validItems.length - 1);
           buildDeckDOM();
         };
-
         card.onclick = () => {
-          if (idx === currentIndex) {
-            openLightbox(encodedSrc);
-          } else {
-            currentIndex = idx;
-            updateDeckPositions();
-          }
+          if (idx === currentIndex) openLightbox(encodedSrc);
+          else { currentIndex = idx; updateDeckPositions(); }
         };
-
         deckViewport.appendChild(card);
 
-        // Thumbnail Element
         const thumb = document.createElement("div");
         thumb.className = "thumb-dot";
-        thumb.dataset.idx = idx;
         thumb.innerHTML = `<img src="${encodedSrc}" alt="${item.title}" loading="lazy" />`;
-        thumb.onclick = () => {
-          currentIndex = idx;
-          updateDeckPositions();
-        };
+        thumb.onclick = () => { currentIndex = idx; updateDeckPositions(); };
         thumbStrip.appendChild(thumb);
       });
-
       updateDeckPositions();
     }
 
     function updateDeckPositions() {
       const total = validItems.length;
       if (total === 0) return;
-
       deckCounter.textContent = `Card ${currentIndex + 1} / ${total}`;
-
       const prevIdx = (currentIndex - 1 + total) % total;
       const nextIdx = (currentIndex + 1) % total;
 
       document.querySelectorAll(".arcade-card-item").forEach((card, idx) => {
-        card.classList.remove("pos-center", "pos-prev", "pos-next", "pos-hidden");
-        if (idx === currentIndex) {
-          card.classList.add("pos-center");
-        } else if (total > 1 && idx === prevIdx) {
-          card.classList.add("pos-prev");
-        } else if (total > 2 && idx === nextIdx) {
-          card.classList.add("pos-next");
-        } else {
-          card.classList.add("pos-hidden");
-        }
+        card.className = "arcade-card-item pos-hidden";
+        if (idx === currentIndex) card.classList.add("pos-center");
+        else if (total > 1 && idx === prevIdx) card.classList.add("pos-prev");
+        else if (total > 2 && idx === nextIdx) card.classList.add("pos-next");
       });
 
       document.querySelectorAll(".thumb-dot").forEach((thumb, idx) => {
         const isActive = idx === currentIndex;
         thumb.classList.toggle("active", isActive);
-        if (isActive) {
-          thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-        }
+        if (isActive) thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       });
     }
 
@@ -1497,41 +1258,221 @@
       updateDeckPositions();
     }
 
-    // Touch Swipe Support for Card Deck
     let touchStartX = 0;
     const deckStage = document.getElementById("deckStage");
-
-    deckStage.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
+    deckStage.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
     deckStage.addEventListener("touchend", (e) => {
       const diff = e.changedTouches[0].screenX - touchStartX;
-      if (Math.abs(diff) > 38) {
-        slideDeck(diff < 0 ? 1 : -1);
-      }
+      if (Math.abs(diff) > 38) slideDeck(diff < 0 ? 1 : -1);
     }, { passive: true });
 
-    // Keyboard Left/Right Arrow Navigation
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") slideDeck(-1);
-      if (e.key === "ArrowRight") slideDeck(1);
-    });
-
-    // Render Category Buttons & Load UDP by Default
     CLIENT_PORTFOLIO.categories.forEach(cat => {
       const btn = document.createElement("button");
       btn.className = "cat-pill";
       btn.dataset.id = cat.id;
-      btn.innerHTML = `
-        <span class="cat-num">${cat.code}</span>
-        <span>${cat.label}</span>
-      `;
+      btn.innerHTML = `<span class="cat-num">${cat.code}</span><span>${cat.label}</span>`;
       btn.onclick = () => selectCategory(cat);
       categoryGrid.appendChild(btn);
     });
-
     selectCategory(CLIENT_PORTFOLIO.categories[0]);
+
+    // =========================================================================
+    // POKÉMON BALL THROWER & CATCHER GAME LOGIC (RESPONSIVE)
+    // =========================================================================
+    const canvasWrapper = document.getElementById("canvasWrapper");
+    const arcadeCanvas = document.getElementById("arcadeCanvas");
+    const actx = arcadeCanvas.getContext("2d");
+
+    let gameRunning = false;
+    let score = 0;
+    let bestScore = 0;
+    let ammo = 12;
+    let pokemons = [];
+    let balls = [];
+    let caughtEffects = [];
+    let spawnTimer = null;
+
+    function resizeArcadeCanvas() {
+      const boxWidth = canvasWrapper.clientWidth || 340;
+      const isMobile = boxWidth < 500;
+      const boxHeight = isMobile ? 360 : 340;
+
+      arcadeCanvas.width = boxWidth;
+      arcadeCanvas.height = boxHeight;
+      arcadeCanvas.style.height = `${boxHeight}px`;
+    }
+    window.addEventListener("resize", resizeArcadeCanvas);
+    resizeArcadeCanvas();
+
+    function updateHUD() {
+      if (score > bestScore) bestScore = score;
+      document.getElementById("scorePill").textContent = `Caught: ${score}`;
+      document.getElementById("bestPill").textContent = `Best: ${bestScore}`;
+      document.getElementById("ammoPill").textContent = `Balls: ${ammo}`;
+    }
+
+    function startArcadeGame() {
+      resizeArcadeCanvas();
+      score = 0;
+      ammo = 12;
+      pokemons = [];
+      balls = [];
+      caughtEffects = [];
+      gameRunning = true;
+      document.getElementById("arcadeOverlay").classList.add("hidden");
+      updateHUD();
+      
+      if (spawnTimer) clearTimeout(spawnTimer);
+      spawnPokemonWave();
+      requestAnimationFrame(gameLoop);
+    }
+
+    function endArcadeGame() {
+      gameRunning = false;
+      const overlay = document.getElementById("arcadeOverlay");
+      document.getElementById("overlayTitle").textContent = `Game Over! Caught: ${score}`;
+      document.getElementById("overlayDesc").innerHTML = `Personal Best: <strong>${bestScore} caught</strong> • Tap below to play again!`;
+      overlay.querySelector("button").textContent = "🔄 Play Again";
+      overlay.classList.remove("hidden");
+    }
+
+    function spawnPokemonWave() {
+      if (!gameRunning) return;
+      const types = ['Pikachu', 'Eevee', 'Snorlax', 'Sylveon', 'Bomb'];
+      const roll = Math.random();
+      let chosen = 'Pikachu';
+      if (roll < 0.22) chosen = 'Bomb';
+      else if (roll < 0.45) chosen = 'Eevee';
+      else if (roll < 0.68) chosen = 'Snorlax';
+      else if (roll < 0.88) chosen = 'Sylveon';
+
+      pokemons.push({
+        x: Math.random() * (arcadeCanvas.width - 90) + 45,
+        y: Math.random() * (arcadeCanvas.height * 0.45) + 40,
+        vx: (Math.random() - 0.5) * 2.5,
+        type: chosen,
+        radius: chosen === 'Bomb' ? 20 : 25,
+        caught: false
+      });
+
+      spawnTimer = setTimeout(spawnPokemonWave, 1800);
+    }
+
+    // Handle Throwing Pokéball on Tap or Click
+    function throwPokeball(clientX, clientY) {
+      if (!gameRunning || ammo <= 0) return;
+      const rect = arcadeCanvas.getBoundingClientRect();
+      const tx = clientX - rect.left;
+      const ty = clientY - rect.top;
+
+      ammo--;
+      updateHUD();
+
+      balls.push({
+        x: arcadeCanvas.width / 2,
+        y: arcadeCanvas.height - 15,
+        tx: tx,
+        ty: ty,
+        vx: (tx - (arcadeCanvas.width / 2)) / 12,
+        vy: (ty - (arcadeCanvas.height - 15)) / 12,
+        active: true
+      });
+    }
+
+    arcadeCanvas.addEventListener("click", (e) => throwPokeball(e.clientX, e.clientY));
+    arcadeCanvas.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      if (e.touches[0]) throwPokeball(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: false });
+
+    function gameLoop() {
+      if (!gameRunning) return;
+      actx.clearRect(0, 0, arcadeCanvas.width, arcadeCanvas.height);
+
+      // Draw wandering Pokémon & Bombs
+      for (let p of pokemons) {
+        if (p.caught) continue;
+        p.x += p.vx;
+        if (p.x < 30 || p.x > arcadeCanvas.width - 30) p.vx *= -1;
+
+        actx.beginPath(); 
+        actx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        actx.fillStyle = p.type === 'Pikachu' ? '#facc15' : p.type === 'Eevee' ? '#d97706' : p.type === 'Snorlax' ? '#38bdf8' : p.type === 'Sylveon' ? '#ff85b8' : '#1e293b';
+        actx.fill(); 
+        actx.lineWidth = 2.5; 
+        actx.strokeStyle = p.type === 'Bomb' ? '#ef4444' : '#4a1530'; 
+        actx.stroke();
+
+        actx.font = "bold 13px Fredoka, sans-serif"; 
+        actx.fillStyle = p.type === 'Bomb' ? '#fff' : '#4a1530'; 
+        actx.textAlign = "center";
+        actx.textBaseline = "middle";
+        let label = p.type === 'Pikachu' ? '⚡ Pika' : p.type === 'Eevee' ? '🦊 Eevee' : p.type === 'Snorlax' ? '💤 Snorlax' : p.type === 'Sylveon' ? '🎀 Sylveon' : '💣';
+        actx.fillText(label, p.x, p.y);
+      }
+
+      // Draw active projectiles (Pokéballs)
+      for (let i = balls.length - 1; i >= 0; i--) {
+        let b = balls[i];
+        if (!b.active) continue;
+        b.x += b.vx; 
+        b.y += b.vy;
+
+        // Draw Pokéball
+        actx.beginPath(); actx.arc(b.x, b.y, 11, Math.PI, 0); actx.fillStyle = "#ff3d8b"; actx.fill();
+        actx.beginPath(); actx.arc(b.x, b.y, 11, 0, Math.PI); actx.fillStyle = "#ffffff"; actx.fill();
+        actx.beginPath(); actx.moveTo(b.x - 11, b.y); actx.lineTo(b.x + 11, b.y); actx.lineWidth = 2; actx.strokeStyle = "#4a1530"; actx.stroke();
+        actx.beginPath(); actx.arc(b.x, b.y, 3.5, 0, Math.PI * 2); actx.fillStyle = "#fff"; actx.fill(); actx.stroke();
+
+        // Check collision with targets
+        for (let p of pokemons) {
+          if (!p.caught && Math.hypot(b.x - p.x, b.y - p.y) < p.radius + 10) {
+            p.caught = true;
+            b.active = false;
+            
+            if (p.type === 'Bomb') {
+              score = Math.max(0, score - 2);
+              caughtEffects.push({ text: `Boom! -2 💣`, x: p.x, y: p.y, color: "#ef4444", life: 35 });
+            } else {
+              score++;
+              ammo += 2; // reward bonus balls for successful catches!
+              caughtEffects.push({ text: `Captured ${p.type}! ✨ (+2 Balls)`, x: p.x, y: p.y, color: "#ff4d94", life: 35 });
+            }
+            updateHUD();
+            break;
+          }
+        }
+
+        if (b.y < 0 || b.x < 0 || b.x > arcadeCanvas.width || b.y > arcadeCanvas.height) {
+          balls.splice(i, 1);
+        }
+      }
+
+      // Draw floating capture popups
+      for (let i = caughtEffects.length - 1; i >= 0; i--) {
+        let eff = caughtEffects[i];
+        eff.y -= 1.1; 
+        eff.life--;
+        actx.font = "bold 14px Fredoka, sans-serif"; 
+        actx.fillStyle = eff.color; 
+        actx.textAlign = "center";
+        actx.fillText(eff.text, eff.x, eff.y);
+        if (eff.life <= 0) caughtEffects.splice(i, 1);
+      }
+
+      // Thrower prompt at bottom center
+      actx.fillStyle = "#4a1530"; 
+      actx.font = "bold 12px Fredoka, sans-serif"; 
+      actx.textAlign = "center";
+      actx.fillText("👆 Tap anywhere to throw Pokéball!", arcadeCanvas.width / 2, arcadeCanvas.height - 8);
+
+      if (ammo <= 0 && balls.length === 0 && caughtEffects.length === 0) {
+        endArcadeGame();
+        return;
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
   </script>
 </body>
 </html>
