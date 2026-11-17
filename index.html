@@ -21,6 +21,11 @@
       --mint-open: #22c55e;
     }
 
+    /* Custom Pokémon Cursor */
+    body, button, a, .cat-pill, .arcade-card-item, .trainer-portrait-wrap {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23ff4d94' stroke='%234a1530' stroke-width='2'/%3E%3Cpath d='M2 12h20' stroke='%234a1530' stroke-width='2'/%3E%3Ccircle cx='12' cy='12' r='3.5' fill='%23fff' stroke='%234a1530' stroke-width='2'/%3E%3C/svg%3E"), auto !important;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -90,8 +95,8 @@
     }
 
     /* =========================================
-       POKEDEX WELCOME BOOT OVERLAY
-       ========================================= */
+        POKÉDEX WELCOME BOOT OVERLAY
+        ========================================= */
     .pokedex-intro {
       position: fixed;
       inset: 0;
@@ -182,8 +187,8 @@
     }
 
     /* =========================================
-       CLICK SPARKLES
-       ========================================= */
+        CLICK SPARKLES
+        ========================================= */
     .click-pop {
       position: fixed;
       pointer-events: none;
@@ -198,8 +203,8 @@
     }
 
     /* =========================================
-       MAIN CONTAINER & HERO CARD
-       ========================================= */
+        MAIN CONTAINER & HERO CARD
+        ========================================= */
     .container {
       max-width: 1020px;
       margin: 0 auto;
@@ -413,8 +418,8 @@
     }
 
     /* =========================================
-       FLOATING SYLVEON COMPANION
-       ========================================= */
+        FLOATING SYLVEON COMPANION
+        ========================================= */
     .sylveon-companion {
       position: fixed;
       bottom: 16px;
@@ -466,8 +471,8 @@
     }
 
     /* =========================================
-       SECTION HEADERS & 6 CATEGORY CARTRIDGES
-       ========================================= */
+        SECTION HEADERS & 6 CATEGORY CARTRIDGES
+        ========================================= */
     .section-header {
       text-align: center;
       margin: 2.5rem 0 1.3rem;
@@ -528,8 +533,8 @@
     }
 
     /* =========================================
-       ARCADE CARD DECK SLIDER (PORTFOLIO VIEWER)
-       ========================================= */
+        ARCADE CARD DECK SLIDER (PORTFOLIO VIEWER)
+        ========================================= */
     .arcade-deck-frame {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
@@ -758,8 +763,60 @@
     }
 
     /* =========================================
-       SERENE'S EDITING COMMISSION PRICE LIST
-       ========================================= */
+        PANG-POKÉMON MINI-GAME STYLES
+        ========================================= */
+    .minigame-wrapper {
+      background: var(--card-white);
+      border: 3px solid var(--berry-dark);
+      border-radius: 30px;
+      padding: 2rem 1.5rem;
+      margin-top: 2.6rem;
+      box-shadow: 0 10px 0 var(--pink-mid);
+      text-align: center;
+    }
+
+    .minigame-arena {
+      background: linear-gradient(135deg, #1e1b4b, #31103f);
+      border: 3px solid var(--berry-dark);
+      border-radius: 20px;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 1rem;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .wild-pokemon {
+      position: absolute;
+      font-size: 2.8rem;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s;
+      animation: floatWild 1.5s ease-in-out infinite alternate;
+    }
+
+    .wild-pokemon:hover {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    @keyframes floatWild {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-12px); }
+    }
+
+    .pokeball-thrower {
+      font-size: 2rem;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 0.4s ease-out;
+      pointer-events: none;
+    }
+
+    /* =========================================
+        SERENE'S EDITING COMMISSION PRICE LIST
+        ========================================= */
     .pricelist-wrapper {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
@@ -878,8 +935,8 @@
     }
 
     /* =========================================
-       MODE OF PAYMENT & HOW TO ORDER
-       ========================================= */
+        MODE OF PAYMENT & HOW TO ORDER
+        ========================================= */
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -925,8 +982,8 @@
     .info-card li { margin-bottom: 0.4rem; }
 
     /* =========================================
-       FULLSCREEN LIGHTBOX MODAL
-       ========================================= */
+        FULLSCREEN LIGHTBOX MODAL
+        ========================================= */
     .modal {
       display: none;
       position: fixed;
@@ -975,11 +1032,11 @@
     <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
     <div class="intro-title">Serene's Editing Commission</div>
     <p style="opacity:0.92; margin-top:4px;">Loading Card Deck Portfolio & Price List...</p>
-    <button class="intro-btn" onclick="closeIntro()">Open Pokédex ▶</button>
+    <button class="intro-btn" onclick="playClickSound(); closeIntro()">Open Pokédex ▶</button>
   </div>
 
   <!-- Floating Sylveon Companion Widget -->
-  <div class="sylveon-companion" onclick="petSylveon(event)">
+  <div class="sylveon-companion" onclick="playClickSound(); petSylveon(event)">
     <div class="sylveon-bubble" id="sylveonMsg">Swipe cards to view edits! 🎀</div>
     <div class="sylveon-avatar">
       <img src="sylveon.jpg" alt="Sylveon Partner" />
@@ -1009,19 +1066,19 @@
           </p>
 
           <div class="action-row">
-            <a href="https://www.facebook.com/vanne.dieuxeme" target="_blank" rel="noopener noreferrer" class="poke-btn poke-btn-primary">
+            <a href="https://www.facebook.com/vanne.dieuxeme" target="_blank" rel="noopener noreferrer" class="poke-btn poke-btn-primary" onmouseenter="playHoverSound()" onclick="playClickSound()">
               💌 Message via Facebook
             </a>
-            <a href="#portfolio" class="poke-btn poke-btn-secondary">
+            <a href="#portfolio" class="poke-btn poke-btn-secondary" onmouseenter="playHoverSound()" onclick="playClickSound()">
               🃏 Browse Sample Cards
             </a>
-            <a href="#pricelist" class="poke-btn poke-btn-secondary">
+            <a href="#pricelist" class="poke-btn poke-btn-secondary" onmouseenter="playHoverSound()" onclick="playClickSound()">
               🏷️ View Price List
             </a>
           </div>
         </div>
 
-        <div class="trainer-portrait-wrap" onclick="openLightbox('serena.jpg')">
+        <div class="trainer-portrait-wrap" onclick="playClickSound(); openLightbox('serena.jpg')">
           <div class="trainer-portrait-card">
             <img src="serena.jpg" alt="Serene" />
           </div>
@@ -1046,17 +1103,28 @@
         </div>
 
         <div class="deck-stage" id="deckStage">
-          <button class="deck-nav-btn" onclick="slideDeck(-1)" aria-label="Previous Card">◀</button>
+          <button class="deck-nav-btn" onclick="playClickSound(); slideDeck(-1)" onmouseenter="playHoverSound()" aria-label="Previous Card">◀</button>
 
           <div class="deck-cards-viewport" id="deckViewport"></div>
 
-          <button class="deck-nav-btn" onclick="slideDeck(1)" aria-label="Next Card">▶</button>
+          <button class="deck-nav-btn" onclick="playClickSound(); slideDeck(1)" onmouseenter="playHoverSound()" aria-label="Next Card">▶</button>
         </div>
 
         <div class="deck-hint">Tap the center card to zoom fullscreen • Swipe left or right to flip cards</div>
 
         <!-- Quick Thumbnail Strip -->
         <div class="thumb-strip" id="thumbStrip"></div>
+      </div>
+    </section>
+
+    <!-- Pokémon Mini Game Section -->
+    <section class="minigame-wrapper">
+      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Wild Pokémon Encounter!</h2>
+      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Click the wild Pokémon to catch them with a Pokéball! Score: <span id="pokeScore" style="font-weight: 700; color: var(--pink-hot);">0</span></p>
+      
+      <div class="minigame-arena" id="gameArena" onclick="throwPokeball(event)">
+        <div id="wildMon" class="wild-pokemon" style="top: 40px; left: 50%;" onclick="catchPokemon(event)">🌸</div>
+        <div id="thrownBall" class="pokeball-thrower" style="display: none; bottom: 10px; left: 50%;"></div>
       </div>
     </section>
 
@@ -1160,7 +1228,7 @@
 
       <div class="open-dm-banner">
         <p>AND MOREEE!! Just pm me! We will talk about it. My messages are open everyday and anytime!</p>
-        <a href="https://www.facebook.com/vanne.dieuxeme" target="_blank" rel="noopener noreferrer" class="poke-btn poke-btn-primary">
+        <a href="https://www.facebook.com/vanne.dieuxeme" target="_blank" rel="noopener noreferrer" class="poke-btn poke-btn-primary" onmouseenter="playHoverSound()" onclick="playClickSound()">
           💌 Message via Facebook
         </a>
       </div>
@@ -1198,6 +1266,53 @@
   </div>
 
   <script>
+    // =========================================================================
+    // POKÉMON AUDIO SYNTHESIZER (Web Audio API for Menu Beeps & Clicks)
+    // =========================================================================
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function playHoverSound() {
+      try {
+        initAudio();
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch(e) {}
+    }
+
+    function playClickSound() {
+      try {
+        initAudio();
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.06); // A5
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.15);
+      } catch(e) {}
+    }
+
     // =========================================================================
     // CLIENT PORTFOLIO DATA (6 CATEGORIES + ALL UPLOADED SAMPLES)
     // =========================================================================
@@ -1376,6 +1491,40 @@
     }
 
     // =========================================================================
+    // POKÉMON MINI-GAME LOGIC
+    // =========================================================================
+    let score = 0;
+    const mons = ["🌸", "✨", "🎀", "💖", "⭐"];
+    
+    function catchPokemon(e) {
+      e.stopPropagation();
+      score++;
+      document.getElementById("pokeScore").textContent = score;
+      playClickSound();
+      
+      const mon = document.getElementById("wildMon");
+      mon.style.display = "none";
+      
+      setTimeout(() => {
+        mon.textContent = mons[Math.floor(Math.random() * mons.length)];
+        mon.style.top = Math.floor(Math.random() * 120 + 20) + "px";
+        mon.style.left = Math.floor(Math.random() * 80 + 10) + "%";
+        mon.style.display = "block";
+      }, 800);
+    }
+
+    function throwPokeball(e) {
+      const arena = document.getElementById("gameArena");
+      const rect = arena.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const ball = document.getElementById("thrownBall");
+      ball.style.left = x + "px";
+      ball.style.display = "block";
+      ball.textContent = "🔴";
+      setTimeout(() => { ball.style.display = "none"; }, 400);
+    }
+
+    // =========================================================================
     // ARCADE CARD DECK SLIDER LOGIC
     // =========================================================================
     const categoryGrid = document.getElementById("categoryGrid");
@@ -1425,7 +1574,8 @@
           </div>
         `;
 
-        // Auto-remove missing optional files so deck never shows broken cards
+        card.onmouseenter = () => playHoverSound();
+
         const imgEl = card.querySelector("img");
         imgEl.onerror = () => {
           validItems = validItems.filter(v => v.image !== item.image);
@@ -1434,6 +1584,7 @@
         };
 
         card.onclick = () => {
+          playClickSound();
           if (idx === currentIndex) {
             openLightbox(encodedSrc);
           } else {
@@ -1449,7 +1600,9 @@
         thumb.className = "thumb-dot";
         thumb.dataset.idx = idx;
         thumb.innerHTML = `<img src="${encodedSrc}" alt="${item.title}" loading="lazy" />`;
+        thumb.onmouseenter = () => playHoverSound();
         thumb.onclick = () => {
+          playClickSound();
           currentIndex = idx;
           updateDeckPositions();
         };
@@ -1527,7 +1680,11 @@
         <span class="cat-num">${cat.code}</span>
         <span>${cat.label}</span>
       `;
-      btn.onclick = () => selectCategory(cat);
+      btn.onmouseenter = () => playHoverSound();
+      btn.onclick = () => {
+        playClickSound();
+        selectCategory(cat);
+      };
       categoryGrid.appendChild(btn);
     });
 
