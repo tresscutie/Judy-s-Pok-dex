@@ -728,7 +728,7 @@
       height: 340px;
       position: relative;
       overflow: hidden;
-      touch-action: none; /* Ginawang smooth ang touch/drag sa cellphone */
+      cursor: none;
       box-shadow: inset 0 0 25px rgba(0,0,0,0.6);
     }
 
@@ -1113,14 +1113,14 @@
     <!-- Serene's Catcher Mini-Game -->
     <section class="minigame-wrapper">
       <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Help Serene Catch Pokéballs!</h2>
-      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Drag or slide your finger/mouse inside the box to guide Serene. Catch the <strong>Pokéballs</strong> for points, avoid <strong>Bombs (💣)</strong>!</p>
+      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Catch the <strong>Pokéballs</strong> for points. <strong>Avoid the Bombs (💣)</strong>—speed increases as your score goes up!</p>
       
       <div class="game-stats">
         <span>⭐ Score: <span id="gameScore">0</span></span>
         <span>❤️ Lives: <span id="gameLives">❤️❤️❤️</span></span>
       </div>
 
-      <div class="game-arena" id="gameArena">
+      <div class="game-arena" id="gameArena" onmousemove="moveCatcher(event)">
         <!-- Serene Catcher Character -->
         <div class="catcher-serene" id="sereneCatcher" style="left: 50%;">
           <img src="serena.jpg" alt="Serene Catcher" />
@@ -1128,7 +1128,7 @@
 
         <div class="game-start-screen" id="startScreen">
           <h3>Ready to Play?</h3>
-          <p>Drag or slide your finger/mouse to guide Serene! Speed increases as your score goes up.</p>
+          <p>Move mouse to guide Serene. Catch Pokéballs, avoid bombs! The game gets faster as score increases!</p>
           <button class="intro-btn" onclick="startGame()">Start Game ▶</button>
         </div>
       </div>
@@ -1284,6 +1284,7 @@
       }
     }
 
+    // Classic upbeat Pokémon-style opening melody sequence
     const pokeNotes = [
       { f: 523.25, d: 0.2 },
       { f: 659.25, d: 0.2 },
@@ -1365,6 +1366,7 @@
       } catch(e) {}
     }
 
+    // Sound when catching a Pokéball (maganda at masayang chime)
     function playCatchSound() {
       try {
         initAudio();
@@ -1384,6 +1386,7 @@
       } catch(e) {}
     }
 
+    // Sound when hitting a Bomb (tunog sabog gamit ang noise buffer)
     function playExplosionSound() {
       try {
         initAudio();
@@ -1417,6 +1420,7 @@
       } catch(e) {}
     }
 
+    // Arcade Game Over Sound
     function playGameOverSound() {
       try {
         initAudio();
@@ -1439,7 +1443,7 @@
     }
 
     // =========================================================================
-    // CLIENT PORTFOLIO DATA
+    // CLIENT PORTFOLIO DATA (6 CATEGORIES + ALL UPLOADED SAMPLES)
     // =========================================================================
     const CLIENT_PORTFOLIO = {
       categories: [
@@ -1464,6 +1468,9 @@
       ]
     };
 
+    // =========================================================================
+    // INTRO & LIGHTBOX
+    // =========================================================================
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
       if (intro) intro.classList.add("hide");
@@ -1486,7 +1493,7 @@
     }
 
     const SYLVEON_QUOTES = [
-      "Drag your finger inside the box to catch Pokéballs! 🎀",
+      "Move mouse to help Serene catch Pokéballs! 🎀",
       "Avoid the bombs! Speed increases with score! 💣",
       "Check out the Price List below! 🏷️",
       "GCash MOP ready! 💙"
@@ -1500,7 +1507,7 @@
     }
 
     // =========================================================================
-    // SERENE CATCHER GAME LOGIC (TOUCH & MOUSE DRAG SUPPORT)
+    // SERENE CATCHER GAME LOGIC (Progressive Speed & Explosion & Arcade Over)
     // =========================================================================
     let score = 0;
     let lives = 3;
@@ -1509,11 +1516,11 @@
     let gameLoopInterval = null;
     let fallingItems = [];
 
-    function handleCatcherMove(clientX) {
+    function moveCatcher(e) {
       if (!isPlaying) return;
       const arena = document.getElementById("gameArena");
       const rect = arena.getBoundingClientRect();
-      let x = clientX - rect.left;
+      let x = e.clientX - rect.left;
       
       if (x < 35) x = 35;
       if (x > rect.width - 35) x = rect.width - 35;
@@ -1521,25 +1528,6 @@
       const catcher = document.getElementById("sereneCatcher");
       catcher.style.left = x + "px";
     }
-
-    // Event listeners para sa Mouse at Touch/Drag sa Mobile
-    const arenaEl = document.getElementById("gameArena");
-
-    arenaEl.addEventListener("mousemove", (e) => {
-      handleCatcherMove(e.clientX);
-    });
-
-    arenaEl.addEventListener("touchmove", (e) => {
-      if (e.touches.length > 0) {
-        handleCatcherMove(e.touches[0].clientX);
-      }
-    }, { passive: true });
-
-    arenaEl.addEventListener("touchstart", (e) => {
-      if (e.touches.length > 0) {
-        handleCatcherMove(e.touches[0].clientX);
-      }
-    }, { passive: true });
 
     function startGame() {
       const startScreen = document.getElementById("startScreen");
@@ -1584,6 +1572,7 @@
 
       arena.appendChild(el);
 
+      // Habang tumataas ang score, bumibilis ang hulog (progressive speed multiplier)
       const speedMultiplier = 1 + (score / 60);
       const baseSpeed = 2.0 + Math.random() * 2.0;
 
@@ -1612,6 +1601,7 @@
         if (item.y >= catcherTop - 15 && item.y <= catcherTop + 35) {
           if (Math.abs(item.x - catcherX) < 35) {
             if (item.type === "bomb") {
+              // Trigger explosion effect & sound
               playExplosionSound();
               showExplosion(item.x, item.y);
               lives--;
@@ -1778,6 +1768,7 @@
       updateDeckPositions();
     }
 
+    // Render Category Buttons
     CLIENT_PORTFOLIO.categories.forEach(cat => {
       const btn = document.createElement("button");
       btn.className = "cat-pill";
