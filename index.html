@@ -11,7 +11,7 @@
     :root {
       --bg-pink-1: #fff0f6;
       --bg-pink-2: #ffe0ee;
-      --card-white: rgba(255, 255, 255, 0.9);
+      --card-white: rgba(255, 255, 255, 0.92);
       --pink-hot: #ff4d94;
       --pink-mid: #ff85b8;
       --pink-soft: #ffc2dc;
@@ -19,7 +19,6 @@
       --berry-dark: #4a1530;
       --berry-muted: #874b68;
       --mint-open: #22c55e;
-      --sky-accent: #7dd3fc;
     }
 
     * {
@@ -105,9 +104,9 @@
       text-align: center;
       padding: 2rem;
       color: #fff;
-      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.75s ease,
-                  visibility 0.75s;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.7s ease,
+                  visibility 0.7s;
     }
 
     .pokedex-intro.hide {
@@ -118,15 +117,15 @@
     }
 
     .pokeball-loader {
-      width: 84px;
-      height: 84px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       background: linear-gradient(180deg, #ff2a7a 0% 46%, #4a1530 46% 54%, #ffffff 54% 100%);
       border: 5px solid #4a1530;
       position: relative;
       box-shadow: 0 14px 30px rgba(74, 21, 48, 0.28);
       animation: wobbleBall 1.1s ease-in-out infinite;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.2rem;
     }
 
     .pokeball-loader::after {
@@ -134,13 +133,12 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: #fff;
       border: 5px solid #4a1530;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 12px #fff;
     }
 
     @keyframes wobbleBall {
@@ -164,13 +162,13 @@
 
     .intro-title {
       font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      font-size: clamp(2.1rem, 6vw, 3.3rem);
       font-weight: 700;
       text-shadow: 0 4px 0 rgba(74, 21, 48, 0.2);
     }
 
     .intro-btn {
-      margin-top: 1.5rem;
+      margin-top: 1.4rem;
       background: #fff;
       color: var(--pink-hot);
       font-family: 'Fredoka', sans-serif;
@@ -181,16 +179,10 @@
       padding: 10px 26px;
       border-radius: 999px;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .intro-btn:active {
-      transform: translateY(3px);
-      box-shadow: 0 1px 0 var(--berry-dark);
     }
 
     /* =========================================
-       CLICK BURST PARTICLES & RIPPLES
+       CLICK SPARKLES
        ========================================= */
     .click-pop {
       position: fixed;
@@ -205,26 +197,13 @@
       100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.25) rotate(25deg); }
     }
 
-    .btn-ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.55);
-      transform: scale(0);
-      animation: rippleOut 0.55s ease-out forwards;
-      pointer-events: none;
-    }
-
-    @keyframes rippleOut {
-      to { transform: scale(3.2); opacity: 0; }
-    }
-
     /* =========================================
        MAIN CONTAINER & TRAINER CARD HERO
        ========================================= */
     .container {
-      max-width: 1040px;
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 2rem 1rem 5.5rem;
+      padding: 1.8rem 1rem 5.5rem;
     }
 
     .trainer-card {
@@ -232,11 +211,11 @@
       border: 3px solid var(--berry-dark);
       border-radius: 30px;
       box-shadow: 0 10px 0 var(--pink-mid), 0 18px 38px rgba(255, 77, 148, 0.22);
-      padding: 1.8rem 1.4rem;
+      padding: 1.8rem 1.5rem;
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(12px);
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.4rem;
       animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
@@ -244,7 +223,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.2rem;
     }
 
     .lens-main {
@@ -278,12 +257,8 @@
         grid-template-columns: 1fr;
         text-align: center;
       }
-      .pokedex-lights {
-        justify-content: center;
-      }
-      .action-row {
-        justify-content: center !important;
-      }
+      .pokedex-lights { justify-content: center; }
+      .action-row { justify-content: center !important; }
     }
 
     .trainer-badge {
@@ -298,7 +273,7 @@
       font-size: 0.8rem;
       padding: 5px 15px;
       border-radius: 999px;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .live-dot {
@@ -316,22 +291,21 @@
 
     h1 {
       font-family: 'Fredoka', sans-serif;
-      font-size: clamp(2.3rem, 6vw, 3.6rem);
+      font-size: clamp(2.1rem, 5.5vw, 3.3rem);
       font-weight: 700;
       color: var(--berry-dark);
       line-height: 1.12;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.65rem;
     }
 
-    h1 span {
-      color: var(--pink-hot);
-    }
+    h1 span { color: var(--pink-hot); }
 
     .trainer-bio {
       color: var(--berry-muted);
-      font-size: 0.98rem;
+      font-size: 0.96rem;
+      line-height: 1.55;
       font-weight: 500;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
 
     .action-row {
@@ -341,10 +315,9 @@
       flex-wrap: wrap;
     }
 
-    /* Animated Holographic Trainer Portrait Frame */
     .trainer-portrait-wrap {
       position: relative;
-      max-width: 235px;
+      max-width: 225px;
       margin: 0 auto;
       cursor: pointer;
       animation: floatGentle 3.6s ease-in-out infinite;
@@ -352,7 +325,7 @@
 
     @keyframes floatGentle {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-8px) rotate(1.2deg); }
+      50% { transform: translateY(-7px) rotate(1.2deg); }
     }
 
     .trainer-portrait-card {
@@ -363,11 +336,6 @@
       padding: 8px;
       box-shadow: 0 8px 0 var(--pink-hot), 0 14px 28px rgba(255, 77, 148, 0.25);
       overflow: hidden;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .trainer-portrait-card:hover {
-      transform: scale(1.04) rotate(-1.5deg);
     }
 
     .trainer-portrait-card::after {
@@ -411,8 +379,6 @@
     }
 
     .poke-btn {
-      position: relative;
-      overflow: hidden;
       text-decoration: none;
       font-family: 'Fredoka', sans-serif;
       font-weight: 600;
@@ -440,17 +406,14 @@
       box-shadow: 0 5px 0 var(--pink-mid);
     }
 
-    .poke-btn:hover {
-      transform: translateY(-3px);
-    }
-
+    .poke-btn:hover { transform: translateY(-3px); }
     .poke-btn:active {
       transform: translateY(3px) !important;
       box-shadow: 0 1px 0 var(--berry-dark) !important;
     }
 
     /* =========================================
-       FLOATING SYLVEON COMPANION WIDGET
+       FLOATING SYLVEON COMPANION
        ========================================= */
     .sylveon-companion {
       position: fixed;
@@ -479,24 +442,14 @@
     }
 
     .sylveon-avatar {
-      width: 82px;
-      height: 82px;
+      width: 78px;
+      height: 78px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #fff0f6, #ffc2dc);
       border: 3px solid var(--berry-dark);
       box-shadow: 0 6px 0 var(--pink-hot), 0 12px 24px rgba(74, 21, 48, 0.25);
       overflow: hidden;
       padding: 4px;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-      animation: floatGentle 3.2s ease-in-out infinite reverse;
-    }
-
-    .sylveon-avatar:hover {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    .sylveon-avatar:active {
-      transform: scale(0.92);
     }
 
     .sylveon-avatar img {
@@ -508,7 +461,7 @@
     }
 
     @media (max-width: 600px) {
-      .sylveon-avatar { width: 66px; height: 66px; }
+      .sylveon-avatar { width: 64px; height: 64px; }
       .sylveon-bubble { font-size: 0.68rem; padding: 4px 9px; }
     }
 
@@ -517,7 +470,7 @@
        ========================================= */
     .section-header {
       text-align: center;
-      margin: 2.6rem 0 1.3rem;
+      margin: 2.5rem 0 1.3rem;
     }
 
     .section-header h2 {
@@ -533,14 +486,12 @@
 
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
       gap: 10px;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.5rem;
     }
 
     .cat-pill {
-      position: relative;
-      overflow: hidden;
       background: #fff;
       border: 2.5px solid var(--berry-dark);
       border-radius: 18px;
@@ -555,17 +506,13 @@
       flex-direction: column;
       align-items: center;
       gap: 3px;
-      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .cat-pill:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: var(--pink-hot);
       box-shadow: 0 7px 0 var(--pink-mid);
-    }
-
-    .cat-pill:active {
-      transform: translateY(2px) scale(0.96);
     }
 
     .cat-pill.active {
@@ -577,116 +524,306 @@
 
     .cat-num {
       font-size: 0.7rem;
-      opacity: 0.78;
-      letter-spacing: 0.5px;
+      opacity: 0.8;
     }
 
     /* =========================================
-       POKEDEX DISPLAY SCREEN (PREVIEW AREA)
+       ARCADE CARD DECK SLIDER (PORTFOLIO VIEWER)
        ========================================= */
-    .pokedex-screen-frame {
+    .arcade-deck-frame {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
-      border-radius: 28px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 0 var(--pink-soft);
+      border-radius: 30px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 10px 0 var(--pink-mid);
       backdrop-filter: blur(10px);
-    }
-
-    .empty-pokedex {
       text-align: center;
-      padding: 2.8rem 1.25rem;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #fff5f9, #ffe6f1);
-      border: 2.5px solid var(--pink-border);
-      animation: bounceIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
-    .bounce-sprite {
-      font-size: 2.5rem;
-      display: inline-block;
-      margin-bottom: 0.55rem;
-      animation: spriteHop 1.6s ease-in-out infinite;
+    .deck-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 1.1rem;
+      padding: 0 0.4rem;
     }
 
-    @keyframes spriteHop {
-      0%, 100% { transform: translateY(0) scale(1, 1); }
-      40% { transform: translateY(-10px) scale(0.95, 1.06); }
-      75% { transform: translateY(0) scale(1.06, 0.94); }
-    }
-
-    .empty-pokedex h3 {
+    .deck-cat-badge {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.3rem;
+      font-weight: 700;
+      font-size: 1.1rem;
       color: var(--berry-dark);
-      margin-bottom: 0.35rem;
     }
 
-    .empty-pokedex p {
-      color: var(--berry-muted);
-      font-size: 0.92rem;
-      max-width: 440px;
-      margin: 0 auto;
-    }
-
-    .status-chip {
-      display: inline-block;
-      margin-top: 1rem;
-      background: #fff;
+    .deck-counter {
+      background: #ffe4f0;
       border: 2px solid var(--pink-hot);
       color: var(--pink-hot);
       font-family: 'Fredoka', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 0.84rem;
       padding: 4px 14px;
       border-radius: 999px;
     }
 
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 1.15rem;
+    .deck-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      min-height: 360px;
+      padding: 0.5rem 0;
+      touch-action: pan-y;
+      user-select: none;
     }
 
-    .work-card {
+    .deck-nav-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
       background: #fff;
-      border: 2.5px solid var(--berry-dark);
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 6px 0 var(--pink-soft);
+      border: 3px solid var(--berry-dark);
+      box-shadow: 0 4px 0 var(--pink-mid);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--berry-dark);
       cursor: pointer;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
-      animation: bounceIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      flex-shrink: 0;
+      transition: transform 0.15s ease;
+      z-index: 5;
     }
 
-    .work-card:hover {
-      transform: translateY(-6px) rotate(-1deg);
-      box-shadow: 0 10px 0 var(--pink-mid);
+    .deck-nav-btn:hover {
+      background: #ffe4f0;
+      transform: scale(1.08);
     }
 
-    .work-card img {
+    .deck-nav-btn:active {
+      transform: translateY(3px);
+    }
+
+    .deck-cards-viewport {
+      position: relative;
       width: 100%;
-      aspect-ratio: 3 / 4;
+      max-width: 560px;
+      height: 370px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .arcade-card-item {
+      position: absolute;
+      width: 245px;
+      background: #fff;
+      border: 3px solid var(--berry-dark);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 0 var(--pink-soft), 0 16px 30px rgba(74, 21, 48, 0.18);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.35s ease,
+                  filter 0.35s ease;
+      cursor: pointer;
+    }
+
+    .arcade-card-item img {
+      width: 100%;
+      height: 295px;
       object-fit: cover;
       display: block;
       background: #ffe6f1;
     }
 
-    .work-meta {
-      padding: 0.8rem 0.95rem;
+    .arcade-card-footer {
+      padding: 0.65rem 0.9rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background: #fff;
       border-top: 2px solid #ffe4f0;
     }
 
-    .work-meta strong {
+    .arcade-card-footer strong {
       font-family: 'Fredoka', sans-serif;
       font-size: 0.92rem;
       color: var(--berry-dark);
     }
 
-    .work-meta span {
+    .arcade-card-footer span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #ffe0ee;
+      color: var(--pink-hot);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    /* Card Deck Positions: Center, Left Peek, Right Peek, Hidden */
+    .arcade-card-item.pos-center {
+      transform: translateX(0) scale(1) rotate(0deg);
+      opacity: 1;
+      z-index: 4;
+      filter: none;
+    }
+
+    .arcade-card-item.pos-prev {
+      transform: translateX(-165px) scale(0.84) rotate(-7deg);
+      opacity: 0.65;
+      z-index: 2;
+      filter: brightness(0.95);
+    }
+
+    .arcade-card-item.pos-next {
+      transform: translateX(165px) scale(0.84) rotate(7deg);
+      opacity: 0.65;
+      z-index: 2;
+      filter: brightness(0.95);
+    }
+
+    .arcade-card-item.pos-hidden {
+      transform: translateX(0) scale(0.65);
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @media (max-width: 540px) {
+      .deck-cards-viewport {
+        height: 340px;
+      }
+      .arcade-card-item {
+        width: 215px;
+      }
+      .arcade-card-item img {
+        height: 265px;
+      }
+      .arcade-card-item.pos-prev {
+        transform: translateX(-115px) scale(0.82) rotate(-6deg);
+      }
+      .arcade-card-item.pos-next {
+        transform: translateX(115px) scale(0.82) rotate(6deg);
+      }
+      .deck-nav-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+    }
+
+    .deck-hint {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      color: var(--berry-muted);
+      margin-top: 0.4rem;
+    }
+
+    .thumb-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 0.75rem 0.25rem 0.35rem;
+      margin-top: 0.8rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--pink-mid) transparent;
+    }
+
+    .thumb-dot {
+      width: 48px;
+      height: 60px;
+      border-radius: 10px;
+      border: 2.5px solid transparent;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.2s ease;
+    }
+
+    .thumb-dot.active {
+      border-color: var(--pink-hot);
+      opacity: 1;
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 3px 0 var(--berry-dark);
+    }
+
+    .thumb-dot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* =========================================
+       SERENE'S EDITING COMMISSION PRICE LIST
+       ========================================= */
+    .pricelist-wrapper {
+      background: var(--card-white);
+      border: 3px solid var(--berry-dark);
+      border-radius: 30px;
+      padding: 2rem 1.5rem;
+      margin-top: 2.6rem;
+      box-shadow: 0 10px 0 var(--pink-mid);
+    }
+
+    .pricelist-intro {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .pricelist-intro h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(1.45rem, 4.5vw, 2rem);
+      color: var(--pink-hot);
+      margin-bottom: 0.55rem;
+    }
+
+    .pricelist-intro p {
+      color: var(--berry-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      gap: 1.15rem;
+    }
+
+    .rate-card {
+      background: linear-gradient(155deg, #ffffff 0%, #fff4f9 100%);
+      border: 2.5px solid var(--berry-dark);
+      border-radius: 22px;
+      padding: 1.25rem 1.3rem;
+      box-shadow: 0 6px 0 var(--pink-soft);
+      transition: transform 0.2s ease;
+    }
+
+    .rate-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .rate-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px dashed var(--pink-border);
+    }
+
+    .rate-card-header h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.05rem;
+      color: var(--berry-dark);
+    }
+
+    .rate-tag {
       font-size: 0.7rem;
       font-weight: 700;
       background: #ffe0ee;
@@ -695,171 +832,79 @@
       border-radius: 999px;
     }
 
-    /* =========================================
-       MOBILE-RESPONSIVE POKEMON ARCADE CANVAS
-       ========================================= */
-    .arcade-card {
-      background: var(--card-white);
-      border: 3px solid var(--berry-dark);
-      border-radius: 28px;
-      padding: 1.4rem 1rem;
-      margin-top: 2.4rem;
-      box-shadow: 0 10px 0 var(--pink-mid);
-      text-align: center;
+    .rate-list {
+      list-style: none;
     }
 
-    .arcade-hud {
+    .rate-list li {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 0.9rem;
-      padding: 0 0.3rem;
-    }
-
-    .arcade-title {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(1.1rem, 4vw, 1.35rem);
+      align-items: baseline;
+      gap: 10px;
+      font-size: 0.89rem;
       color: var(--berry-dark);
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255, 179, 212, 0.35);
     }
 
-    .hud-pills {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      flex-wrap: wrap;
+    .rate-list li:last-child {
+      border-bottom: none;
     }
 
-    .hud-pill {
-      background: #ffe4f0;
-      border: 2px solid var(--pink-hot);
-      color: var(--pink-hot);
+    .rate-price {
       font-family: 'Fredoka', sans-serif;
       font-weight: 700;
-      font-size: 0.82rem;
-      padding: 4px 12px;
-      border-radius: 999px;
+      color: var(--pink-hot);
+      white-space: nowrap;
+      font-size: 0.92rem;
     }
 
-    .canvas-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 620px;
-      margin: 0 auto;
-      border-radius: 20px;
-      border: 3px solid var(--berry-dark);
-      overflow: hidden;
-      background: linear-gradient(180deg, #e0f2fe 0%, #fff0f6 78%, #dcfce7 100%);
-      box-shadow: inset 0 0 24px rgba(255, 77, 148, 0.14);
-      touch-action: none;
-    }
-
-    #arcadeCanvas {
-      width: 100%;
+    .rate-note {
       display: block;
-      cursor: grab;
-    }
-
-    #arcadeCanvas:active {
-      cursor: grabbing;
-    }
-
-    .arcade-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 240, 246, 0.92);
-      backdrop-filter: blur(6px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      text-align: center;
-      transition: opacity 0.3s ease;
-    }
-
-    .arcade-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .arcade-overlay h3 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(1.2rem, 4.5vw, 1.55rem);
-      color: var(--berry-dark);
-      margin-bottom: 0.35rem;
-    }
-
-    .arcade-overlay p {
-      color: var(--berry-muted);
-      font-size: clamp(0.84rem, 3.2vw, 0.95rem);
-      max-width: 380px;
-      margin-bottom: 0.95rem;
-      line-height: 1.45;
-    }
-
-    .legend-row {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      flex-wrap: wrap;
-      font-family: 'Fredoka', sans-serif;
       font-size: 0.76rem;
+      color: var(--berry-muted);
+      margin-top: 2px;
+    }
+
+    .open-dm-banner {
+      margin-top: 1.6rem;
+      background: linear-gradient(135deg, #ffe4f0, #fff0f6);
+      border: 2.5px dashed var(--pink-hot);
+      border-radius: 20px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .open-dm-banner p {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1rem;
       color: var(--berry-dark);
-      margin-bottom: 1rem;
-    }
-
-    .legend-item {
-      background: #fff;
-      border: 1.5px solid var(--pink-border);
-      padding: 3px 9px;
-      border-radius: 999px;
-    }
-
-    @media (max-width: 480px) {
-      .arcade-hud {
-        justify-content: center;
-      }
-      .arcade-overlay {
-        padding: 0.85rem;
-      }
-      .legend-row {
-        gap: 5px;
-        margin-bottom: 0.85rem;
-      }
-      .legend-item {
-        font-size: 0.72rem;
-        padding: 3px 8px;
-      }
+      margin-bottom: 0.8rem;
     }
 
     /* =========================================
-       COMMISSION INFO & GCASH MOP CARD
+       MODE OF PAYMENT & HOW TO ORDER
        ========================================= */
     .info-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 1.3rem;
-      margin-top: 2.4rem;
+      margin-top: 2.2rem;
     }
 
     .info-card {
       background: var(--card-white);
       border: 3px solid var(--berry-dark);
       border-radius: 26px;
-      padding: 1.6rem;
+      padding: 1.5rem;
       box-shadow: 0 8px 0 var(--pink-soft);
     }
 
     .info-card h3 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.22rem;
+      font-size: 1.2rem;
       color: var(--berry-dark);
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin-bottom: 0.75rem;
     }
 
     .gcash-pill {
@@ -871,26 +916,27 @@
       color: #0369a1;
       font-family: 'Fredoka', sans-serif;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 7px 15px;
       border-radius: 14px;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.75rem;
     }
 
     .info-card ul {
       padding-left: 1.2rem;
       color: var(--berry-muted);
-      font-size: 0.92rem;
+      font-size: 0.91rem;
     }
 
-    .info-card li {
-      margin-bottom: 0.45rem;
-    }
+    .info-card li { margin-bottom: 0.4rem; }
 
+    /* =========================================
+       FULLSCREEN LIGHTBOX MODAL
+       ========================================= */
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(74, 21, 48, 0.82);
+      background: rgba(74, 21, 48, 0.85);
       backdrop-filter: blur(8px);
       z-index: 100;
       align-items: center;
@@ -899,9 +945,7 @@
       cursor: zoom-out;
     }
 
-    .modal.open {
-      display: flex;
-    }
+    .modal.open { display: flex; }
 
     .modal img {
       max-width: 92vw;
@@ -909,17 +953,17 @@
       border-radius: 22px;
       border: 4px solid #fff;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      animation: bounceIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      animation: bounceIn 0.3s ease both;
     }
 
     @keyframes bounceIn {
-      from { opacity: 0; transform: scale(0.92) translateY(16px); }
+      from { opacity: 0; transform: scale(0.92) translateY(14px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     footer {
       text-align: center;
-      margin-top: 3.5rem;
+      margin-top: 3rem;
       color: var(--berry-muted);
       font-family: 'Fredoka', sans-serif;
       font-size: 0.88rem;
@@ -934,21 +978,21 @@
   <div class="pokedex-intro" id="pokedexIntro">
     <div class="pokeball-loader"></div>
     <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
-    <div class="intro-title">Serene</div>
-    <p style="opacity:0.92; margin-top:4px;">Loading Trainer Card, Sylveon Partner & Arcade Mini-Game...</p>
-    <button class="intro-btn" onclick="closeIntro()">Open Trainer Card ▶</button>
+    <div class="intro-title">Serene's Editing Commission</div>
+    <p style="opacity:0.92; margin-top:4px;">Loading Card Deck Portfolio & Price List...</p>
+    <button class="intro-btn" onclick="closeIntro()">Open Pokédex ▶</button>
   </div>
 
   <!-- Floating Sylveon Companion Widget -->
   <div class="sylveon-companion" onclick="petSylveon(event)">
-    <div class="sylveon-bubble" id="sylveonMsg">Tap me for sparkles! 🎀</div>
+    <div class="sylveon-bubble" id="sylveonMsg">Swipe cards to view edits! 🎀</div>
     <div class="sylveon-avatar">
       <img src="sylveon.jpg" alt="Sylveon Partner" />
     </div>
   </div>
 
   <div class="container">
-    <!-- Trainer Card Hero with Serena Illustration -->
+    <!-- Trainer Card Hero -->
     <header class="trainer-card">
       <div class="pokedex-lights">
         <div class="lens-main"></div>
@@ -961,12 +1005,12 @@
         <div>
           <div class="trainer-badge">
             <span class="live-dot"></span>
-            <span>COMMISSIONS OPEN • TRAINER CARD</span>
+            <span>COMMISSIONS OPEN • EVERYDAY & ANYTIME</span>
           </div>
 
-          <h1><span>Serene</span></h1>
+          <h1><span>Serene's</span> Editing Commission</h1>
           <p class="trainer-bio">
-            Custom Edits, UDP, Templates, Posters, Hoodsets, Stamps & Seller Sets ✨
+            ⋆.˚༘⋆ Hi everyone! I am re-opening my editing commission. If you have any projects that need help with editing, I can do it for you!
           </p>
 
           <div class="action-row">
@@ -974,68 +1018,150 @@
               💌 Message via Facebook
             </a>
             <a href="#portfolio" class="poke-btn poke-btn-secondary">
-              🎀 Browse Categories
+              🃏 Browse Sample Cards
             </a>
-            <a href="#minigame" class="poke-btn poke-btn-secondary">
-              🎮 Play Arcade Game
+            <a href="#pricelist" class="poke-btn poke-btn-secondary">
+              🏷️ View Price List
             </a>
           </div>
         </div>
 
-        <!-- Animated Trainer Card Portrait -->
         <div class="trainer-portrait-wrap" onclick="openLightbox('serena.jpg')">
           <div class="trainer-portrait-card">
-            <img src="serena.jpg" alt="Trainer Serene Mascot" />
+            <img src="serena.jpg" alt="Serene" />
           </div>
-          <span class="portrait-tag">✦ Trainer Serene #001</span>
+          <span class="portrait-tag">✦ Serene #001</span>
         </div>
       </div>
     </header>
 
-    <!-- Category Selector Section (6 Categories) -->
+    <!-- Arcade Card Deck Sample Browser -->
     <section id="portfolio">
       <div class="section-header">
-        <h2>Select a Category</h2>
-        <p>Tap any cartridge below to view sample works</p>
+        <h2>Sample Works Card Deck</h2>
+        <p>Select a category cartridge, then swipe or slide the cards to browse</p>
       </div>
 
       <div class="category-grid" id="categoryGrid"></div>
 
-      <div class="pokedex-screen-frame" id="screenFrame">
-        <div class="empty-pokedex">
-          <div class="bounce-sprite">🎀</div>
-          <h3>Choose a Category Above!</h3>
-          <p>Tap <strong>UDP</strong>, <strong>Template</strong>, <strong>Posters</strong>, <strong>Hoodset</strong>, <strong>Stamp</strong>, or <strong>Seller Set</strong> to inspect Serene's sample works.</p>
-          <span class="status-chip">✦ 6 Categories Loaded</span>
+      <div class="arcade-deck-frame">
+        <div class="deck-topbar">
+          <div class="deck-cat-badge" id="deckCatTitle">🃏 UDP (No. 001)</div>
+          <div class="deck-counter" id="deckCounter">Card 1 / 1</div>
         </div>
+
+        <div class="deck-stage" id="deckStage">
+          <button class="deck-nav-btn" onclick="slideDeck(-1)" aria-label="Previous Card">◀</button>
+
+          <div class="deck-cards-viewport" id="deckViewport"></div>
+
+          <button class="deck-nav-btn" onclick="slideDeck(1)" aria-label="Next Card">▶</button>
+        </div>
+
+        <div class="deck-hint">Tap the center card to zoom fullscreen • Swipe left or right to flip cards</div>
+
+        <!-- Quick Thumbnail Strip -->
+        <div class="thumb-strip" id="thumbStrip"></div>
       </div>
     </section>
 
-    <!-- Mobile-Responsive Pokémon Arcade Catcher Game -->
-    <section class="arcade-card" id="minigame">
-      <div class="arcade-hud">
-        <div class="arcade-title">🎮 Serene's Poké-Catcher</div>
-        <div class="hud-pills">
-          <div class="hud-pill" id="scorePill">Score: 0</div>
-          <div class="hud-pill" id="bestPill">Best: 0</div>
-          <div class="hud-pill" id="livesPill">❤️❤️❤️</div>
+    <!-- Serene's Editing Commission Price List -->
+    <section class="pricelist-wrapper" id="pricelist">
+      <div class="pricelist-intro">
+        <h2>⋆.˚༘⋆ SERENE'S EDITING COMMISSION ⋆.˚༘⋆</h2>
+        <p>
+          Hi everyone! I am planning to re-open my editing commission. If you have any projects that need help with editing, I think I can do it for you.
+        </p>
+      </div>
+
+      <div class="rates-grid">
+        <!-- UDP -->
+        <div class="rate-card">
+          <div class="rate-card-header">
+            <h3>੭﹕UDP</h3>
+            <span class="rate-tag">Photo Edits</span>
+          </div>
+          <ul class="rate-list">
+            <li><span>First photo</span><span class="rate-price">₱10</span></li>
+            <li><span>Succeeding photos <span class="rate-note">(depends on the style)</span></span><span class="rate-price">₱4–7 each</span></li>
+          </ul>
+        </div>
+
+        <!-- SONG COVER TEMPLATE -->
+        <div class="rate-card">
+          <div class="rate-card-header">
+            <h3>੭﹕SONG COVER TEMPLATE</h3>
+            <span class="rate-tag">Depends on style</span>
+          </div>
+          <ul class="rate-list">
+            <li><span>Solo Template</span><span class="rate-price">₱5–10</span></li>
+            <li><span>Duo Template</span><span class="rate-price">₱10–15</span></li>
+            <li><span>3–4 Collaborators</span><span class="rate-price">₱15–20</span></li>
+            <li><span>5–6 Collaborators</span><span class="rate-price">₱20–25</span></li>
+            <li><span>6–10 Collaborators</span><span class="rate-price">₱30–40</span></li>
+            <li><span>10+ Collaborators</span><span class="rate-price">₱40–60</span></li>
+          </ul>
+        </div>
+
+        <!-- POSTERS -->
+        <div class="rate-card">
+          <div class="rate-card-header">
+            <h3>੭﹕POSTERS</h3>
+            <span class="rate-tag">Custom Layouts</span>
+          </div>
+          <ul class="rate-list">
+            <li><span>Birthday Poster</span><span class="rate-price">₱10</span></li>
+            <li><span>Girl/Boy Group Poster</span><span class="rate-price">₱15</span></li>
+            <li><span>SDP <span class="rate-note">(Depende sa dami)</span></span><span class="rate-price">₱20–50</span></li>
+            <li><span>Other Posters <span class="rate-note">(movie, celebration posters, etc. — depends on style)</span></span><span class="rate-price">₱10–15</span></li>
+          </ul>
+        </div>
+
+        <!-- PINNED POST & STAMP -->
+        <div class="rate-card">
+          <div class="rate-card-header">
+            <h3>੭﹕PINNED POST & STAMP</h3>
+            <span class="rate-tag">Profile Essentials</span>
+          </div>
+          <ul class="rate-list">
+            <li><span>Pinned Post <span class="rate-note">(depends on style)</span></span><span class="rate-price">₱10–15</span></li>
+            <li><span>Stamp — Minimalist</span><span class="rate-price">₱10</span></li>
+            <li><span>Stamp — With Icons</span><span class="rate-price">₱15</span></li>
+          </ul>
+        </div>
+
+        <!-- VIDEOS -->
+        <div class="rate-card">
+          <div class="rate-card-header">
+            <h3>੭﹕VIDEOS</h3>
+            <span class="rate-tag">Motion & Audio</span>
+          </div>
+          <ul class="rate-list">
+            <li><span>Song Cover</span><span class="rate-price">₱10 / min</span></li>
+            <li><span>Teaser</span><span class="rate-price">₱50</span></li>
+            <li><span>Commercial Video <span class="rate-note">(depends on the style)</span></span><span class="rate-price">₱80–100</span></li>
+            <li><span>Projects <span class="rate-note">(can negotiate based on your budget)</span></span><span class="rate-price">Negotiable</span></li>
+          </ul>
+        </div>
+
+        <!-- OTHERS -->
+        <div class="rate-card">
+          <div class="rate-card-header">
+            <h3>੭﹕OTHERS</h3>
+            <span class="rate-tag">Special Edits</span>
+          </div>
+          <ul class="rate-list">
+            <li><span>Book Cover <span class="rate-note">(depends on the characters)</span></span><span class="rate-price">₱150–300</span></li>
+            <li><span>Color Coded UDP</span><span class="rate-price">₱20</span></li>
+          </ul>
         </div>
       </div>
 
-      <div class="canvas-wrapper" id="canvasWrapper">
-        <canvas id="arcadeCanvas"></canvas>
-
-        <div class="arcade-overlay" id="arcadeOverlay">
-          <h3 id="overlayTitle">Catch Pink Pokéballs & Sylveon!</h3>
-          <p id="overlayDesc">Slide your finger left & right (or use Arrow keys) to move Serene and rack up your highest score!</p>
-          <div class="legend-row">
-            <span class="legend-item">🔴 Pokéball +10</span>
-            <span class="legend-item">💖 Heart +20</span>
-            <span class="legend-item">🎀 Sylveon +50</span>
-            <span class="legend-item">💣 Bomb -1 Life</span>
-          </div>
-          <button class="poke-btn poke-btn-primary" onclick="startArcadeGame()">▶ Start Game</button>
-        </div>
+      <div class="open-dm-banner">
+        <p>✨ AND MOREEE!! Just PM me! We will talk about it. My messages are open everyday and anytime! ⋆.˚༘⋆</p>
+        <a href="https://www.facebook.com/vanne.dieuxeme" target="_blank" rel="noopener noreferrer" class="poke-btn poke-btn-primary">
+          💌 Inquire & Book Slot on Facebook
+        </a>
       </div>
     </section>
 
@@ -1053,15 +1179,15 @@
       <div class="info-card">
         <h3>📋 How to Order</h3>
         <ul>
-          <li>Click <strong>Message via Facebook</strong> and state the category you want to commission.</li>
-          <li>Send your high-quality photos, preferred color theme, and exact text/details.</li>
-          <li>Once confirmed, settle the GCash payment to start your edit!</li>
+          <li>Click <strong>Message via Facebook</strong> and send the edit category/service you want to avail.</li>
+          <li>Provide your photos, preferred theme/colors, and exact text details.</li>
+          <li>Once confirmed, settle your GCash payment to start your edit!</li>
         </ul>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Serene • Pink Pokédex Commission Portfolio • MOP: GCash</p>
+      <p>© 2026 Serene's Editing Commission • Pink Pokédex Portfolio • MOP: GCash</p>
     </footer>
   </div>
 
@@ -1075,8 +1201,6 @@
     // CLIENT PORTFOLIO DATA (6 CATEGORIES + ALL UPLOADED SAMPLES)
     // =========================================================================
     const CLIENT_PORTFOLIO = {
-      facebookUrl: "https://www.facebook.com/vanne.dieuxeme",
-
       categories: [
         { id: "UDP", label: "UDP", code: "No. 001" },
         { id: "Template", label: "Template", code: "No. 002" },
@@ -1087,41 +1211,36 @@
       ],
 
       gallery: [
-        // HOODSET
-        { title: "Hoodset #1", category: "Hoodset", image: "hoodset (1).jpg" },
-        { title: "Hoodset #2", category: "Hoodset", image: "hoodset (2).jpg" },
-
-        // POSTERS
-        { title: "Poster #1", category: "Posters", image: "posters (1).jpg" },
-        { title: "Poster #2", category: "Posters", image: "posters (1).png" },
-        { title: "Poster #3", category: "Posters", image: "posters (2).jpg" },
-        { title: "Poster #4", category: "Posters", image: "posters (2).png" },
-        { title: "Poster #5", category: "Posters", image: "posters (3).jpg" },
-        { title: "Poster #6", category: "Posters", image: "posters (3).png" },
-        { title: "Poster #7", category: "Posters", image: "posters (4).jpg" },
-        { title: "Poster #8", category: "Posters", image: "posters (4).png" },
-        { title: "Poster #9", category: "Posters", image: "posters (5).jpg" },
-        { title: "Poster #10", category: "Posters", image: "posters (6).jpg" },
-        { title: "Poster #11", category: "Posters", image: "posters (7).jpg" },
-
-        // SELLER SET
-        { title: "Seller Set #1", category: "Seller Set", image: "seller set (1).jpg" },
-        { title: "Seller Set #2", category: "Seller Set", image: "seller set (1).png" },
-        { title: "Seller Set #3", category: "Seller Set", image: "seller set (2).jpg" },
-        { title: "Seller Set #4", category: "Seller Set", image: "seller set (3).jpg" },
-        { title: "Seller Set #5", category: "Seller Set", image: "seller set (4).jpg" },
-        { title: "Seller Set #6", category: "Seller Set", image: "seller set (5).jpg" },
-        { title: "Seller Set #7", category: "Seller Set", image: "seller set (6).jpg" },
-        { title: "Seller Set 2 #1", category: "Seller Set", image: "seller set 2 (1).jpg" },
-        { title: "Seller Set 2 #2", category: "Seller Set", image: "seller set 2 (1).png" },
-        { title: "Seller Set 2 #3", category: "Seller Set", image: "seller set 2 (2).jpg" },
-        { title: "Seller Set 2 #4", category: "Seller Set", image: "seller set 2 (3).jpg" },
-        { title: "Seller Set 2 #5", category: "Seller Set", image: "seller set 2 (4).jpg" },
-
-        // STAMP
-        { title: "Stamp #1", category: "Stamp", image: "stamp (1).jpg" },
-        { title: "Stamp #2", category: "Stamp", image: "stamp (2).jpg" },
-        { title: "Stamp #3", category: "Stamp", image: "stamp (3).jpg" },
+        // UDP
+        { title: "UDP #1", category: "UDP", image: "udp (1).jpg" },
+        { title: "UDP #2", category: "UDP", image: "udp (1).png" },
+        { title: "UDP #3", category: "UDP", image: "udp (2).jpg" },
+        { title: "UDP #4", category: "UDP", image: "udp (2).png" },
+        { title: "UDP #5", category: "UDP", image: "udp (3).jpg" },
+        { title: "UDP #6", category: "UDP", image: "udp (3).png" },
+        { title: "UDP #7", category: "UDP", image: "udp (4).jpg" },
+        { title: "UDP #8", category: "UDP", image: "udp (4).png" },
+        { title: "UDP #9", category: "UDP", image: "udp (5).jpg" },
+        { title: "UDP #10", category: "UDP", image: "udp (5).png" },
+        { title: "UDP #11", category: "UDP", image: "udp (6).jpg" },
+        { title: "UDP #12", category: "UDP", image: "udp (6).png" },
+        { title: "UDP #13", category: "UDP", image: "udp (7).jpg" },
+        { title: "UDP #14", category: "UDP", image: "udp (7).png" },
+        { title: "UDP #15", category: "UDP", image: "udp (8).jpg" },
+        { title: "UDP #16", category: "UDP", image: "udp (8).png" },
+        { title: "UDP #17", category: "UDP", image: "udp (9).jpg" },
+        { title: "UDP #18", category: "UDP", image: "udp (9).png" },
+        { title: "UDP #19", category: "UDP", image: "udp (10).jpg" },
+        { title: "UDP #20", category: "UDP", image: "udp (10).png" },
+        { title: "UDP #21", category: "UDP", image: "udp (11).jpg" },
+        { title: "UDP #22", category: "UDP", image: "udp (12).jpg" },
+        { title: "UDP #23", category: "UDP", image: "udp (13).jpg" },
+        { title: "UDP #24", category: "UDP", image: "udp (14).jpg" },
+        { title: "UDP #25", category: "UDP", image: "udp (15).jpg" },
+        { title: "UDP #26", category: "UDP", image: "udp (16).jpg" },
+        { title: "UDP #27", category: "UDP", image: "udp (17).jpg" },
+        { title: "UDP #28", category: "UDP", image: "udp (18).jpg" },
+        { title: "UDP #29", category: "UDP", image: "udp (19).jpg" },
 
         // TEMPLATE
         { title: "Template #1", category: "Template", image: "template (1).jpg" },
@@ -1166,41 +1285,46 @@
         { title: "Template #40", category: "Template", image: "template (38).png" },
         { title: "Template #41", category: "Template", image: "template (39).png" },
 
-        // UDP
-        { title: "UDP #1", category: "UDP", image: "udp (1).jpg" },
-        { title: "UDP #2", category: "UDP", image: "udp (1).png" },
-        { title: "UDP #3", category: "UDP", image: "udp (2).jpg" },
-        { title: "UDP #4", category: "UDP", image: "udp (2).png" },
-        { title: "UDP #5", category: "UDP", image: "udp (3).jpg" },
-        { title: "UDP #6", category: "UDP", image: "udp (3).png" },
-        { title: "UDP #7", category: "UDP", image: "udp (4).jpg" },
-        { title: "UDP #8", category: "UDP", image: "udp (4).png" },
-        { title: "UDP #9", category: "UDP", image: "udp (5).jpg" },
-        { title: "UDP #10", category: "UDP", image: "udp (5).png" },
-        { title: "UDP #11", category: "UDP", image: "udp (6).jpg" },
-        { title: "UDP #12", category: "UDP", image: "udp (6).png" },
-        { title: "UDP #13", category: "UDP", image: "udp (7).jpg" },
-        { title: "UDP #14", category: "UDP", image: "udp (7).png" },
-        { title: "UDP #15", category: "UDP", image: "udp (8).jpg" },
-        { title: "UDP #16", category: "UDP", image: "udp (8).png" },
-        { title: "UDP #17", category: "UDP", image: "udp (9).jpg" },
-        { title: "UDP #18", category: "UDP", image: "udp (9).png" },
-        { title: "UDP #19", category: "UDP", image: "udp (10).jpg" },
-        { title: "UDP #20", category: "UDP", image: "udp (10).png" },
-        { title: "UDP #21", category: "UDP", image: "udp (11).jpg" },
-        { title: "UDP #22", category: "UDP", image: "udp (12).jpg" },
-        { title: "UDP #23", category: "UDP", image: "udp (13).jpg" },
-        { title: "UDP #24", category: "UDP", image: "udp (14).jpg" },
-        { title: "UDP #25", category: "UDP", image: "udp (15).jpg" },
-        { title: "UDP #26", category: "UDP", image: "udp (16).jpg" },
-        { title: "UDP #27", category: "UDP", image: "udp (17).jpg" },
-        { title: "UDP #28", category: "UDP", image: "udp (18).jpg" },
-        { title: "UDP #29", category: "UDP", image: "udp (19).jpg" }
+        // POSTERS
+        { title: "Poster #1", category: "Posters", image: "posters (1).jpg" },
+        { title: "Poster #2", category: "Posters", image: "posters (1).png" },
+        { title: "Poster #3", category: "Posters", image: "posters (2).jpg" },
+        { title: "Poster #4", category: "Posters", image: "posters (2).png" },
+        { title: "Poster #5", category: "Posters", image: "posters (3).jpg" },
+        { title: "Poster #6", category: "Posters", image: "posters (3).png" },
+        { title: "Poster #7", category: "Posters", image: "posters (4).jpg" },
+        { title: "Poster #8", category: "Posters", image: "posters (4).png" },
+        { title: "Poster #9", category: "Posters", image: "posters (5).jpg" },
+        { title: "Poster #10", category: "Posters", image: "posters (6).jpg" },
+        { title: "Poster #11", category: "Posters", image: "posters (7).jpg" },
+
+        // HOODSET
+        { title: "Hoodset #1", category: "Hoodset", image: "hoodset (1).jpg" },
+        { title: "Hoodset #2", category: "Hoodset", image: "hoodset (2).jpg" },
+
+        // STAMP
+        { title: "Stamp #1", category: "Stamp", image: "stamp (1).jpg" },
+        { title: "Stamp #2", category: "Stamp", image: "stamp (2).jpg" },
+        { title: "Stamp #3", category: "Stamp", image: "stamp (3).jpg" },
+
+        // SELLER SET
+        { title: "Seller Set #1", category: "Seller Set", image: "seller set (1).jpg" },
+        { title: "Seller Set #2", category: "Seller Set", image: "seller set (1).png" },
+        { title: "Seller Set #3", category: "Seller Set", image: "seller set (2).jpg" },
+        { title: "Seller Set #4", category: "Seller Set", image: "seller set (3).jpg" },
+        { title: "Seller Set #5", category: "Seller Set", image: "seller set (4).jpg" },
+        { title: "Seller Set #6", category: "Seller Set", image: "seller set (5).jpg" },
+        { title: "Seller Set #7", category: "Seller Set", image: "seller set (6).jpg" },
+        { title: "Seller Set 2 #1", category: "Seller Set", image: "seller set 2 (1).jpg" },
+        { title: "Seller Set 2 #2", category: "Seller Set", image: "seller set 2 (1).png" },
+        { title: "Seller Set 2 #3", category: "Seller Set", image: "seller set 2 (2).jpg" },
+        { title: "Seller Set 2 #4", category: "Seller Set", image: "seller set 2 (3).jpg" },
+        { title: "Seller Set 2 #5", category: "Seller Set", image: "seller set 2 (4).jpg" }
       ]
     };
 
     // =========================================================================
-    // INTRO, LIGHTBOX & CLICK SPARKLE PHYSICS
+    // INTRO, LIGHTBOX & SPARKLES
     // =========================================================================
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
@@ -1208,7 +1332,7 @@
     }
 
     window.addEventListener("load", () => {
-      setTimeout(closeIntro, 2100);
+      setTimeout(closeIntro, 1900);
     });
 
     function openLightbox(imgSrc) {
@@ -1233,16 +1357,13 @@
       }
     }
 
-    document.addEventListener("click", (e) => {
-      burstParticles(e.clientX, e.clientY);
-    });
+    document.addEventListener("click", (e) => burstParticles(e.clientX, e.clientY));
 
     const SYLVEON_QUOTES = [
-      "Serene's commissions are open! 🎀",
+      "Swipe cards to view edits! 🎀",
+      "Check the Price List below! 🏷️",
       "GCash MOP ready! 💙",
-      "Tap a category above! ✨",
-      "Sylveon loves pink! 💗",
-      "Try catching Pokéballs below! 🎮"
+      "Messages open anytime! ✨"
     ];
     let quoteIdx = 0;
 
@@ -1253,67 +1374,150 @@
       burstParticles(e.clientX, e.clientY, ["💖", "🎀", "✨", "🌸"]);
     }
 
-    document.querySelectorAll(".poke-btn").forEach(btn => {
-      btn.addEventListener("click", function (e) {
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const ripple = document.createElement("span");
-        ripple.className = "btn-ripple";
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
-        ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 550);
-      });
-    });
-
     // =========================================================================
-    // CATEGORY CARTRIDGES
+    // ARCADE CARD DECK SLIDER LOGIC
     // =========================================================================
     const categoryGrid = document.getElementById("categoryGrid");
-    const screenFrame = document.getElementById("screenFrame");
+    const deckViewport = document.getElementById("deckViewport");
+    const thumbStrip = document.getElementById("thumbStrip");
+    const deckCatTitle = document.getElementById("deckCatTitle");
+    const deckCounter = document.getElementById("deckCounter");
+
+    let activeCategory = CLIENT_PORTFOLIO.categories[0];
+    let validItems = [];
+    let currentIndex = 0;
 
     function selectCategory(catObj) {
+      activeCategory = catObj;
       document.querySelectorAll(".cat-pill").forEach(el => {
         el.classList.toggle("active", el.dataset.id === catObj.id);
       });
 
-      const items = CLIENT_PORTFOLIO.gallery.filter(item => item.category === catObj.id);
+      deckCatTitle.textContent = `🃏 ${catObj.label} (${catObj.code})`;
+      validItems = CLIENT_PORTFOLIO.gallery.filter(item => item.category === catObj.id);
+      currentIndex = 0;
+      buildDeckDOM();
+    }
 
-      if (items.length === 0) {
-        screenFrame.innerHTML = `
-          <div class="empty-pokedex">
-            <div class="bounce-sprite">🌸</div>
-            <h3>${catObj.label} (${catObj.code})</h3>
-            <p>Sample artworks for <strong>${catObj.label}</strong> are being uploaded soon! Message Serene on Facebook to request sample previews or inquire.</p>
-            <span class="status-chip">✦ Ready for Uploads</span>
-          </div>
-        `;
+    function buildDeckDOM() {
+      deckViewport.innerHTML = "";
+      thumbStrip.innerHTML = "";
+
+      if (validItems.length === 0) {
+        deckCounter.textContent = "0 Cards";
+        deckViewport.innerHTML = `<p style="color:var(--berry-muted);">No sample cards yet for this category.</p>`;
         return;
       }
 
-      const grid = document.createElement("div");
-      grid.className = "works-grid";
+      validItems.forEach((item, idx) => {
+        const encodedSrc = encodeURI(item.image);
 
-      items.forEach((item, idx) => {
+        // Card Element
         const card = document.createElement("div");
-        card.className = "work-card";
-        card.style.animationDelay = `${Math.min(idx * 0.04, 0.5)}s`;
+        card.className = "arcade-card-item pos-hidden";
+        card.dataset.idx = idx;
         card.innerHTML = `
-          <img src="${encodeURI(item.image)}" alt="${item.title}" loading="lazy" onerror="this.closest('.work-card').style.display='none'" />
-          <div class="work-meta">
+          <img src="${encodedSrc}" alt="${item.title}" loading="lazy" />
+          <div class="arcade-card-footer">
             <strong>${item.title}</strong>
             <span>${item.category}</span>
           </div>
         `;
-        card.onclick = () => openLightbox(encodeURI(item.image));
-        grid.appendChild(card);
+
+        // Auto-remove missing optional files so deck never shows broken cards
+        const imgEl = card.querySelector("img");
+        imgEl.onerror = () => {
+          validItems = validItems.filter(v => v.image !== item.image);
+          if (currentIndex >= validItems.length) currentIndex = Math.max(0, validItems.length - 1);
+          buildDeckDOM();
+        };
+
+        card.onclick = () => {
+          if (idx === currentIndex) {
+            openLightbox(encodedSrc);
+          } else {
+            currentIndex = idx;
+            updateDeckPositions();
+          }
+        };
+
+        deckViewport.appendChild(card);
+
+        // Thumbnail Element
+        const thumb = document.createElement("div");
+        thumb.className = "thumb-dot";
+        thumb.dataset.idx = idx;
+        thumb.innerHTML = `<img src="${encodedSrc}" alt="${item.title}" loading="lazy" />`;
+        thumb.onclick = () => {
+          currentIndex = idx;
+          updateDeckPositions();
+        };
+        thumbStrip.appendChild(thumb);
       });
 
-      screenFrame.innerHTML = "";
-      screenFrame.appendChild(grid);
+      updateDeckPositions();
     }
 
+    function updateDeckPositions() {
+      const total = validItems.length;
+      if (total === 0) return;
+
+      deckCounter.textContent = `Card ${currentIndex + 1} / ${total}`;
+
+      const prevIdx = (currentIndex - 1 + total) % total;
+      const nextIdx = (currentIndex + 1) % total;
+
+      document.querySelectorAll(".arcade-card-item").forEach((card, idx) => {
+        card.classList.remove("pos-center", "pos-prev", "pos-next", "pos-hidden");
+        if (idx === currentIndex) {
+          card.classList.add("pos-center");
+        } else if (total > 1 && idx === prevIdx) {
+          card.classList.add("pos-prev");
+        } else if (total > 2 && idx === nextIdx) {
+          card.classList.add("pos-next");
+        } else {
+          card.classList.add("pos-hidden");
+        }
+      });
+
+      document.querySelectorAll(".thumb-dot").forEach((thumb, idx) => {
+        const isActive = idx === currentIndex;
+        thumb.classList.toggle("active", isActive);
+        if (isActive) {
+          thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
+      });
+    }
+
+    function slideDeck(dir) {
+      const total = validItems.length;
+      if (total <= 1) return;
+      currentIndex = (currentIndex + dir + total) % total;
+      updateDeckPositions();
+    }
+
+    // Touch Swipe Support for Card Deck
+    let touchStartX = 0;
+    const deckStage = document.getElementById("deckStage");
+
+    deckStage.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    deckStage.addEventListener("touchend", (e) => {
+      const diff = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(diff) > 38) {
+        slideDeck(diff < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+
+    // Keyboard Left/Right Arrow Navigation
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") slideDeck(-1);
+      if (e.key === "ArrowRight") slideDeck(1);
+    });
+
+    // Render Category Buttons & Load UDP by Default
     CLIENT_PORTFOLIO.categories.forEach(cat => {
       const btn = document.createElement("button");
       btn.className = "cat-pill";
@@ -1326,272 +1530,7 @@
       categoryGrid.appendChild(btn);
     });
 
-    // =========================================================================
-    // RESPONSIVE POKEMON ARCADE CATCHER GAME (NO STRETCHING ON MOBILE)
-    // =========================================================================
-    const canvasWrapper = document.getElementById("canvasWrapper");
-    const arcadeCanvas = document.getElementById("arcadeCanvas");
-    const actx = arcadeCanvas.getContext("2d");
-
-    const serenaImg = new Image();
-    serenaImg.src = "serena.jpg";
-
-    const sylveonImg = new Image();
-    sylveonImg.src = "sylveon.jpg";
-
-    let gameRunning = false;
-    let score = 0;
-    let bestScore = 0;
-    let lives = 3;
-    let fallingItems = [];
-    let floatingPopups = [];
-    let spawnTimer = 0;
-    let keys = { left: false, right: false };
-
-    const player = {
-      x: 160,
-      y: 310,
-      radius: 28,
-      speed: 7
-    };
-
-    function resizeArcadeCanvas() {
-      const boxWidth = canvasWrapper.clientWidth || 340;
-      const isMobile = boxWidth < 500;
-      const boxHeight = isMobile ? 370 : 360;
-
-      arcadeCanvas.width = boxWidth;
-      arcadeCanvas.height = boxHeight;
-      arcadeCanvas.style.height = `${boxHeight}px`;
-
-      player.radius = isMobile ? 25 : 31;
-      player.y = boxHeight - player.radius - 16;
-      player.x = Math.max(player.radius + 6, Math.min(boxWidth - player.radius - 6, player.x));
-    }
-
-    window.addEventListener("resize", resizeArcadeCanvas);
-    resizeArcadeCanvas();
-
-    function updateHUD() {
-      if (score > bestScore) bestScore = score;
-      document.getElementById("scorePill").textContent = `Score: ${score}`;
-      document.getElementById("bestPill").textContent = `Best: ${bestScore}`;
-      document.getElementById("livesPill").textContent = "❤️".repeat(Math.max(0, lives)) || "💔";
-    }
-
-    function startArcadeGame() {
-      resizeArcadeCanvas();
-      score = 0;
-      lives = 3;
-      fallingItems = [];
-      floatingPopups = [];
-      spawnTimer = 0;
-      player.x = arcadeCanvas.width / 2;
-      gameRunning = true;
-      document.getElementById("arcadeOverlay").classList.add("hidden");
-      updateHUD();
-      requestAnimationFrame(gameLoop);
-    }
-
-    function endArcadeGame() {
-      gameRunning = false;
-      const overlay = document.getElementById("arcadeOverlay");
-      document.getElementById("overlayTitle").textContent = `You got ${score} points!`;
-      document.getElementById("overlayDesc").innerHTML = `Personal Best: <strong>${bestScore} pts</strong> • Tap below to play another round!`;
-      overlay.querySelector("button").textContent = "🔄 Play Again";
-      overlay.classList.remove("hidden");
-    }
-
-    function movePlayerToClientX(clientX) {
-      if (!gameRunning) return;
-      const rect = arcadeCanvas.getBoundingClientRect();
-      const targetX = clientX - rect.left;
-      player.x = Math.max(player.radius + 6, Math.min(arcadeCanvas.width - player.radius - 6, targetX));
-    }
-
-    arcadeCanvas.addEventListener("mousemove", (e) => movePlayerToClientX(e.clientX));
-    arcadeCanvas.addEventListener("touchmove", (e) => {
-      e.preventDefault();
-      if (e.touches[0]) movePlayerToClientX(e.touches[0].clientX);
-    }, { passive: false });
-    arcadeCanvas.addEventListener("touchstart", (e) => {
-      if (e.touches[0]) movePlayerToClientX(e.touches[0].clientX);
-    }, { passive: true });
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft" || e.key === "a") keys.left = true;
-      if (e.key === "ArrowRight" || e.key === "d") keys.right = true;
-    });
-    window.addEventListener("keyup", (e) => {
-      if (e.key === "ArrowLeft" || e.key === "a") keys.left = false;
-      if (e.key === "ArrowRight" || e.key === "d") keys.right = false;
-    });
-
-    function spawnFallingItem() {
-      const isMobile = arcadeCanvas.width < 500;
-      const roll = Math.random();
-      let type = "pokeball";
-      let points = 10;
-      let radius = isMobile ? 15 : 18;
-
-      if (roll < 0.22) {
-        type = "bomb";
-        points = 0;
-        radius = isMobile ? 16 : 19;
-      } else if (roll < 0.36) {
-        type = "sylveon";
-        points = 50;
-        radius = isMobile ? 20 : 24;
-      } else if (roll < 0.62) {
-        type = "heart";
-        points = 20;
-        radius = isMobile ? 15 : 18;
-      }
-
-      const speedBoost = Math.min(3.2, score * 0.012);
-      const margin = radius + 12;
-      fallingItems.push({
-        x: Math.random() * Math.max(40, arcadeCanvas.width - margin * 2) + margin,
-        y: -25,
-        vy: 2.7 + Math.random() * 1.7 + speedBoost,
-        type,
-        points,
-        radius
-      });
-    }
-
-    function drawCircularImage(img, x, y, r, borderColor) {
-      actx.save();
-      actx.beginPath();
-      actx.arc(x, y, r, 0, Math.PI * 2);
-      actx.closePath();
-      actx.clip();
-      if (img.complete && img.naturalWidth > 0) {
-        actx.drawImage(img, x - r, y - r, r * 2, r * 2);
-      } else {
-        actx.fillStyle = "#ffc2dc";
-        actx.fillRect(x - r, y - r, r * 2, r * 2);
-      }
-      actx.restore();
-
-      actx.beginPath();
-      actx.arc(x, y, r, 0, Math.PI * 2);
-      actx.lineWidth = 3;
-      actx.strokeStyle = borderColor;
-      actx.stroke();
-    }
-
-    function drawPokeballSprite(x, y, r) {
-      actx.save();
-      actx.beginPath();
-      actx.arc(x, y, r, Math.PI, 0);
-      actx.fillStyle = "#ff3d8b";
-      actx.fill();
-
-      actx.beginPath();
-      actx.arc(x, y, r, 0, Math.PI);
-      actx.fillStyle = "#ffffff";
-      actx.fill();
-
-      actx.beginPath();
-      actx.moveTo(x - r, y);
-      actx.lineTo(x + r, y);
-      actx.lineWidth = 2.5;
-      actx.strokeStyle = "#4a1530";
-      actx.stroke();
-
-      actx.beginPath();
-      actx.arc(x, y, r, 0, Math.PI * 2);
-      actx.lineWidth = 2.5;
-      actx.strokeStyle = "#4a1530";
-      actx.stroke();
-
-      actx.beginPath();
-      actx.arc(x, y, 4.5, 0, Math.PI * 2);
-      actx.fillStyle = "#fff";
-      actx.fill();
-      actx.stroke();
-      actx.restore();
-    }
-
-    function gameLoop() {
-      if (!gameRunning) return;
-
-      actx.clearRect(0, 0, arcadeCanvas.width, arcadeCanvas.height);
-
-      if (keys.left) player.x -= player.speed;
-      if (keys.right) player.x += player.speed;
-      player.x = Math.max(player.radius + 6, Math.min(arcadeCanvas.width - player.radius - 6, player.x));
-
-      // Ground grass strip
-      actx.fillStyle = "#bbf7d0";
-      actx.fillRect(0, arcadeCanvas.height - 24, arcadeCanvas.width, 24);
-
-      // Spawn logic
-      spawnTimer++;
-      const spawnRate = Math.max(24, 46 - Math.floor(score / 15));
-      if (spawnTimer >= spawnRate) {
-        spawnFallingItem();
-        spawnTimer = 0;
-      }
-
-      // Draw Player (Trainer Serene)
-      drawCircularImage(serenaImg, player.x, player.y, player.radius, "#4a1530");
-
-      // Update & Draw Falling Items
-      for (let i = fallingItems.length - 1; i >= 0; i--) {
-        const item = fallingItems[i];
-        item.y += item.vy;
-
-        if (item.type === "pokeball") {
-          drawPokeballSprite(item.x, item.y, item.radius);
-        } else if (item.type === "sylveon") {
-          drawCircularImage(sylveonImg, item.x, item.y, item.radius, "#ff4d94");
-        } else {
-          actx.font = `${item.radius * 1.6}px Fredoka, sans-serif`;
-          actx.textAlign = "center";
-          actx.textBaseline = "middle";
-          actx.fillText(item.type === "heart" ? "💖" : "💣", item.x, item.y);
-        }
-
-        const dist = Math.hypot(item.x - player.x, item.y - player.y);
-        if (dist < item.radius + player.radius - 4) {
-          if (item.type === "bomb") {
-            lives--;
-            floatingPopups.push({ text: "-1 ❤️", x: item.x, y: item.y, color: "#ef4444", life: 32 });
-          } else {
-            score += item.points;
-            floatingPopups.push({ text: `+${item.points}`, x: item.x, y: item.y, color: "#ff4d94", life: 32 });
-          }
-          updateHUD();
-          fallingItems.splice(i, 1);
-
-          if (lives <= 0) {
-            endArcadeGame();
-            return;
-          }
-          continue;
-        }
-
-        if (item.y > arcadeCanvas.height + 30) {
-          fallingItems.splice(i, 1);
-        }
-      }
-
-      // Floating Score Popups
-      for (let i = floatingPopups.length - 1; i >= 0; i--) {
-        const pop = floatingPopups[i];
-        pop.y -= 1.2;
-        pop.life--;
-        actx.font = "bold 17px Fredoka, sans-serif";
-        actx.fillStyle = pop.color;
-        actx.textAlign = "center";
-        actx.fillText(pop.text, pop.x, pop.y);
-        if (pop.life <= 0) floatingPopups.splice(i, 1);
-      }
-
-      requestAnimationFrame(gameLoop);
-    }
+    selectCategory(CLIENT_PORTFOLIO.categories[0]);
   </script>
 </body>
 </html>
