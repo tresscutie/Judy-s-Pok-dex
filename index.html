@@ -775,10 +775,25 @@
       border: 2px solid #fff;
     }
 
+    /* Explosion Animation Style */
+    .explosion-effect {
+      position: absolute;
+      font-size: 2.5rem;
+      transform: translate(-50%, -50%);
+      animation: explodeAnim 0.4s ease-out forwards;
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    @keyframes explodeAnim {
+      0% { transform: scale(0.5); opacity: 1; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
     .game-start-screen {
       position: absolute;
       inset: 0;
-      background: rgba(74, 21, 48, 0.92);
+      background: rgba(74, 21, 48, 0.95);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -791,15 +806,17 @@
 
     .game-start-screen h3 {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #ff85b8;
       margin-bottom: 0.5rem;
     }
 
     .game-start-screen p {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       margin-bottom: 1.2rem;
       opacity: 0.9;
+      max-width: 420px;
+      line-height: 1.4;
     }
 
     /* =========================================
@@ -1096,7 +1113,7 @@
     <!-- Serene's Catcher Mini-Game -->
     <section class="minigame-wrapper">
       <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Help Serene Catch Pokéballs!</h2>
-      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Catch the <strong>Pokéballs</strong> for points. <strong>Avoid the Bombs (💣)</strong>—you will lose a life if you catch a bomb!</p>
+      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Catch the <strong>Pokéballs</strong> for points. <strong>Avoid the Bombs (💣)</strong>—speed increases as your score goes up!</p>
       
       <div class="game-stats">
         <span>⭐ Score: <span id="gameScore">0</span></span>
@@ -1111,7 +1128,7 @@
 
         <div class="game-start-screen" id="startScreen">
           <h3>Ready to Play?</h3>
-          <p>Move your mouse to guide Serene. Catch Pokéballs, avoid bombs!</p>
+          <p>Move mouse to guide Serene. Catch Pokéballs, avoid bombs! The game gets faster as score increases!</p>
           <button class="intro-btn" onclick="startGame()">Start Game ▶</button>
         </div>
       </div>
@@ -1256,7 +1273,7 @@
 
   <script>
     // =========================================================================
-    // POKÉMON AUDIO & THEME MUSIC SYNTHESIZER
+    // POKÉMON AUDIO & ARCADE SOUND SYNTHESIZER
     // =========================================================================
     let audioCtx = null;
     let musicInterval = null;
@@ -1269,13 +1286,13 @@
 
     // Classic upbeat Pokémon-style opening melody sequence
     const pokeNotes = [
-      { f: 523.25, d: 0.2 }, // C5
-      { f: 659.25, d: 0.2 }, // E5
-      { f: 783.99, d: 0.2 }, // G5
-      { f: 1046.50, d: 0.4 },// C6
-      { f: 783.99, d: 0.2 }, // G5
-      { f: 880.00, d: 0.4 }, // A5
-      { f: 698.46, d: 0.4 }  // F5
+      { f: 523.25, d: 0.2 },
+      { f: 659.25, d: 0.2 },
+      { f: 783.99, d: 0.2 },
+      { f: 1046.50, d: 0.4 },
+      { f: 783.99, d: 0.2 },
+      { f: 880.00, d: 0.4 },
+      { f: 698.46, d: 0.4 }
     ];
     let noteCursor = 0;
 
@@ -1306,7 +1323,6 @@
       if (audioCtx && audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
-      // Tugtugin ang intro melody habang naglo-loading screen
       if (!musicInterval) {
         musicInterval = setInterval(playPokemonMelody, 250);
       }
@@ -1350,6 +1366,82 @@
       } catch(e) {}
     }
 
+    // Sound when catching a Pokéball (maganda at masayang chime)
+    function playCatchSound() {
+      try {
+        initAudio();
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.exponentialRampToValueAtTime(1046.50, now + 0.12);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.18);
+      } catch(e) {}
+    }
+
+    // Sound when hitting a Bomb (tunog sabog gamit ang noise buffer)
+    function playExplosionSound() {
+      try {
+        initAudio();
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+        const bufferSize = audioCtx.sampleRate * 0.4;
+        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = "lowpass";
+        filter.frequency.setValueAtTime(300, now);
+        filter.frequency.linearRampToValueAtTime(50, now + 0.4);
+
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        noise.start(now);
+        noise.stop(now + 0.4);
+      } catch(e) {}
+    }
+
+    // Arcade Game Over Sound
+    function playGameOverSound() {
+      try {
+        initAudio();
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+        const notes = [440, 415.30, 392, 349.23];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sawtooth";
+          osc.frequency.setValueAtTime(freq, now + (idx * 0.12));
+          gain.gain.setValueAtTime(0.08, now + (idx * 0.12));
+          gain.gain.exponentialRampToValueAtTime(0.001, now + (idx * 0.12) + 0.15);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + (idx * 0.12));
+          osc.stop(now + (idx * 0.12) + 0.15);
+        });
+      } catch(e) {}
+    }
+
     // =========================================================================
     // CLIENT PORTFOLIO DATA (6 CATEGORIES + ALL UPLOADED SAMPLES)
     // =========================================================================
@@ -1382,7 +1474,6 @@
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
       if (intro) intro.classList.add("hide");
-      // Itigil ang music loop pagpasok sa website
       setTimeout(() => {
         if (musicInterval) {
           clearInterval(musicInterval);
@@ -1391,7 +1482,6 @@
       }, 1500);
     }
 
-    // Automatic trigger ng music habang naglo-load kung papayagan ng browser
     window.addEventListener("load", () => {
       initAudio();
       musicInterval = setInterval(playPokemonMelody, 250);
@@ -1404,7 +1494,7 @@
 
     const SYLVEON_QUOTES = [
       "Move mouse to help Serene catch Pokéballs! 🎀",
-      "Avoid the bombs! 💣",
+      "Avoid the bombs! Speed increases with score! 💣",
       "Check out the Price List below! 🏷️",
       "GCash MOP ready! 💙"
     ];
@@ -1417,7 +1507,7 @@
     }
 
     // =========================================================================
-    // SERENE CATCHER GAME LOGIC (pokeball.jpg & BOMBS)
+    // SERENE CATCHER GAME LOGIC (Progressive Speed & Explosion & Arcade Over)
     // =========================================================================
     let score = 0;
     let lives = 3;
@@ -1448,7 +1538,7 @@
       fallingItems = [];
       updateStats();
 
-      document.querySelectorAll(".falling-item").forEach(el => el.remove());
+      document.querySelectorAll(".falling-item, .explosion-effect").forEach(el => el.remove());
 
       spawnerInterval = setInterval(spawnItem, 900);
       gameLoopInterval = setInterval(updateGame, 25);
@@ -1482,11 +1572,15 @@
 
       arena.appendChild(el);
 
+      // Habang tumataas ang score, bumibilis ang hulog (progressive speed multiplier)
+      const speedMultiplier = 1 + (score / 60);
+      const baseSpeed = 2.0 + Math.random() * 2.0;
+
       fallingItems.push({
         element: el,
         x: posX,
         y: -40,
-        speed: 2.2 + Math.random() * 2.2,
+        speed: baseSpeed * speedMultiplier,
         type: isBomb ? "bomb" : "ball"
       });
     }
@@ -1506,12 +1600,15 @@
 
         if (item.y >= catcherTop - 15 && item.y <= catcherTop + 35) {
           if (Math.abs(item.x - catcherX) < 35) {
-            playClickSound();
             if (item.type === "bomb") {
+              // Trigger explosion effect & sound
+              playExplosionSound();
+              showExplosion(item.x, item.y);
               lives--;
               updateStats();
               if (lives <= 0) gameOver();
             } else {
+              playCatchSound();
               score += 10;
               updateStats();
             }
@@ -1528,6 +1625,17 @@
       }
     }
 
+    function showExplosion(x, y) {
+      const arena = document.getElementById("gameArena");
+      const exp = document.createElement("div");
+      exp.className = "explosion-effect";
+      exp.textContent = "💥";
+      exp.style.left = x + "px";
+      exp.style.top = y + "px";
+      arena.appendChild(exp);
+      setTimeout(() => exp.remove(), 400);
+    }
+
     function gameOver() {
       isPlaying = false;
       clearInterval(spawnerInterval);
@@ -1535,10 +1643,12 @@
       fallingItems.forEach(item => item.element.remove());
       fallingItems = [];
 
+      playGameOverSound();
+
       const startScreen = document.getElementById("startScreen");
       startScreen.style.display = "flex";
-      startScreen.querySelector("h3").textContent = "Game Over! 💔";
-      startScreen.querySelector("p").textContent = `You scored ${score} points! You caught a bomb. Click to play again!`;
+      startScreen.querySelector("h3").textContent = "GAME OVER 💔";
+      startScreen.querySelector("p").textContent = `Final Score: ${score} points! You hit a bomb. Click below to try again!`;
       startScreen.querySelector("button").textContent = "Play Again 🔄";
     }
 
