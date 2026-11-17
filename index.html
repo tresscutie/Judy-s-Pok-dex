@@ -711,7 +711,7 @@
     }
 
     /* =========================================
-        SERENE'S CATCH MINI-GAME STYLES
+        SERENE'S CATCHER CATCH MINI-GAME STYLES
         ========================================= */
     .minigame-wrapper {
       background: var(--card-white);
@@ -741,34 +741,51 @@
       background: linear-gradient(135deg, #2b0b1f, #4a1530);
       border: 3.5px solid var(--berry-dark);
       border-radius: 20px;
-      height: 320px;
+      height: 340px;
       position: relative;
       overflow: hidden;
-      cursor: crosshair;
+      cursor: none;
       box-shadow: inset 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    .catcher-serene {
+      position: absolute;
+      bottom: 10px;
+      width: 65px;
+      height: 75px;
+      border-radius: 14px;
+      border: 2.5px solid #fff;
+      background: #ffc2dc;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(255, 77, 148, 0.5);
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .catcher-serene img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .falling-item {
       position: absolute;
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.9rem;
       user-select: none;
-      cursor: pointer;
-      transition: transform 0.1s;
-    }
-
-    .falling-item:active {
-      transform: scale(0.8);
+      z-index: 4;
     }
 
     .game-start-screen {
       position: absolute;
       inset: 0;
-      background: rgba(74, 21, 48, 0.9);
+      background: rgba(74, 21, 48, 0.92);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -776,6 +793,7 @@
       color: #fff;
       z-index: 10;
       padding: 1rem;
+      cursor: default;
     }
 
     .game-start-screen h3 {
@@ -1002,7 +1020,7 @@
 
   <!-- Floating Sylveon Companion Widget -->
   <div class="sylveon-companion" onclick="playClickSound(); petSylveon(event)">
-    <div class="sylveon-bubble" id="sylveonMsg">Catch falling Pokéballs! 🎀</div>
+    <div class="sylveon-bubble" id="sylveonMsg">Help Serene catch Pokéballs! 🎀</div>
     <div class="sylveon-avatar">
       <img src="sylveon.jpg" alt="Sylveon Partner" />
     </div>
@@ -1082,20 +1100,25 @@
       </div>
     </section>
 
-    <!-- Serene's Mini-Game: Catch Pokeballs & Avoid Bombs -->
+    <!-- Serene's Catcher Mini-Game -->
     <section class="minigame-wrapper">
-      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Catch the Pokéballs!</h2>
-      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Click the falling Pokéballs to score points. <strong>Avoid the Bombs (💣)!</strong> You have 3 Lives.</p>
+      <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Help Serene Catch Pokéballs!</h2>
+      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Saluhin ang mga Pokéballs (🔴) para sa puntos. <strong>Iwasang masalo ang mga Bomba (💣)</strong>—mababawasan ang buhay mo kapag nasalo mo ang bomba!</p>
       
       <div class="game-stats">
         <span>⭐ Score: <span id="gameScore">0</span></span>
         <span>❤️ Lives: <span id="gameLives">❤️❤️❤️</span></span>
       </div>
 
-      <div class="game-arena" id="gameArena">
+      <div class="game-arena" id="gameArena" onmousemove="moveCatcher(event)">
+        <!-- Serene Catcher Character -->
+        <div class="catcher-serene" id="sereneCatcher" style="left: 50%;">
+          <img src="serena.jpg" alt="Serene Catcher" />
+        </div>
+
         <div class="game-start-screen" id="startScreen">
-          <h3>Ready to Catch?</h3>
-          <p>Catch Pokéballs, dodge bombs, and set your highest score!</p>
+          <h3>Ready to Play?</h3>
+          <p>I-move ang mouse para igalaw si Serene. Huwag sasaluhin ang bomba!</p>
           <button class="intro-btn" onclick="startGame()">Start Game ▶</button>
         </div>
       </div>
@@ -1330,7 +1353,7 @@
     }
 
     const SYLVEON_QUOTES = [
-      "Catch falling Pokéballs! 🎀",
+      "Move mouse to help Serene catch! 🎀",
       "Avoid the bombs! 💣",
       "Check the Price List below! 🏷️",
       "GCash MOP ready! 💙"
@@ -1344,13 +1367,28 @@
     }
 
     // =========================================================================
-    // CATCH GAME LOGIC (3 LIVES, POKEBALLS & BOMBS)
+    // SERENE CATCHER GAME LOGIC
     // =========================================================================
     let score = 0;
     let lives = 3;
-    let gameInterval = null;
-    let spawnerInterval = null;
     let isPlaying = false;
+    let spawnerInterval = null;
+    let gameLoopInterval = null;
+    let fallingItems = [];
+
+    function moveCatcher(e) {
+      if (!isPlaying) return;
+      const arena = document.getElementById("gameArena");
+      const rect = arena.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+      
+      // Limit within arena bounds
+      if (x < 35) x = 35;
+      if (x > rect.width - 35) x = rect.width - 35;
+
+      const catcher = document.getElementById("sereneCatcher");
+      catcher.style.left = x + "px";
+    }
 
     function startGame() {
       const startScreen = document.getElementById("startScreen");
@@ -1358,12 +1396,13 @@
       score = 0;
       lives = 3;
       isPlaying = true;
+      fallingItems = [];
       updateStats();
 
-      // Clear existing items
       document.querySelectorAll(".falling-item").forEach(el => el.remove());
 
-      spawnerInterval = setInterval(spawnItem, 800);
+      spawnerInterval = setInterval(spawnItem, 900);
+      gameLoopInterval = setInterval(updateGame, 25);
     }
 
     function updateStats() {
@@ -1376,73 +1415,84 @@
     function spawnItem() {
       if (!isPlaying) return;
       const arena = document.getElementById("gameArena");
-      const item = document.createElement("div");
-      item.className = "falling-item";
+      const el = document.createElement("div");
+      el.className = "falling-item";
 
-      // 75% chance pokeball, 25% chance bomb
-      const isBomb = Math.random() < 0.25;
-      item.textContent = isBomb ? "💣" : "🔴";
-      item.dataset.type = isBomb ? "bomb" : "ball";
+      const isBomb = Math.random() < 0.28;
+      el.textContent = isBomb ? "💣" : "🔴";
 
       const maxX = arena.clientWidth - 45;
-      const startX = Math.floor(Math.random() * maxX);
-      item.style.left = startX + "px";
-      item.style.top = "-40px";
+      const posX = Math.floor(Math.random() * maxX);
+      el.style.left = posX + "px";
+      el.style.top = "-40px";
 
-      item.onmousedown = (e) => {
-        e.stopPropagation();
-        if (!isPlaying) return;
-        playClickSound();
-        if (item.dataset.type === "bomb") {
-          lives--;
-          item.remove();
-          updateStats();
-          if (lives <= 0) gameOver();
-        } else {
-          score += 10;
-          item.remove();
-          updateStats();
-        }
-      };
+      arena.appendChild(el);
 
-      arena.appendChild(item);
+      fallingItems.push({
+        element: el,
+        x: posX,
+        y: -40,
+        speed: 2.2 + Math.random() * 2.2,
+        type: isBomb ? "bomb" : "ball"
+      });
+    }
 
-      // Fall animation loop
-      let posY = -40;
-      const fallSpeed = 2 + Math.random() * 2.5;
+    function updateGame() {
+      if (!isPlaying) return;
+      const arena = document.getElementById("gameArena");
+      const catcher = document.getElementById("sereneCatcher");
+      const catcherRect = catcher.getBoundingClientRect();
+      const arenaRect = arena.getBoundingClientRect();
 
-      const fallInterval = setInterval(() => {
-        if (!isPlaying) {
-          clearInterval(fallInterval);
-          item.remove();
-          return;
-        }
-        posY += fallSpeed;
-        item.style.top = posY + "px";
+      // Catcher X center position relative to arena
+      const catcherX = catcher.offsetLeft;
+      const catcherTop = arena.clientHeight - 80;
 
-        // If it reaches bottom
-        if (posY > arena.clientHeight - 30) {
-          clearInterval(fallInterval);
-          item.remove();
-          if (item.dataset.type === "ball") {
-            // Na-miss ang pokeball
-            lives--;
-            updateStats();
-            if (lives <= 0) gameOver();
+      for (let i = fallingItems.length - 1; i >= 0; i--) {
+        let item = fallingItems[i];
+        item.y += item.speed;
+        item.element.style.top = item.y + "px";
+
+        // Check collision with Serene catcher (bottom area)
+        if (item.y >= catcherTop - 15 && item.y <= catcherTop + 35) {
+          // Check horizontal distance
+          if (Math.abs(item.x - catcherX) < 35) {
+            playClickSound();
+            if (item.type === "bomb") {
+              // Nasalo ang bomba -> Bawas buhay!
+              lives--;
+              updateStats();
+              if (lives <= 0) gameOver();
+            } else {
+              // Nasalo ang pokeball -> Dagdag puntos!
+              score += 10;
+              updateStats();
+            }
+            item.element.remove();
+            fallingItems.splice(i, 1);
+            continue;
           }
         }
-      }, 25);
+
+        // Remove if goes past bottom (safe kung pokeball ang lumagpas, walang bawas buhay)
+        if (item.y > arena.clientHeight) {
+          item.element.remove();
+          fallingItems.splice(i, 1);
+        }
+      }
     }
 
     function gameOver() {
       isPlaying = false;
       clearInterval(spawnerInterval);
-      document.querySelectorAll(".falling-item").forEach(el => el.remove());
+      clearInterval(gameLoopInterval);
+      fallingItems.forEach(item => item.element.remove());
+      fallingItems = [];
 
       const startScreen = document.getElementById("startScreen");
       startScreen.style.display = "flex";
       startScreen.querySelector("h3").textContent = "Game Over! 💔";
-      startScreen.querySelector("p").textContent = `Final Score: ${score}. Click below to try again!`;
+      startScreen.querySelector("p").textContent = `Naka-score ka ng ${score} puntos! Nasalo mo ang bomba. Click para maglaro ulit!`;
       startScreen.querySelector("button").textContent = "Play Again 🔄";
     }
 
