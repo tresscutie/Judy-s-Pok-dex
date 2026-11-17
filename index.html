@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanne Dieuxeme — Pink Pokédex Commission Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-pink-1: #fff0f6;
+      --bg-pink-2: #ffe0ee;
+      --card-white: rgba(255, 255, 255, 0.86);
+      --pink-hot: #ff4d94;
+      --pink-mid: #ff85b8;
+      --pink-soft: #ffc2dc;
+      --pink-border: #ffb3d4;
+      --berry-dark: #4a1530;
+      --berry-muted: #874b68;
+      --mint-open: #22c55e;
+      --sky-accent: #7dd3fc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(145deg, var(--bg-pink-1) 0%, var(--bg-pink-2) 50%, #ffd6e9 100%);
+      color: var(--berry-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtle Polka Dot & Floating Pokeball Pattern */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 77, 148, 0.14) 2px, transparent 2px);
+      background-size: 28px 28px;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .bg-pokeball {
+      position: fixed;
+      border-radius: 50%;
+      border: 14px solid rgba(255, 133, 184, 0.16);
+      z-index: -1;
+      pointer-events: none;
+      animation: spinSlow 28s linear infinite;
+    }
+    .bg-pokeball::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -14px;
+      right: -14px;
+      height: 12px;
+      background: rgba(255, 133, 184, 0.16);
+      transform: translateY(-50%);
+    }
+    .bg-pokeball::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-pink-1);
+      border: 10px solid rgba(255, 133, 184, 0.2);
+      transform: translate(-50%, -50%);
+    }
+
+    .pb-1 { width: 260px; height: 260px; top: -60px; right: -60px; }
+    .pb-2 { width: 320px; height: 320px; bottom: -90px; left: -80px; animation-direction: reverse; }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* =========================================
+       POKEDEX WELCOME BOOT OVERLAY
+       ========================================= */
+    .pokedex-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(160deg, #ff7eb6 0%, #ff4d94 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: #fff;
+      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.75s ease,
+                  visibility 0.75s;
+    }
+
+    .pokedex-intro.hide {
+      opacity: 0;
+      transform: translateY(-100%);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .pokeball-loader {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ff2a7a 0% 46%, #4a1530 46% 54%, #ffffff 54% 100%);
+      border: 5px solid #4a1530;
+      position: relative;
+      box-shadow: 0 14px 30px rgba(74, 21, 48, 0.28);
+      animation: wobbleBall 1.1s ease-in-out infinite;
+      margin-bottom: 1.3rem;
+    }
+
+    .pokeball-loader::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      border: 5px solid #4a1530;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 12px #fff;
+    }
+
+    @keyframes wobbleBall {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      20% { transform: rotate(-16deg) scale(1.05); }
+      40% { transform: rotate(14deg) scale(1.05); }
+      60% { transform: rotate(-8deg); }
+      80% { transform: rotate(6deg); }
+    }
+
+    .intro-tag {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.22);
+      padding: 5px 16px;
+      border-radius: 999px;
+      margin-bottom: 0.65rem;
+    }
+
+    .intro-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      text-shadow: 0 4px 0 rgba(74, 21, 48, 0.2);
+    }
+
+    .intro-btn {
+      margin-top: 1.5rem;
+      background: #fff;
+      color: var(--pink-hot);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 3px solid var(--berry-dark);
+      box-shadow: 0 4px 0 var(--berry-dark);
+      padding: 10px 26px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .intro-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--berry-dark);
+    }
+
+    /* =========================================
+       CLICK BURST PARTICLES & RIPPLES
+       ========================================= */
+    .click-pop {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      font-size: 16px;
+      animation: popFloat 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes popFloat {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.25) rotate(25deg); }
+    }
+
+    .btn-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      transform: scale(0);
+      animation: rippleOut 0.55s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes rippleOut {
+      to { transform: scale(3.2); opacity: 0; }
+    }
+
+    /* =========================================
+       MAIN CONTAINER & TRAINER CARD HEADER
+       ========================================= */
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4.5rem;
+    }
+
+    .trainer-card {
+      background: var(--card-white);
+      border: 3px solid var(--berry-dark);
+      border-radius: 30px;
+      box-shadow: 0 10px 0 var(--pink-mid), 0 18px 36px rgba(255, 77, 148, 0.2);
+      padding: 2.2rem 1.75rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      margin-bottom: 2.8rem;
+      animation: bounceIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    /* Pokédex Top Indicator Lights */
+    .pokedex-lights {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .lens-main {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #bae6fd, #0284c7);
+      border: 3px solid var(--berry-dark);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.65);
+    }
+
+    .lens-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--berry-dark);
+    }
+    .dot-pink { background: #ff4d94; }
+    .dot-yellow { background: #facc15; }
+    .dot-mint { background: #4ade80; }
+
+    .trainer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffe4f0;
+      border: 2px solid var(--pink-hot);
+      color: var(--pink-hot);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 5px 16px;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    .live-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--mint-open);
+      animation: pulseMint 1.8s infinite;
+    }
+
+    @keyframes pulseMint {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.55; }
+    }
+
+    h1 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--berry-dark);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 span {
+      color: var(--pink-hot);
+    }
+
+    .trainer-bio {
+      color: var(--berry-muted);
+      max-width: 540px;
+      margin: 0 auto 1.6rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .action-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .poke-btn {
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 600;
+      font-size: 0.96rem;
+      padding: 12px 26px;
+      border-radius: 999px;
+      border: 3px solid var(--berry-dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+    }
+
+    .poke-btn-primary {
+      background: linear-gradient(135deg, #ff66a3, #ff3d8b);
+      color: #fff;
+      box-shadow: 0 5px 0 var(--berry-dark);
+    }
+
+    .poke-btn-secondary {
+      background: #fff;
+      color: var(--berry-dark);
+      box-shadow: 0 5px 0 var(--pink-mid);
+    }
+
+    .poke-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .poke-btn:active {
+      transform: translateY(3px) !important;
+      box-shadow: 0 1px 0 var(--berry-dark) !important;
+    }
+
+    /* =========================================
+       SECTION HEADERS & 8 CATEGORY CARTRIDGES
+       ========================================= */
+    .section-header {
+      text-align: center;
+      margin: 2.8rem 0 1.4rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.95rem;
+      color: var(--berry-dark);
+    }
+
+    .section-header p {
+      color: var(--berry-muted);
+      font-size: 0.95rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 1.8rem;
+    }
+
+    .cat-pill {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      border: 2.5px solid var(--berry-dark);
+      border-radius: 18px;
+      padding: 12px 14px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--berry-dark);
+      box-shadow: 0 4px 0 var(--pink-soft);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .cat-pill:hover {
+      transform: translateY(-4px);
+      border-color: var(--pink-hot);
+      box-shadow: 0 7px 0 var(--pink-mid);
+    }
+
+    .cat-pill:active {
+      transform: translateY(2px) scale(0.96);
+    }
+
+    .cat-pill.active {
+      background: linear-gradient(135deg, #ff66a3, #ff408c);
+      color: #fff;
+      box-shadow: 0 5px 0 var(--berry-dark);
+      transform: translateY(-2px);
+    }
+
+    .cat-num {
+      font-size: 0.72rem;
+      opacity: 0.78;
+      letter-spacing: 0.5px;
+    }
+
+    /* =========================================
+       POKEDEX DISPLAY SCREEN (PREVIEW AREA)
+       ========================================= */
+    .pokedex-screen-frame {
+      background: var(--card-white);
+      border: 3px solid var(--berry-dark);
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 0 var(--pink-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .empty-pokedex {
+      text-align: center;
+      padding: 3.2rem 1.5rem;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #fff5f9, #ffe6f1);
+      border: 2.5px solid var(--pink-border);
+      animation: bounceIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .bounce-sprite {
+      font-size: 2.6rem;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+      animation: spriteHop 1.6s ease-in-out infinite;
+    }
+
+    @keyframes spriteHop {
+      0%, 100% { transform: translateY(0) scale(1, 1); }
+      40% { transform: translateY(-10px) scale(0.95, 1.06); }
+      75% { transform: translateY(0) scale(1.06, 0.94); }
+    }
+
+    .empty-pokedex h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.35rem;
+      color: var(--berry-dark);
+      margin-bottom: 0.35rem;
+    }
+
+    .empty-pokedex p {
+      color: var(--berry-muted);
+      font-size: 0.94rem;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .status-chip {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #fff;
+      border: 2px solid var(--pink-hot);
+      color: var(--pink-hot);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 999px;
+    }
+
+    /* Gallery Cards When Images Are Added */
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .work-card {
+      background: #fff;
+      border: 2.5px solid var(--berry-dark);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 0 var(--pink-soft);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+      animation: bounceIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    .work-card:hover {
+      transform: translateY(-6px) rotate(-1deg);
+      box-shadow: 0 10px 0 var(--pink-mid);
+    }
+
+    .work-card img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+      background: #ffe6f1;
+    }
+
+    .work-meta {
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid #ffe4f0;
+    }
+
+    .work-meta strong {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.95rem;
+      color: var(--berry-dark);
+    }
+
+    .work-meta span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #ffe0ee;
+      color: var(--pink-hot);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    /* =========================================
+       COMMISSION INFO & GCASH MOP CARD
+       ========================================= */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+      margin-top: 2.5rem;
+    }
+
+    .info-card {
+      background: var(--card-white);
+      border: 3px solid var(--berry-dark);
+      border-radius: 26px;
+      padding: 1.7rem;
+      box-shadow: 0 8px 0 var(--pink-soft);
+    }
+
+    .info-card h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.25rem;
+      color: var(--berry-dark);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gcash-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #e0f2fe;
+      border: 2px solid #0284c7;
+      color: #0369a1;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 14px;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-card ul {
+      padding-left: 1.2rem;
+      color: var(--berry-muted);
+      font-size: 0.93rem;
+    }
+
+    .info-card li {
+      margin-bottom: 0.45rem;
+    }
+
+    /* Lightbox Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(74, 21, 48, 0.82);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      cursor: zoom-out;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal img {
+      max-width: 92vw;
+      max-height: 85vh;
+      border-radius: 22px;
+      border: 4px solid #fff;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      animation: bounceIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    @keyframes bounceIn {
+      from { opacity: 0; transform: scale(0.92) translateY(16px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      color: var(--berry-muted);
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pokeball pb-1"></div>
+  <div class="bg-pokeball pb-2"></div>
+
+  <!-- Pokédex Welcome Screen -->
+  <div class="pokedex-intro" id="pokedexIntro">
+    <div class="pokeball-loader"></div>
+    <div class="intro-tag">✦ Pink Edition Pokédex ✦</div>
+    <div class="intro-title">Vanne Dieuxeme</div>
+    <p style="opacity:0.92; margin-top:4px;">Loading Commission Portfolio & Designs...</p>
+    <button class="intro-btn" onclick="closeIntro()">Open Trainer Card ▶</button>
+  </div>
+
+  <div class="container">
+    <!-- Trainer Card Hero -->
+    <header class="trainer-card">
+      <div class="pokedex-lights">
+        <div class="lens-main"></div>
+        <div class="lens-dot dot-pink"></div>
+        <div class="lens-dot dot-yellow"></div>
+        <div class="lens-dot dot-mint"></div>
+      </div>
+
+      <div class="trainer-badge">
+        <span class="live-dot"></span>
+        <span>COMMISSIONS OPEN • TRAINER CARD</span>
+      </div>
+
+      <h1>Vanne <span>Dieuxeme</span></h1>
+      <p class="trainer-bio">
+        Custom Edits, Templates, Posters, Book Covers, Hoodsets, Stamps & Seller Sets ✨
+      </p>
+
+      <div class="action-row">
+        <a href="https://www.facebook.com/vanne.dieuxeme" target="_blank" rel="noopener noreferrer" class="poke-btn poke-btn-primary">
+          💌 Message via Facebook
+        </a>
+        <a href="#portfolio" class="poke-btn poke-btn-secondary">
+          🎀 Browse Categories
+        </a>
+      </div>
+    </header>
+
+    <!-- Category Selector Section -->
+    <section id="portfolio">
+      <div class="section-header">
+        <h2>Select a Category</h2>
+        <p>Tap any cartridge below to view sample works</p>
+      </div>
+
+      <div class="category-grid" id="categoryGrid"></div>
+
+      <div class="pokedex-screen-frame" id="screenFrame">
+        <div class="empty-pokedex">
+          <div class="bounce-sprite">🎀</div>
+          <h3>Choose a Category Above!</h3>
+          <p>Tap <strong>UDP</strong>, <strong>Template</strong>, <strong>Posters</strong>, <strong>Color Coded</strong>, <strong>Book Cover</strong>, <strong>Hoodset</strong>, <strong>Stamp</strong>, or <strong>Seller Set</strong> to inspect samples.</p>
+          <span class="status-chip">✦ 8 Categories Ready</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mode of Payment & How to Order -->
+    <section class="info-grid">
+      <div class="info-card">
+        <h3>💳 Mode of Payment</h3>
+        <div class="gcash-pill">💙 GCash Only</div>
+        <ul>
+          <li>All commissions are paid strictly via <strong>GCash</strong>.</li>
+          <li>Send a message on Facebook first to confirm your slot, style details, and final rate before sending payment.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>📋 How to Order</h3>
+        <ul>
+          <li>Click <strong>Message via Facebook</strong> and state the category you want to commission.</li>
+          <li>Send your high-quality photos, preferred color theme, and exact text/details.</li>
+          <li>Once confirmed, settle the GCash payment to start your edit!</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Vanne Dieuxeme • Pink Pokédex Commission Portfolio • MOP: GCash</p>
+    </footer>
+  </div>
+
+  <!-- Fullscreen Lightbox -->
+  <div class="modal" id="imgModal" onclick="this.classList.remove('open')">
+    <img id="modalImg" src="" alt="Sample Preview" />
+  </div>
+
+  <script>
+    // =========================================================================
+    // MADALING I-EDIT DITO KAPAG MAGLALAGAY KA NA NG PICTURES!
+    // =========================================================================
+    const CLIENT_PORTFOLIO = {
+      facebookUrl: "https://www.facebook.com/vanne.dieuxeme",
+
+      categories: [
+        { id: "UDP", label: "UDP", code: "No. 001" },
+        { id: "Template", label: "Template", code: "No. 002" },
+        { id: "Posters", label: "Posters", code: "No. 003" },
+        { id: "Color Coded", label: "Color Coded", code: "No. 004" },
+        { id: "Book Cover", label: "Book Cover", code: "No. 005" },
+        { id: "Hoodset", label: "Hoodset", code: "No. 006" },
+        { id: "Stamp", label: "Stamp", code: "No. 007" },
+        { id: "Seller Set", label: "Seller Set", code: "No. 008" }
+      ],
+
+      // Kapag ready ka na maglagay ng pictures, idagdag lang dito gaya nito:
+      // { title: "Sample #1", category: "UDP", image: "udp1.jpg" },
+      gallery: []
+    };
+
+    // =========================================================================
+    // INTRO, CLICK POP ANIMATION & CATEGORY SWITCHER
+    // =========================================================================
+    function closeIntro() {
+      const intro = document.getElementById("pokedexIntro");
+      if (intro) intro.classList.add("hide");
+    }
+
+    window.addEventListener("load", () => {
+      setTimeout(closeIntro, 2100);
+    });
+
+    // Cute Pink Hearts & Sparkles Burst on Every Click
+    document.addEventListener("click", (e) => {
+      const icons = ["💗", "✦", "🌸", "✨"];
+      for (let i = 0; i < 5; i++) {
+        const pop = document.createElement("span");
+        pop.className = "click-pop";
+        pop.textContent = icons[i % icons.length];
+        const angle = (Math.PI * 2 * i) / 5 + Math.random() * 0.4;
+        const dist = 28 + Math.random() * 24;
+        pop.style.left = `${e.clientX}px`;
+        pop.style.top = `${e.clientY}px`;
+        pop.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
+        pop.style.setProperty("--dy", `${Math.sin(angle) * dist}px`);
+        document.body.appendChild(pop);
+        setTimeout(() => pop.remove(), 750);
+      }
+    });
+
+    // Button Ripple Effect
+    document.querySelectorAll(".poke-btn").forEach(btn => {
+      btn.addEventListener("click", function (e) {
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const ripple = document.createElement("span");
+        ripple.className = "btn-ripple";
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+        ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 550);
+      });
+    });
+
+    const categoryGrid = document.getElementById("categoryGrid");
+    const screenFrame = document.getElementById("screenFrame");
+
+    function selectCategory(catObj) {
+      document.querySelectorAll(".cat-pill").forEach(el => {
+        el.classList.toggle("active", el.dataset.id === catObj.id);
+      });
+
+      const items = CLIENT_PORTFOLIO.gallery.filter(item => item.category === catObj.id);
+
+      if (items.length === 0) {
+        screenFrame.innerHTML = `
+          <div class="empty-pokedex">
+            <div class="bounce-sprite">🌸</div>
+            <h3>${catObj.label} (${catObj.code})</h3>
+            <p>Sample artworks for <strong>${catObj.label}</strong> are being uploaded soon! Message on Facebook to request sample previews or inquire.</p>
+            <span class="status-chip">✦ Ready for Uploads</span>
+          </div>
+        `;
+        return;
+      }
+
+      const grid = document.createElement("div");
+      grid.className = "works-grid";
+
+      items.forEach((item, idx) => {
+        const card = document.createElement("div");
+        card.className = "work-card";
+        card.style.animationDelay = `${idx * 0.07}s`;
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" loading="lazy" />
+          <div class="work-meta">
+            <strong>${item.title}</strong>
+            <span>${item.category}</span>
+          </div>
+        `;
+        card.onclick = () => {
+          document.getElementById("modalImg").src = item.image;
+          document.getElementById("imgModal").classList.add("open");
+        };
+        grid.appendChild(card);
+      });
+
+      screenFrame.innerHTML = "";
+      screenFrame.appendChild(grid);
+    }
+
+    CLIENT_PORTFOLIO.categories.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "cat-pill";
+      btn.dataset.id = cat.id;
+      btn.innerHTML = `
+        <span class="cat-num">${cat.code}</span>
+        <span>${cat.label}</span>
+      `;
+      btn.onclick = () => selectCategory(cat);
+      categoryGrid.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
