@@ -187,22 +187,6 @@
     }
 
     /* =========================================
-        CLICK SPARKLES
-        ========================================= */
-    .click-pop {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9998;
-      font-size: 16px;
-      animation: popFloat 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    @keyframes popFloat {
-      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-      100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.25) rotate(25deg); }
-    }
-
-    /* =========================================
         MAIN CONTAINER & HERO CARD
         ========================================= */
     .container {
@@ -777,9 +761,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.9rem;
       user-select: none;
       z-index: 4;
+    }
+
+    .falling-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
     }
 
     .game-start-screen {
@@ -1103,7 +1093,7 @@
     <!-- Serene's Catcher Mini-Game -->
     <section class="minigame-wrapper">
       <h2 style="font-family: 'Fredoka', sans-serif; color: var(--pink-hot); font-size: 1.5rem;">🎮 Help Serene Catch Pokéballs!</h2>
-      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Saluhin ang mga Pokéballs (🔴) para sa puntos. <strong>Iwasang masalo ang mga Bomba (💣)</strong>—mababawasan ang buhay mo kapag nasalo mo ang bomba!</p>
+      <p style="color: var(--berry-muted); font-size: 0.9rem; margin-top: 4px;">Move your mouse inside the box to guide Serene. Saluhin ang mga <strong>Pokéballs</strong> para sa puntos. <strong>Iwasang masalo ang mga Bomba (💣)</strong>—mababawasan ang buhay mo kapag nasalo mo ang bomba!</p>
       
       <div class="game-stats">
         <span>⭐ Score: <span id="gameScore">0</span></span>
@@ -1118,7 +1108,7 @@
 
         <div class="game-start-screen" id="startScreen">
           <h3>Ready to Play?</h3>
-          <p>I-move ang mouse para igalaw si Serene. Huwag sasaluhin ang bomba!</p>
+          <p>I-move ang mouse para igalaw si Serene. Saluhin ang Pokéballs, iwasan ang bomba!</p>
           <button class="intro-btn" onclick="startGame()">Start Game ▶</button>
         </div>
       </div>
@@ -1353,7 +1343,7 @@
     }
 
     const SYLVEON_QUOTES = [
-      "Move mouse to help Serene catch! 🎀",
+      "Move mouse to help Serene catch Pokéballs! 🎀",
       "Avoid the bombs! 💣",
       "Check the Price List below! 🏷️",
       "GCash MOP ready! 💙"
@@ -1367,7 +1357,7 @@
     }
 
     // =========================================================================
-    // SERENE CATCHER GAME LOGIC
+    // SERENE CATCHER GAME LOGIC (POKEBALL IMAGE & BOMBS)
     // =========================================================================
     let score = 0;
     let lives = 3;
@@ -1382,7 +1372,6 @@
       const rect = arena.getBoundingClientRect();
       let x = e.clientX - rect.left;
       
-      // Limit within arena bounds
       if (x < 35) x = 35;
       if (x > rect.width - 35) x = rect.width - 35;
 
@@ -1419,7 +1408,13 @@
       el.className = "falling-item";
 
       const isBomb = Math.random() < 0.28;
-      el.textContent = isBomb ? "💣" : "🔴";
+      if (isBomb) {
+        el.textContent = "💣";
+        el.style.fontSize = "1.9rem";
+      } else {
+        // Gamit ang mismong Pokéball image na ibinigay mo
+        el.innerHTML = `<img src="image_45ff49.png" alt="Pokéball" />`;
+      }
 
       const maxX = arena.clientWidth - 45;
       const posX = Math.floor(Math.random() * maxX);
@@ -1441,10 +1436,7 @@
       if (!isPlaying) return;
       const arena = document.getElementById("gameArena");
       const catcher = document.getElementById("sereneCatcher");
-      const catcherRect = catcher.getBoundingClientRect();
-      const arenaRect = arena.getBoundingClientRect();
 
-      // Catcher X center position relative to arena
       const catcherX = catcher.offsetLeft;
       const catcherTop = arena.clientHeight - 80;
 
@@ -1453,9 +1445,8 @@
         item.y += item.speed;
         item.element.style.top = item.y + "px";
 
-        // Check collision with Serene catcher (bottom area)
+        // Check collision with Serene catcher
         if (item.y >= catcherTop - 15 && item.y <= catcherTop + 35) {
-          // Check horizontal distance
           if (Math.abs(item.x - catcherX) < 35) {
             playClickSound();
             if (item.type === "bomb") {
@@ -1464,7 +1455,7 @@
               updateStats();
               if (lives <= 0) gameOver();
             } else {
-              // Nasalo ang pokeball -> Dagdag puntos!
+              // Nasalo ang Pokéball -> Dagdag puntos!
               score += 10;
               updateStats();
             }
@@ -1474,7 +1465,7 @@
           }
         }
 
-        // Remove if goes past bottom (safe kung pokeball ang lumagpas, walang bawas buhay)
+        // Remove if goes past bottom
         if (item.y > arena.clientHeight) {
           item.element.remove();
           fallingItems.splice(i, 1);
