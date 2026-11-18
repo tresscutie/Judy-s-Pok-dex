@@ -121,6 +121,14 @@
       pointer-events: none;
     }
 
+    @media (max-width: 760px) {
+      .bg-pokeball { animation: none; }
+      .pokedex-intro { padding: 1.25rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pokeball-loader, .trainer-portrait-wrap, .sylveon-bubble { animation: none !important; }
+    }
+
     .pokeball-loader {
       width: 80px;
       height: 80px;
@@ -1334,15 +1342,23 @@
     }
 
     function startPokemonThemeAndClose() {
-      initAudio();
-      if (audioCtx && audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-      if (!musicInterval) {
-        musicInterval = setInterval(playPokemonMelody, 250);
-      }
-      playClickSound();
+      // Enter the site first; audio must never block navigation on iOS.
       closeIntro();
+      try {
+        initAudio();
+        if (audioCtx && audioCtx.state === 'suspended') {
+          const resumeResult = audioCtx.resume();
+          if (resumeResult && typeof resumeResult.catch === 'function') {
+            resumeResult.catch(() => {});
+          }
+        }
+        if (audioCtx && !musicInterval) {
+          musicInterval = setInterval(playPokemonMelody, 250);
+        }
+        playClickSound();
+      } catch (error) {
+        // Browsers may disable Web Audio; the website remains accessible.
+      }
     }
 
     function playHoverSound() {
@@ -1600,17 +1616,14 @@
     function closeIntro() {
       const intro = document.getElementById("pokedexIntro");
       if (intro) intro.classList.add("hide");
-      setTimeout(() => {
-        if (musicInterval) {
-          clearInterval(musicInterval);
-          musicInterval = null;
-        }
-      }, 1500);
     }
 
-    window.addEventListener("load", () => {
-      initAudio();
-      musicInterval = setInterval(playPokemonMelody, 250);
+    // Do not initialize audio on window.load: iOS and in-app browsers
+    // commonly block autoplay, and slow images can delay the load event.
+    // Show the main site automatically even if the visitor does not tap.
+    setTimeout(closeIntro, 3500);
+    window.addEventListener('pageshow', function (event) {
+      if (event.persisted) closeIntro();
     });
 
     function openLightbox(imgSrc) {
