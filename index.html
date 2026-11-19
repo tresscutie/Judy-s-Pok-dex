@@ -1037,7 +1037,7 @@
   <div class="bg-pokeball pb-1"></div>
   <div class="bg-pokeball pb-2"></div>
 
-  <audio id="pokemonBgm" src="Pokemon_Center_GitHub_24MB.mp3" preload="none" loop></audio>
+  <audio id="pokemonBgm" src="Pokemon_Center_GitHub_24MB.mp3" preload="auto" loop></audio>
 
   <!-- Pokédex Welcome Screen with Pokémon Theme Music Trigger -->
   <div class="pokedex-intro" id="pokedexIntro">
@@ -1053,6 +1053,8 @@
     <p style="opacity:0.92; margin-top:4px;">Loading Card Deck Portfolio & Price List...</p>
     <button class="intro-btn" onclick="startPokemonThemeAndClose()">🎵 Open Pokédex & Play Music ▶</button>
   </div>
+
+  <button id="musicToggle" type="button" aria-label="Pause background music" onclick="toggleBackgroundMusic()" style="display:none;position:fixed;bottom:18px;left:18px;z-index:99;background:#fff;border:3px solid #4a1530;border-radius:999px;padding:11px 16px;color:#4a1530;font-family:Fredoka,sans-serif;font-weight:700;box-shadow:0 4px 0 #ff85b8;cursor:pointer">🎵 Music ON</button>
 
   <!-- Floating Sylveon Companion Widget -->
   <div class="sylveon-companion" onclick="playClickSound(); petSylveon(event)">
@@ -1314,22 +1316,39 @@
     const pokemonBgm = document.getElementById("pokemonBgm");
 
     function startPokemonThemeAndClose() {
+      // Browsers allow audible playback after this button click.
       closeIntro();
       try {
         initAudio();
-        if (audioCtx && audioCtx.state === "suspended") {
-          audioCtx.resume().catch(() => {});
-        }
+        if (audioCtx && audioCtx.state === "suspended") audioCtx.resume().catch(() => {});
         playClickSound();
-        pokemonBgm.volume = 0.35;
-        const playAttempt = pokemonBgm.play();
-        if (playAttempt && typeof playAttempt.catch === "function") {
-          playAttempt.catch(err => console.warn("Music playback unavailable:", err));
-        }
-      } catch (error) {
-        console.warn("Audio unavailable:", error);
+      } catch (error) { console.warn("Sound effects unavailable:", error); }
+      pokemonBgm.volume = 0.35;
+      const toggle = document.getElementById("musicToggle");
+      toggle.style.display = "block";
+      pokemonBgm.play().then(() => {
+        toggle.textContent = "🎵 Music ON";
+        toggle.setAttribute("aria-label", "Pause background music");
+      }).catch(error => {
+        toggle.textContent = "🔇 Music OFF";
+        console.warn("Music could not start; check the MP3 file path:", error);
+      });
+    }
+
+    function toggleBackgroundMusic() {
+      const toggle = document.getElementById("musicToggle");
+      if (pokemonBgm.paused) {
+        pokemonBgm.play().then(() => {
+          toggle.textContent = "🎵 Music ON";
+          toggle.setAttribute("aria-label", "Pause background music");
+        }).catch(error => console.warn("Music unavailable:", error));
+      } else {
+        pokemonBgm.pause();
+        toggle.textContent = "🔇 Music OFF";
+        toggle.setAttribute("aria-label", "Play background music");
       }
     }
+
 
     function playHoverSound() {
       try {
@@ -1591,7 +1610,7 @@
     // Do not initialize audio on window.load: iOS and in-app browsers
     // commonly block autoplay, and slow images can delay the load event.
     // Show the main site automatically even if the visitor does not tap.
-    setTimeout(closeIntro, 3500);
+    // Wait for visitor to click Play before closing intro.
     window.addEventListener('pageshow', function (event) {
       if (event.persisted) closeIntro();
     });
